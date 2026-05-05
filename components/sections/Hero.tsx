@@ -7,7 +7,7 @@ export default function Hero() {
       <div className="space-y-6 mx-auto max-w-3xl">
         <div className="space-y-4 animate-fade-in">
           <h1 className="text-5xl md:text-7xl font-bold tracking-tight">
-            <span className="bg-gradient-to-r from-black via-black to-zinc-600 dark:from-white dark:via-white dark:to-zinc-400 bg-clip-text text-transparent">
+            <span className="bg-linear-to-r from-black via-black to-zinc-600 dark:from-white dark:via-white dark:to-zinc-400 bg-clip-text text-transparent">
               Build faster with modern tech
             </span>
           </h1>
