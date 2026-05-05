@@ -7,11 +7,11 @@ export const CallToAction: React.FC = () => {
       <div className="space-y-8 max-w-2xl mx-auto">
         <div className="space-y-4">
           <h2 className="text-5xl md:text-6xl font-bold text-black dark:text-white">
-            Let's build something great together
+            Let&apos;s build something great together
           </h2>
           <p className="text-lg text-black/60 dark:text-white/60">
-            Have a project in mind? I'm always interested in hearing about new
-            opportunities and exciting challenges.
+            Have a project in mind? I&apos;m always interested in hearing about
+            new opportunities and exciting challenges.
           </p>
         </div>
 
