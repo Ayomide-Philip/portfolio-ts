@@ -1,7 +1,7 @@
 import Link from "next/link";
 import { Section, Button } from "@/components/ui";
 
-export const CallToAction: React.FC = () => {
+export default function CallToAction() {
   return (
     <Section size="md" id="contact" className="text-center">
       <div className="space-y-8 max-w-2xl mx-auto">
@@ -30,4 +30,4 @@ export const CallToAction: React.FC = () => {
       </div>
     </Section>
   );
-};
+}

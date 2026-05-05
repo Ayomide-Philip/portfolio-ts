@@ -23,7 +23,7 @@ const SkillGroup: React.FC<SkillGroupProps> = ({ title, skills }) => (
   </div>
 );
 
-export const Skills: React.FC = () => {
+export default function Skills() {
   const skillGroups: SkillGroupProps[] = [
     {
       title: "Frontend",
@@ -74,4 +74,4 @@ export const Skills: React.FC = () => {
       </div>
     </Section>
   );
-};
+}

@@ -3,6 +3,7 @@
 import { useState, useEffect } from "react";
 import Link from "next/link";
 import { Button } from "@/components/ui";
+import Toggle from "../toggle";
 
 const navItems = [
   { label: "Home", href: "#" },
@@ -11,7 +12,7 @@ const navItems = [
   { label: "Contact", href: "#contact" },
 ];
 
-export const Navbar: React.FC = () => {
+export default function Navbar() {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
@@ -54,6 +55,7 @@ export const Navbar: React.FC = () => {
         </div>
 
         <div className="hidden md:block">
+          <Toggle />
           <Button variant="secondary" size="sm">
             Get Started
           </Button>
@@ -99,4 +101,4 @@ export const Navbar: React.FC = () => {
       )}
     </nav>
   );
-};
+}

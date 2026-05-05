@@ -1,7 +1,7 @@
 import Link from "next/link";
 import { Section, Button } from "@/components/ui";
 
-export const Hero: React.FC = () => {
+export default function Hero() {
   return (
     <Section size="lg" className="pt-32 text-center">
       <div className="space-y-6 mx-auto max-w-3xl">
@@ -47,4 +47,4 @@ export const Hero: React.FC = () => {
       </div>
     </Section>
   );
-};
+}

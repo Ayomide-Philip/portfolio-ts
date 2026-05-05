@@ -11,6 +11,7 @@ export default function ThemeProviders({
       defaultTheme="system"
       enableSystem
       disableTransitionOnChange
+      forcedTheme={undefined}
     >
       {children}
     </ThemeProvider>

@@ -1,7 +1,7 @@
 import Link from "next/link";
 import { Icon } from "@/components/ui";
 
-export const Footer: React.FC = () => {
+export default function Footer() {
   const currentYear = new Date().getFullYear();
 
   return (
@@ -77,4 +77,4 @@ export const Footer: React.FC = () => {
       </div>
     </footer>
   );
-};
+}

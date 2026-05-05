@@ -29,7 +29,7 @@ const FeatureCard: React.FC<FeatureCardProps> = ({
   </Card>
 );
 
-export const Features: React.FC = () => {
+export default function Features() {
   const features: FeatureCardProps[] = [
     {
       icon: "spark",
@@ -78,4 +78,4 @@ export const Features: React.FC = () => {
       </div>
     </Section>
   );
-};
+}

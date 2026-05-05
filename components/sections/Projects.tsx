@@ -60,7 +60,7 @@ const ProjectCard: React.FC<ProjectCardProps> = ({
   );
 };
 
-export const Projects: React.FC = () => {
+export default function Projects() {
   const projects: ProjectCardProps[] = [
     {
       title: "SaaS Dashboard",
@@ -114,4 +114,4 @@ export const Projects: React.FC = () => {
       </div>
     </Section>
   );
-};
+}
