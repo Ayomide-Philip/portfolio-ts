@@ -1,7 +1,14 @@
 import React from "react";
 
 interface IconProps extends React.SVGAttributes<SVGSVGElement> {
-  name: "spark" | "server" | "bolt" | "shield" | "github" | "linkedin" | "external";
+  name:
+    | "spark"
+    | "server"
+    | "bolt"
+    | "shield"
+    | "github"
+    | "linkedin"
+    | "external";
   size?: number;
 }
 
@@ -13,7 +20,13 @@ export const Icon: React.FC<IconProps> = ({ name, size = 24, ...props }) => {
       </svg>
     ),
     server: (
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" {...props}>
+      <svg
+        viewBox="0 0 24 24"
+        fill="none"
+        stroke="currentColor"
+        strokeWidth="2"
+        {...props}
+      >
         <rect x="2" y="2" width="20" height="8" rx="1" />
         <rect x="2" y="14" width="20" height="8" rx="1" />
         <line x1="6" y1="6" x2="6" y2="6.01" />
@@ -26,7 +39,13 @@ export const Icon: React.FC<IconProps> = ({ name, size = 24, ...props }) => {
       </svg>
     ),
     shield: (
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" {...props}>
+      <svg
+        viewBox="0 0 24 24"
+        fill="none"
+        stroke="currentColor"
+        strokeWidth="2"
+        {...props}
+      >
         <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" />
       </svg>
     ),
@@ -41,7 +60,13 @@ export const Icon: React.FC<IconProps> = ({ name, size = 24, ...props }) => {
       </svg>
     ),
     external: (
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" {...props}>
+      <svg
+        viewBox="0 0 24 24"
+        fill="none"
+        stroke="currentColor"
+        strokeWidth="2"
+        {...props}
+      >
         <path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6M15 3h6v6M10 14L21 3" />
       </svg>
     ),

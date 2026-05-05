@@ -13,14 +13,11 @@ export const Section = React.forwardRef<HTMLElement, SectionProps>(
     };
 
     return (
-      <section
-        ref={ref}
-        className={`${paddingClasses[size]} ${className}`}
-      >
+      <section ref={ref} className={`${paddingClasses[size]} ${className}`}>
         <div className="mx-auto max-w-6xl">{children}</div>
       </section>
     );
-  }
+  },
 );
 
 Section.displayName = "Section";

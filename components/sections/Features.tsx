@@ -11,14 +11,13 @@ const FeatureCard: React.FC<FeatureCardProps> = ({
   title,
   description,
 }) => (
-  <Card variant="bordered" className="p-6 group hover:bg-white/80 dark:hover:bg-black/80 transition-colors duration-300">
+  <Card
+    variant="bordered"
+    className="p-6 group hover:bg-white/80 dark:hover:bg-black/80 transition-colors duration-300"
+  >
     <div className="space-y-3">
       <div className="w-12 h-12 rounded-lg bg-black/5 dark:bg-white/5 flex items-center justify-center group-hover:bg-black/10 dark:group-hover:bg-white/10 transition-colors duration-300">
-        <Icon
-          name={icon}
-          size={24}
-          className="text-black dark:text-white"
-        />
+        <Icon name={icon} size={24} className="text-black dark:text-white" />
       </div>
       <h3 className="text-lg font-semibold text-black dark:text-white">
         {title}

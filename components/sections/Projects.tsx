@@ -27,7 +27,9 @@ const ProjectCard: React.FC<ProjectCardProps> = ({
       variant="default"
       className="overflow-hidden group hover:shadow-xl transition-shadow duration-300"
     >
-      <div className={`h-48 ${accentColors[accent]} flex items-center justify-center`}>
+      <div
+        className={`h-48 ${accentColors[accent]} flex items-center justify-center`}
+      >
         <div className="text-6xl opacity-10">✦</div>
       </div>
       <div className="p-6 space-y-4">

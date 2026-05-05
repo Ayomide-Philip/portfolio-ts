@@ -9,7 +9,7 @@ interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
 export const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
   (
     { variant = "primary", size = "md", className = "", children, ...props },
-    ref
+    ref,
   ) => {
     const baseClasses =
       "font-medium rounded-full transition-all duration-300 ease-in-out focus:outline-none focus:ring-2 focus:ring-offset-2";
@@ -38,7 +38,7 @@ export const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
         {children}
       </button>
     );
-  }
+  },
 );
 
 Button.displayName = "Button";

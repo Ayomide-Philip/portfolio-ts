@@ -8,7 +8,7 @@ interface CardProps extends React.HTMLAttributes<HTMLDivElement> {
 export const Card = React.forwardRef<HTMLDivElement, CardProps>(
   (
     { variant = "default", interactive = false, className = "", children },
-    ref
+    ref,
   ) => {
     const baseClasses = "rounded-2xl overflow-hidden";
 
@@ -32,7 +32,7 @@ export const Card = React.forwardRef<HTMLDivElement, CardProps>(
         {children}
       </div>
     );
-  }
+  },
 );
 
 Card.displayName = "Card";
