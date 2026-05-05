@@ -1,4 +1,4 @@
-import { Section, Card } from "@/components/ui";
+import { Section } from "@/components/ui";
 
 interface SkillGroupProps {
   title: string;
