@@ -90,7 +90,7 @@ const allSkills: SkillItem[] = [
 ];
 
 const SkillBadge: React.FC<{ item: SkillItem }> = ({ item }) => (
-  <div className="flex-shrink-0 w-32 h-32 rounded-2xl bg-white dark:bg-zinc-800 border border-black/10 dark:border-white/10 hover:border-black/20 dark:hover:border-white/20 p-4 flex flex-col items-center justify-center gap-3 hover:shadow-lg dark:hover:shadow-2xl transition-all duration-300 hover:scale-105">
+  <div className="shrink-0 w-32 h-32 rounded-2xl bg-white dark:bg-zinc-800 border border-black/10 dark:border-white/10 hover:border-black/20 dark:hover:border-white/20 p-4 flex flex-col items-center justify-center gap-3 hover:shadow-lg dark:hover:shadow-2xl transition-all duration-300 hover:scale-105">
     <div className="text-black dark:text-white">{item.icon}</div>
     <span className="text-sm font-medium text-center text-black dark:text-white">
       {item.name}
@@ -105,10 +105,7 @@ export default function Skills() {
 
     const scroll = () => {
       carousel.scrollLeft += 1;
-      if (
-        carousel.scrollLeft >=
-        carousel.scrollWidth - carousel.clientWidth
-      ) {
+      if (carousel.scrollLeft >= carousel.scrollWidth - carousel.clientWidth) {
         carousel.scrollLeft = 0;
       }
     };
@@ -140,8 +137,8 @@ export default function Skills() {
             ))}
           </div>
 
-          <div className="absolute left-0 top-0 bottom-4 w-12 bg-gradient-to-r from-zinc-50 dark:from-zinc-900/50 to-transparent pointer-events-none z-10" />
-          <div className="absolute right-0 top-0 bottom-4 w-12 bg-gradient-to-l from-zinc-50 dark:from-zinc-900/50 to-transparent pointer-events-none z-10" />
+          <div className="absolute left-0 top-0 bottom-4 w-12 bg-linear-to-r from-zinc-50 dark:from-zinc-900/50 to-transparent pointer-events-none z-10" />
+          <div className="absolute right-0 top-0 bottom-4 w-12 bg-linear-to-l from-zinc-50 dark:from-zinc-900/50 to-transparent pointer-events-none z-10" />
         </div>
 
         <div className="flex items-center justify-center gap-2 mt-8">
