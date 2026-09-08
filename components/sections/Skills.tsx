@@ -15,7 +15,6 @@ import {
   Box,
   Wrench,
 } from "lucide-react";
-import { useEffect } from "react";
 
 interface SkillItem {
   name: string;
@@ -90,7 +89,7 @@ const allSkills: SkillItem[] = [
 ];
 
 const SkillBadge: React.FC<{ item: SkillItem }> = ({ item }) => (
-  <div className="shrink-0 w-32 h-32 rounded-2xl bg-white dark:bg-zinc-800 border border-black/10 dark:border-white/10 hover:border-black/20 dark:hover:border-white/20 p-4 flex flex-col items-center justify-center gap-3 hover:shadow-lg dark:hover:shadow-2xl transition-all duration-300 hover:scale-105">
+  <div className="w-full h-32 rounded-2xl bg-white dark:bg-zinc-800 border border-black/10 dark:border-white/10 hover:border-black/30 dark:hover:border-white/30 p-4 flex flex-col items-center justify-center gap-3 hover:shadow-lg dark:hover:shadow-2xl transition-all duration-300 hover:scale-105 hover:bg-black/5 dark:hover:bg-white/5">
     <div className="text-black dark:text-white">{item.icon}</div>
     <span className="text-sm font-medium text-center text-black dark:text-white">
       {item.name}
@@ -99,21 +98,6 @@ const SkillBadge: React.FC<{ item: SkillItem }> = ({ item }) => (
 );
 
 export default function Skills() {
-  useEffect(() => {
-    const carousel = document.getElementById("skills-carousel");
-    if (!carousel) return;
-
-    const scroll = () => {
-      carousel.scrollLeft += 1;
-      if (carousel.scrollLeft >= carousel.scrollWidth - carousel.clientWidth) {
-        carousel.scrollLeft = 0;
-      }
-    };
-
-    const interval = setInterval(scroll, 30);
-    return () => clearInterval(interval);
-  }, []);
-
   return (
     <Section size="md" id="about" className="bg-zinc-50/50 dark:bg-zinc-900/50">
       <div className="space-y-12">
@@ -127,30 +111,9 @@ export default function Skills() {
           </p>
         </div>
 
-        <div className="relative">
-          <div
-            id="skills-carousel"
-            className="flex gap-6 overflow-x-hidden scroll-smooth pb-4"
-          >
-            {[...allSkills, ...allSkills].map((skill, index) => (
-              <SkillBadge key={`${skill.name}-${index}`} item={skill} />
-            ))}
-          </div>
-
-          <div className="absolute left-0 top-0 bottom-4 w-12 bg-linear-to-r from-zinc-50 dark:from-zinc-900/50 to-transparent pointer-events-none z-10" />
-          <div className="absolute right-0 top-0 bottom-4 w-12 bg-linear-to-l from-zinc-50 dark:from-zinc-900/50 to-transparent pointer-events-none z-10" />
-        </div>
-
-        <div className="flex items-center justify-center gap-2 mt-8">
-          {[0, 1, 2].map((i) => (
-            <div
-              key={i}
-              className="h-2 rounded-full bg-black/20 dark:bg-white/20 transition-all duration-300"
-              style={{
-                width: i === 0 ? "24px" : "8px",
-                opacity: i === 0 ? 1 : 0.5,
-              }}
-            />
+        <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-4 gap-4">
+          {allSkills.map((skill) => (
+            <SkillBadge key={skill.name} item={skill} />
           ))}
         </div>
       </div>
