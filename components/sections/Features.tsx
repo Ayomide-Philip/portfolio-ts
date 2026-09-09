@@ -70,9 +70,9 @@ export default function Features() {
           </p>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-          {features.map((feature) => (
-            <FeatureCard key={feature.title} {...feature} />
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+          {features.map((feature, i) => (
+            <FeatureCard key={i} {...feature} />
           ))}
         </div>
       </div>
