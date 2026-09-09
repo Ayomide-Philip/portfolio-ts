@@ -9,6 +9,7 @@
 
 body {
   background-color: #ffffff;
+  font-family: var(--font-inter), sans-serif;
 }
 
 .light body {
