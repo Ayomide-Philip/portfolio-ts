@@ -5,17 +5,20 @@ import Projects from "@/components/sections/Projects";
 import Skills from "@/components/sections/Skills";
 import CallToAction from "@/components/sections/CallToAction";
 import Footer from "@/components/sections/Footer";
+import AuraBackground from "@/components/AuraBackground";
 
 export default function Page() {
   return (
-    <div className="flex flex-col bg-white dark:bg-black">
-      <Navbar />
-      <Hero />
-      <Features />
-      <Projects />
-      <Skills />
-      <CallToAction />
-      <Footer />
-    </div>
+    <AuraBackground>
+      <div className="flex flex-col">
+        <Navbar />
+        <Hero />
+        <Features />
+        <Projects />
+        <Skills />
+        <CallToAction />
+        <Footer />
+      </div>
+    </AuraBackground>
   );
 }

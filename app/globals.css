@@ -6,3 +6,88 @@
   --background: #ffffff;
   --foreground: #171717;
 }
+
+body {
+  background-color: #ffffff;
+}
+
+.light body {
+  background-color: #ffffff;
+}
+
+.dark body {
+  background-color: #100e0b;
+}
+
+.aura-bg {
+  position: relative;
+  min-height: 100vh;
+  overflow: hidden;
+}
+
+.aura-content {
+  position: relative;
+  z-index: 1;
+}
+
+.aura-layer-1,
+.aura-layer-2,
+.aura-layer-3 {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  transform: translateZ(0);
+  will-change: transform;
+}
+
+.aura-layer-1 {
+  background: radial-gradient(ellipse 55% 42% at 30% 52%,
+      rgba(203, 213, 225, 0.62) 0%,
+      rgba(100, 116, 139, 0.28) 42%,
+      transparent 70%);
+  mix-blend-mode: multiply;
+  filter: blur(95px);
+}
+
+.aura-layer-2 {
+  background: radial-gradient(ellipse 42% 58% at 68% 38%,
+      rgba(148, 163, 184, 0.58) 0%,
+      rgba(71, 85, 105, 0.22) 45%,
+      transparent 72%);
+  mix-blend-mode: multiply;
+  filter: blur(115px);
+}
+
+.aura-layer-3 {
+  background: radial-gradient(ellipse 30% 28% at 52% 70%,
+      rgba(241, 245, 249, 0.3) 0%,
+      transparent 65%);
+  mix-blend-mode: multiply;
+  filter: blur(75px);
+}
+
+.light .aura-layer-1,
+.light .aura-layer-2,
+.light .aura-layer-3 {
+  mix-blend-mode: multiply;
+}
+
+.dark .aura-layer-1,
+.dark .aura-layer-2,
+.dark .aura-layer-3 {
+  mix-blend-mode: screen;
+}
+
+@media (min-width: 768px) {
+  .aura-layer-1 {
+    filter: blur(137px);
+  }
+
+  .aura-layer-2 {
+    filter: blur(166px);
+  }
+
+  .aura-layer-3 {
+    filter: blur(108px);
+  }
+}
