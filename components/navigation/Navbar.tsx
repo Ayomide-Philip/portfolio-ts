@@ -3,6 +3,7 @@
 import { useState, useEffect } from "react";
 import Link from "next/link";
 import { Button } from "@/components/ui";
+import { FolderKanban, House, Mail, UserRound } from "lucide-react";
 import Toggle from "../toggle";
 
 const navItems = [
@@ -12,9 +13,15 @@ const navItems = [
   { label: "Contact", href: "#contact" },
 ];
 
+const mobileNavItems = [
+  { label: "Home", href: "#", icon: House },
+  { label: "Projects", href: "#projects", icon: FolderKanban },
+  { label: "About", href: "#about", icon: UserRound },
+  { label: "Contact", href: "#contact", icon: Mail },
+];
+
 export default function Navbar() {
   const [isScrolled, setIsScrolled] = useState(false);
-  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -27,13 +34,11 @@ export default function Navbar() {
 
   return (
     <nav
-      className={`fixed top-4 left-1/2 -translate-x-1/2 z-50 w-full max-w-6xl px-4 transition-all duration-300 ease-in-out ${
-        isScrolled
-          ? "bg-white/80 dark:bg-black/80 shadow-lg border-white/10 dark:border-white/10"
-          : "bg-white/10 dark:bg-black/10"
-      } backdrop-blur-lg border border-white/20 dark:border-white/5 rounded-2xl`}
+      className={`fixed bottom-4 top-auto md:top-4 md:bottom-auto left-1/2 -translate-x-1/2 z-50 w-[calc(100%-2rem)] md:w-full max-w-md md:max-w-6xl px-2 md:px-4 transition-all duration-300 ease-in-out ${
+        isScrolled ? "shadow-lg" : "shadow-none"
+      } bg-white/85 dark:bg-black/70 backdrop-blur-lg border border-black/10 dark:border-white/10 rounded-2xl`}
     >
-      <div className="flex items-center justify-between h-16 px-6">
+      <div className="hidden md:flex items-center justify-between h-16 px-6">
         <Link
           href="#"
           className="text-xl font-bold bg-linear-to-r from-black to-zinc-600 dark:from-white dark:to-zinc-400 bg-clip-text text-transparent"
@@ -60,45 +65,24 @@ export default function Navbar() {
             Get Started
           </Button>
         </div>
-
-        <button
-          className="md:hidden text-black dark:text-white"
-          onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-          aria-label="Toggle menu"
-        >
-          <svg
-            className="w-6 h-6"
-            fill="none"
-            stroke="currentColor"
-            viewBox="0 0 24 24"
-          >
-            <path
-              strokeLinecap="round"
-              strokeLinejoin="round"
-              strokeWidth={2}
-              d="M4 6h16M4 12h16M4 18h16"
-            />
-          </svg>
-        </button>
       </div>
 
-      {isMobileMenuOpen && (
-        <div className="md:hidden border-t border-white/10 px-6 py-4 space-y-3 animate-in fade-in duration-300">
-          {navItems.map((item) => (
+      <div className="flex md:hidden items-center justify-around h-16 px-1">
+        {mobileNavItems.map((item) => {
+          const ItemIcon = item.icon;
+
+          return (
             <Link
               key={item.label}
               href={item.href}
-              className="block text-sm font-medium text-black dark:text-white hover:text-black/70 dark:hover:text-white/70 transition-colors py-2"
-              onClick={() => setIsMobileMenuOpen(false)}
+              className="flex min-w-14 flex-col items-center gap-1 rounded-xl px-2 py-1 text-[10px] font-medium text-black/60 transition-colors hover:bg-black/5 hover:text-black dark:text-white/60 dark:hover:bg-white/10 dark:hover:text-white"
             >
-              {item.label}
+              <ItemIcon size={19} strokeWidth={1.8} />
+              <span>{item.label}</span>
             </Link>
-          ))}
-          <Button variant="secondary" size="sm" className="w-full mt-4">
-            Get Started
-          </Button>
-        </div>
-      )}
+          );
+        })}
+      </div>
     </nav>
   );
 }
