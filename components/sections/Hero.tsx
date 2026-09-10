@@ -3,7 +3,6 @@ import { ArrowUpRight } from "lucide-react";
 import { Section } from "@/components/ui";
 import LetterGlitch from "../ui/letterglitch";
 import Toggle from "../toggle";
-import TextType from "../ui/textType";
 
 export default function Hero() {
   return (
@@ -32,21 +31,12 @@ export default function Hero() {
               <span className="h-1.5 w-1.5 rounded-full bg-emerald-300 shadow-[0_0_12px_rgba(110,231,183,0.9)]" />
               Full-stack developer
             </div>
-            <h1 className="mx-auto max-w-4xl text-5xl font-bold leading-[0.98] tracking-tight text-white drop-shadow-2xl md:text-8xl">
+            <h1 className="mx-auto capitalize max-w-4xl text-5xl font-bold leading-[0.98] tracking-tight text-white drop-shadow-2xl md:text-8xl">
               Build digital experiences that feel alive.
             </h1>
             <p className="mx-auto max-w-2xl text-base leading-relaxed text-white/70 md:text-xl">
-              <TextType
-                text={[
-                  "Full-stack developer crafting beautiful, performant web  experiences. Frontend + Backend + Cloud Infrastructure.",
-                ]}
-                typingSpeed={75}
-                pauseDuration={1500}
-                showCursor
-                cursorCharacter="_"
-                deletingSpeed={50}
-                cursorBlinkDuration={0.5}
-              />
+              Full-stack developer crafting beautiful, performant web
+              experiences. Frontend + Backend + Cloud Infrastructure.{" "}
             </p>
           </div>
 
