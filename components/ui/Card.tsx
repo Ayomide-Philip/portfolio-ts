@@ -10,14 +10,15 @@ export const Card = React.forwardRef<HTMLDivElement, CardProps>(
     { variant = "default", interactive = false, className = "", children },
     ref,
   ) => {
-    const baseClasses = "rounded-2xl overflow-hidden";
+    const baseClasses = "relative rounded-3xl overflow-hidden";
 
     const variantClasses = {
-      default: "bg-white dark:bg-zinc-900 shadow-sm",
+      default:
+        "border border-white/50 bg-white/65 backdrop-blur-xl shadow-[0_8px_32px_-16px_rgba(0,0,0,0.2)] dark:border-white/10 dark:bg-zinc-900/60 dark:shadow-[0_8px_32px_-16px_rgba(0,0,0,0.8)]",
       bordered:
-        "bg-white/50 dark:bg-black/50 border border-black/10 dark:border-white/10 backdrop-blur-sm",
+        "border border-white/60 bg-white/55 backdrop-blur-xl shadow-[0_8px_32px_-14px_rgba(0,0,0,0.18)] dark:border-white/10 dark:bg-white/5 dark:shadow-[0_8px_32px_-14px_rgba(0,0,0,0.7)]",
       elevated:
-        "bg-white dark:bg-zinc-900 shadow-lg hover:shadow-xl transition-shadow duration-300",
+        "border border-white/50 bg-white/70 backdrop-blur-xl shadow-lg hover:shadow-xl transition-shadow duration-300 dark:border-white/10 dark:bg-zinc-900/70",
     };
 
     const interactiveClasses = interactive
