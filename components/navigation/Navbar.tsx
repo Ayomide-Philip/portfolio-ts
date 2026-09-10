@@ -3,21 +3,23 @@
 import { useState, useEffect } from "react";
 import Link from "next/link";
 import { Button } from "@/components/ui";
-import { FolderKanban, House, Mail, UserRound } from "lucide-react";
+import { BookOpen, FolderKanban, House, Mail, UserRound } from "lucide-react";
 import Toggle from "../toggle";
 
 const navItems = [
-  { label: "Home", href: "#" },
-  { label: "Projects", href: "#projects" },
-  { label: "About", href: "#about" },
-  { label: "Contact", href: "#contact" },
+  { label: "Home", href: "/" },
+  { label: "Projects", href: "/project" },
+  { label: "About", href: "/about" },
+  { label: "Contact", href: "/contact" },
+  { label: "Blog", href: "/blog" },
 ];
 
 const mobileNavItems = [
-  { label: "Home", href: "#", icon: House },
-  { label: "Projects", href: "#projects", icon: FolderKanban },
-  { label: "About", href: "#about", icon: UserRound },
-  { label: "Contact", href: "#contact", icon: Mail },
+  { label: "Home", href: "/", icon: House },
+  { label: "Projects", href: "/project", icon: FolderKanban },
+  { label: "About", href: "/about", icon: UserRound },
+  { label: "Blog", href: "/blog", icon: BookOpen },
+  { label: "Contact", href: "/contact", icon: Mail },
 ];
 
 export default function Navbar() {
@@ -67,7 +69,7 @@ export default function Navbar() {
         </div>
       </div>
 
-      <div className="flex md:hidden items-center justify-around h-16 px-1">
+      <div className="grid grid-cols-5 items-center h-16 px-1 md:hidden">
         {mobileNavItems.map((item) => {
           const ItemIcon = item.icon;
 
@@ -75,10 +77,10 @@ export default function Navbar() {
             <Link
               key={item.label}
               href={item.href}
-              className="flex min-w-14 flex-col items-center gap-1 rounded-xl px-2 py-1 text-[10px] font-medium text-black/60 transition-colors hover:bg-black/5 hover:text-black dark:text-white/60 dark:hover:bg-white/10 dark:hover:text-white"
+              className="flex min-w-0 flex-col items-center justify-center gap-1 rounded-xl px-1 py-1.5 text-[10px] font-medium leading-none text-black/60 transition-colors hover:bg-black/5 hover:text-black dark:text-white/60 dark:hover:bg-white/10 dark:hover:text-white"
             >
-              <ItemIcon size={19} strokeWidth={1.8} />
-              <span>{item.label}</span>
+              <ItemIcon size={18} strokeWidth={1.8} className="shrink-0" />
+              <span className="w-full truncate text-center">{item.label}</span>
             </Link>
           );
         })}
