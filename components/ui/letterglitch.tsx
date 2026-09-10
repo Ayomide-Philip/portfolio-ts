@@ -25,6 +25,8 @@ const LetterGlitch = ({
 }) => {
   const canvasRef = useRef<HTMLCanvasElement | null>(null);
   const animationRef = useRef<number | null>(null);
+  const isVisibleRef = useRef(true);
+  const isPageVisibleRef = useRef(true);
   const letters = useRef<
     {
       char: string;
@@ -105,7 +107,7 @@ const LetterGlitch = ({
     const parent = canvas.parentElement;
     if (!parent) return;
 
-    const dpr = window.devicePixelRatio || 1;
+    const dpr = Math.min(window.devicePixelRatio || 1, 1.5);
     const rect = parent.getBoundingClientRect();
 
     canvas.width = rect.width * dpr;
@@ -186,6 +188,11 @@ const LetterGlitch = ({
   };
 
   const animate = () => {
+    if (!isVisibleRef.current || !isPageVisibleRef.current) {
+      animationRef.current = null;
+      return;
+    }
+
     const now = Date.now();
     if (now - lastGlitchTime.current >= glitchSpeed) {
       updateLetters();
@@ -205,8 +212,41 @@ const LetterGlitch = ({
     if (!canvas) return;
 
     context.current = canvas.getContext("2d");
+    const prefersReducedMotion = window.matchMedia(
+      "(prefers-reduced-motion: reduce)",
+    ).matches;
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        isVisibleRef.current = entry.isIntersecting;
+          if (
+            !prefersReducedMotion &&
+            isVisibleRef.current &&
+            animationRef.current === null
+          ) {
+          lastGlitchTime.current = Date.now();
+          animate();
+        }
+      },
+      { threshold: 0 },
+    );
+
+    observer.observe(canvas);
+
+    const handleVisibilityChange = () => {
+      isPageVisibleRef.current = document.visibilityState === "visible";
+      if (
+        !prefersReducedMotion &&
+        isPageVisibleRef.current &&
+        isVisibleRef.current
+      ) {
+        lastGlitchTime.current = Date.now();
+        if (animationRef.current === null) animate();
+      }
+    };
+
+    document.addEventListener("visibilitychange", handleVisibilityChange);
     resizeCanvas();
-    animate();
+      if (!prefersReducedMotion) animate();
 
     let resizeTimeout: ReturnType<typeof setTimeout>;
 
@@ -215,7 +255,7 @@ const LetterGlitch = ({
       resizeTimeout = setTimeout(() => {
         cancelAnimationFrame(animationRef.current as number);
         resizeCanvas();
-        animate();
+          if (!prefersReducedMotion) animate();
       }, 100);
     };
 
@@ -224,6 +264,8 @@ const LetterGlitch = ({
     return () => {
       cancelAnimationFrame(animationRef.current!);
       window.removeEventListener("resize", handleResize);
+      document.removeEventListener("visibilitychange", handleVisibilityChange);
+      observer.disconnect();
     };
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [glitchSpeed, smooth]);
