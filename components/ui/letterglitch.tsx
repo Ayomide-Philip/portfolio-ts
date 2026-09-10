@@ -218,11 +218,11 @@ const LetterGlitch = ({
     const observer = new IntersectionObserver(
       ([entry]) => {
         isVisibleRef.current = entry.isIntersecting;
-          if (
-            !prefersReducedMotion &&
-            isVisibleRef.current &&
-            animationRef.current === null
-          ) {
+        if (
+          !prefersReducedMotion &&
+          isVisibleRef.current &&
+          animationRef.current === null
+        ) {
           lastGlitchTime.current = Date.now();
           animate();
         }
@@ -246,7 +246,7 @@ const LetterGlitch = ({
 
     document.addEventListener("visibilitychange", handleVisibilityChange);
     resizeCanvas();
-      if (!prefersReducedMotion) animate();
+    if (!prefersReducedMotion) animate();
 
     let resizeTimeout: ReturnType<typeof setTimeout>;
 
@@ -255,7 +255,7 @@ const LetterGlitch = ({
       resizeTimeout = setTimeout(() => {
         cancelAnimationFrame(animationRef.current as number);
         resizeCanvas();
-          if (!prefersReducedMotion) animate();
+        if (!prefersReducedMotion) animate();
       }, 100);
     };
 
