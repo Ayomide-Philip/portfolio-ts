@@ -25,6 +25,7 @@ const LetterGlitch = ({
 }) => {
   const canvasRef = useRef<HTMLCanvasElement | null>(null);
   const animationRef = useRef<number | null>(null);
+  const updateTimeoutRef = useRef<ReturnType<typeof setTimeout> | null>(null);
   const resizeTimeoutRef = useRef<ReturnType<typeof setTimeout> | null>(null);
   const isMountedRef = useRef(false);
   const isVisibleRef = useRef(true);
@@ -191,6 +192,8 @@ const LetterGlitch = ({
   };
 
   const animate = () => {
+    if (!smooth) updateTimeoutRef.current = null;
+
     if (
       !isMountedRef.current ||
       !isVisibleRef.current ||
@@ -211,7 +214,11 @@ const LetterGlitch = ({
       handleSmoothTransitions();
     }
 
-    animationRef.current = requestAnimationFrame(animate);
+    if (smooth) {
+      animationRef.current = requestAnimationFrame(animate);
+    } else {
+      updateTimeoutRef.current = setTimeout(animate, glitchSpeed);
+    }
   };
 
   useEffect(() => {
@@ -229,7 +236,8 @@ const LetterGlitch = ({
         if (
           !prefersReducedMotion &&
           isVisibleRef.current &&
-          animationRef.current === null
+          animationRef.current === null &&
+          updateTimeoutRef.current === null
         ) {
           lastGlitchTime.current = Date.now();
           animate();
@@ -245,7 +253,9 @@ const LetterGlitch = ({
       if (
         !prefersReducedMotion &&
         isPageVisibleRef.current &&
-        isVisibleRef.current
+        isVisibleRef.current &&
+        animationRef.current === null &&
+        updateTimeoutRef.current === null
       ) {
         lastGlitchTime.current = Date.now();
         if (animationRef.current === null) animate();
@@ -256,12 +266,12 @@ const LetterGlitch = ({
     resizeCanvas();
     if (!prefersReducedMotion) animate();
 
-    let resizeTimeout: ReturnType<typeof setTimeout>;
-
     const handleResize = () => {
       if (resizeTimeoutRef.current) clearTimeout(resizeTimeoutRef.current);
       resizeTimeoutRef.current = setTimeout(() => {
         cancelAnimationFrame(animationRef.current as number);
+        if (updateTimeoutRef.current) clearTimeout(updateTimeoutRef.current);
+        updateTimeoutRef.current = null;
         resizeCanvas();
         if (!prefersReducedMotion) animate();
       }, 100);
@@ -272,6 +282,7 @@ const LetterGlitch = ({
     return () => {
       isMountedRef.current = false;
       cancelAnimationFrame(animationRef.current!);
+      if (updateTimeoutRef.current) clearTimeout(updateTimeoutRef.current);
       if (resizeTimeoutRef.current) clearTimeout(resizeTimeoutRef.current);
       window.removeEventListener("resize", handleResize);
       document.removeEventListener("visibilitychange", handleVisibilityChange);
