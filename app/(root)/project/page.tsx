@@ -124,10 +124,10 @@ function ProjectCard({ project }: { project: Project }) {
       <div className="flex flex-1 flex-col gap-5 p-6">
         <div className="space-y-2">
           <h2 className="bg-linear-to-br from-black to-zinc-500 bg-clip-text text-2xl font-bold text-transparent dark:from-white dark:to-zinc-400">
-            {project.title}
+            {project?.title}
           </h2>
           <p className="text-sm leading-relaxed text-black/60 dark:text-white/60">
-            {project.description}
+            {project?.description}
           </p>
         </div>
 
