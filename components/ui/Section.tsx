@@ -7,9 +7,9 @@ interface SectionProps extends React.HTMLAttributes<HTMLElement> {
 export const Section = React.forwardRef<HTMLElement, SectionProps>(
   ({ size = "md", className = "", children }, ref) => {
     const paddingClasses = {
-      sm: "py-16 px-4",
-      md: "py-24 px-4",
-      lg: "py-32 px-4",
+      sm: "py-10 px-4",
+      md: "py-15 px-4",
+      lg: "py-24 px-4",
     };
 
     return (

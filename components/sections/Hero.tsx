@@ -42,7 +42,7 @@ export default function Hero() {
 
           <div className="flex flex-col justify-center gap-3 sm:flex-row">
             <Link
-              href="#projects"
+              href="/project"
               className="group inline-flex min-h-14 items-center justify-center gap-3 rounded-full bg-white px-7 text-sm font-semibold text-black shadow-[0_12px_40px_rgba(255,255,255,0.16)] transition-transform duration-300 hover:-translate-y-1 hover:bg-zinc-200"
             >
               View Projects
@@ -52,7 +52,7 @@ export default function Hero() {
               />
             </Link>
             <Link
-              href="#contact"
+              href="/contact"
               className="inline-flex min-h-14 items-center justify-center rounded-full border border-white/25 bg-black/20 px-7 text-sm font-semibold text-white backdrop-blur-md transition-colors duration-300 hover:bg-white/10"
             >
               Contact Me

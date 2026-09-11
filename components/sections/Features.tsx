@@ -33,7 +33,7 @@ const FeatureCard: React.FC<FeatureCardProps> = ({
         />
       </div>
 
-      <h3 className="bg-linear-to-br from-black to-zinc-500 bg-clip-text text-lg font-semibold text-transparent dark:from-white dark:to-zinc-400">
+      <h3 className="bg-linear-to-br capitalize from-black to-zinc-500 bg-clip-text text-lg font-semibold text-transparent dark:from-white dark:to-zinc-400">
         {title}
       </h3>
 
@@ -74,7 +74,6 @@ export default function Features() {
 
   return (
     <Section size="md" className="relative overflow-hidden">
-      {/* ambient light behind the frosted panels */}
       <div
         aria-hidden="true"
         className="pointer-events-none absolute inset-0 -z-10"

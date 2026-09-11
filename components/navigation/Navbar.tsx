@@ -8,16 +8,16 @@ import Toggle from "../toggle";
 
 const navItems = [
   { label: "Home", href: "/" },
-  { label: "Projects", href: "/project" },
   { label: "About", href: "/about" },
+  { label: "Projects", href: "/project" },
   { label: "Contact", href: "/contact" },
   { label: "Blog", href: "/blog" },
 ];
 
 const mobileNavItems = [
   { label: "Home", href: "/", icon: House },
-  { label: "Projects", href: "/project", icon: FolderKanban },
   { label: "About", href: "/about", icon: UserRound },
+  { label: "Projects", href: "/project", icon: FolderKanban },
   { label: "Blog", href: "/blog", icon: BookOpen },
   { label: "Contact", href: "/contact", icon: Mail },
 ];
@@ -42,10 +42,10 @@ export default function Navbar() {
     >
       <div className="hidden md:flex items-center justify-between h-16 px-6">
         <Link
-          href="#"
+          href="/"
           className="text-xl font-bold bg-linear-to-r from-black to-zinc-600 dark:from-white dark:to-zinc-400 bg-clip-text text-transparent"
         >
-          Alex
+          Philip
         </Link>
 
         <div className="hidden md:flex items-center gap-8">
