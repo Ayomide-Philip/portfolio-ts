@@ -10,7 +10,8 @@ export const Card = React.forwardRef<HTMLDivElement, CardProps>(
     { variant = "default", interactive = false, className = "", children },
     ref,
   ) => {
-    const baseClasses = "relative rounded-3xl overflow-hidden";
+    const baseClasses =
+      "relative isolate overflow-hidden rounded-3xl bg-clip-padding [contain:paint]";
 
     const variantClasses = {
       default:

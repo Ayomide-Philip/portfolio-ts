@@ -54,7 +54,6 @@ body {
   z-index: 0;
   pointer-events: none;
   transform: translateZ(0);
-  will-change: transform;
 }
 
 .aura-layer-1 {
@@ -85,8 +84,8 @@ body {
       #9ca3af 5%);
   background-size: 300% 200%;
   mix-blend-mode: screen;
-  filter: blur(75px);
-  opacity: 0.9;
+  filter: blur(56px);
+  opacity: 0.72;
 }
 
 .aura-layer-3 {
@@ -107,6 +106,6 @@ body {
 
 @media (min-width: 768px) {
   .aura-layer-2 {
-    filter: blur(108px);
+    filter: blur(78px);
   }
 }
