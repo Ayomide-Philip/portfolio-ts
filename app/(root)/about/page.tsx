@@ -7,7 +7,7 @@ import {
   GitBranch,
   Layers,
   Mail,
-  MapPin,
+  // MapPin,
   Palette,
   Server,
   Sparkles,
@@ -117,13 +117,9 @@ export default function Page() {
               software that is easy to keep improving.
             </p>
             <div className="flex flex-wrap justify-center gap-x-5 gap-y-3 text-sm text-black/55 dark:text-white/55">
-              <span className="inline-flex items-center gap-2">
-                <MapPin size={15} />
-                Available worldwide
-              </span>
-              <span className="inline-flex items-center gap-2">
+              <span className="inline-flex capitalize items-center gap-2">
                 <Sparkles size={15} />
-                Open to good problems
+                Open to solve problems
               </span>
             </div>
           </div>
