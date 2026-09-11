@@ -63,8 +63,14 @@ export default function Navbar() {
 
         <div className="hidden md:flex">
           <Toggle />
-          <Button variant="secondary" size="sm">
-            Get Started
+          <Button
+            variant="secondary"
+            size="sm"
+            onClick={() => {
+              window.location.href = "/contact";
+            }}
+          >
+            Contact Me
           </Button>
         </div>
       </div>

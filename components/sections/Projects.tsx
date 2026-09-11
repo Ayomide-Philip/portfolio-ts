@@ -162,13 +162,13 @@ export default function Projects() {
         </div>
 
         <div className="grid grid-cols-1 gap-6 md:grid-cols-3">
-          {projects.map((project) => (
-            <ProjectCard key={project.title} {...project} />
+          {projects.map((project, idx) => (
+            <ProjectCard key={idx} {...project} />
           ))}
         </div>
 
         <div className="pt-2 text-center">
-          <Link href="#">
+          <Link href="/project">
             <Button variant="secondary" size="lg">
               View All Projects
             </Button>
