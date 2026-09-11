@@ -143,22 +143,26 @@ function ProjectCard({ project }: { project: Project }) {
         </div>
 
         <div className="mt-auto flex flex-wrap items-center gap-3 pt-2">
-          <Link
-            href={project.liveUrl}
-            className="inline-flex items-center gap-2 rounded-full bg-black px-4 py-2.5 text-xs font-semibold text-white transition-transform duration-300 hover:-translate-y-0.5 dark:bg-white dark:text-black"
-          >
-            Live preview
-            <ExternalLink size={14} />
-          </Link>
-          <Link
-            href={project.sourceUrl}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="inline-flex items-center gap-2 rounded-full border border-black/10 bg-white/35 px-4 py-2.5 text-xs font-semibold text-black transition-colors duration-300 hover:bg-white/70 dark:border-white/15 dark:bg-white/5 dark:text-white dark:hover:bg-white/15"
-          >
-            <GitBranch size={14} />
-            Source code
-          </Link>
+          {project?.liveUrl ?? (
+            <Link
+              href={project.liveUrl}
+              className="inline-flex items-center gap-2 rounded-full bg-black px-4 py-2.5 text-xs font-semibold text-white transition-transform duration-300 hover:-translate-y-0.5 dark:bg-white dark:text-black"
+            >
+              Live preview
+              <ExternalLink size={14} />
+            </Link>
+          )}
+          {project?.sourceUrl ?? (
+            <Link
+              href={project?.sourceUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-2 rounded-full border border-black/10 bg-white/35 px-4 py-2.5 text-xs font-semibold text-black transition-colors duration-300 hover:bg-white/70 dark:border-white/15 dark:bg-white/5 dark:text-white dark:hover:bg-white/15"
+            >
+              <GitBranch size={14} />
+              Source code
+            </Link>
+          )}
         </div>
       </div>
     </Card>
@@ -212,8 +216,8 @@ export default function Project() {
         </div>
 
         <div className="grid grid-cols-1 gap-6 lg:grid-cols-3">
-          {visibleProjects.map((project) => (
-            <ProjectCard key={project.title} project={project} />
+          {visibleProjects.map((project, idx) => (
+            <ProjectCard key={idx} project={project} />
           ))}
         </div>
 

@@ -47,7 +47,6 @@ const ProjectCard: React.FC<ProjectCardProps> = ({
       variant="bordered"
       className={`group flex flex-col transition-all duration-500 hover:-translate-y-1.5 hover:shadow-[0_28px_70px_-24px_rgba(0,0,0,0.35)] dark:hover:shadow-[0_28px_70px_-24px_rgba(0,0,0,0.9)] ${style.border}`}
     >
-      {/* preview panel: an accent wash seen through frosted glass */}
       <div className="relative h-48 shrink-0">
         <div
           aria-hidden="true"
