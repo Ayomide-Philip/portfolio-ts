@@ -88,10 +88,19 @@ const allSkills: SkillItem[] = [
   },
 ];
 
-const SkillBadge: React.FC<{ item: SkillItem }> = ({ item }) => (
-  <div className="w-full h-32 rounded-2xl bg-white dark:bg-zinc-800 border border-black/10 dark:border-white/10 hover:border-black/30 dark:hover:border-white/30 p-4 flex flex-col items-center justify-center gap-3 hover:shadow-lg dark:hover:shadow-2xl transition-all duration-300 hover:scale-105 hover:bg-black/5 dark:hover:bg-white/5">
-    <div className="text-black dark:text-white">{item.icon}</div>
-    <span className="text-sm font-medium text-center text-black dark:text-white">
+const SkillBadge: React.FC<{ item: SkillItem; index: number }> = ({
+  item,
+  index,
+}) => (
+  <div className="group relative flex h-32 w-full flex-col items-center justify-center gap-3 overflow-hidden rounded-3xl border border-white/60 bg-white/35 p-4 text-black shadow-[0_14px_35px_-25px_rgba(0,0,0,0.35)] backdrop-blur-xl transition-all duration-500 hover:-translate-y-1.5 hover:border-white hover:bg-white/55 hover:shadow-[0_24px_45px_-25px_rgba(0,0,0,0.5)] dark:border-white/10 dark:bg-white/5 dark:text-white dark:hover:border-white/25 dark:hover:bg-white/10">
+    <span
+      aria-hidden="true"
+      className={`absolute -right-8 -top-8 h-20 w-20 rounded-full blur-2xl transition-opacity duration-500 group-hover:opacity-100 ${index % 3 === 0 ? "bg-cyan-300/35" : index % 3 === 1 ? "bg-emerald-300/35" : "bg-amber-300/35"}`}
+    />
+    <div className="relative flex h-11 w-11 items-center justify-center rounded-2xl border border-white/70 bg-white/55 shadow-[inset_0_1px_0_rgba(255,255,255,0.9)] backdrop-blur-md transition-transform duration-500 group-hover:scale-110 group-hover:-rotate-6 dark:border-white/15 dark:bg-white/10">
+      {item.icon}
+    </div>
+    <span className="relative text-center text-sm font-medium text-black/75 dark:text-white/80">
       {item.name}
     </span>
   </div>
@@ -99,21 +108,24 @@ const SkillBadge: React.FC<{ item: SkillItem }> = ({ item }) => (
 
 export default function Skills() {
   return (
-    <Section size="md" id="about" className="bg-zinc-50/50 dark:bg-zinc-900/50">
+    <Section size="md" id="about" className="relative overflow-hidden">
       <div className="space-y-12">
-        <div className="text-center space-y-4">
-          <h2 className="text-4xl md:text-5xl font-bold text-black dark:text-white">
+        <div className="mx-auto max-w-2xl space-y-4 text-center">
+          <p className="text-[11px] font-semibold uppercase tracking-[0.24em] text-black/45 dark:text-white/45">
+            My toolkit
+          </p>
+          <h2 className="text-4xl font-bold tracking-tight text-black md:text-5xl dark:text-white">
             Skills & Expertise
           </h2>
-          <p className="text-black/60 dark:text-white/60 text-lg max-w-2xl mx-auto">
+          <p className="text-lg text-black/60 dark:text-white/60">
             Continuously learning and evolving with the latest technologies and
             best practices.
           </p>
         </div>
 
-        <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-4 gap-4">
-          {allSkills.map((skill) => (
-            <SkillBadge key={skill.name} item={skill} />
+        <div className="grid grid-cols-2 gap-4 sm:grid-cols-3 md:grid-cols-4">
+          {allSkills.map((skill, index) => (
+            <SkillBadge key={skill.name} item={skill} index={index} />
           ))}
         </div>
       </div>

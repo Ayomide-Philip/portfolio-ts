@@ -10,10 +10,10 @@ export default function Hero() {
       <div className="pointer-events-none absolute inset-0 z-0">
         <LetterGlitch
           className="h-full w-full"
-          glitchSpeed={50}
+          glitchSpeed={90}
           centerVignette={true}
           outerVignette={true}
-          smooth
+          smooth={false}
           glitchColors={["#2b4539", "#61dca3", "#61b3dc"]}
         />
       </div>

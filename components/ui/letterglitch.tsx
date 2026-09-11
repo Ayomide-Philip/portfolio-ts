@@ -25,6 +25,8 @@ const LetterGlitch = ({
 }) => {
   const canvasRef = useRef<HTMLCanvasElement | null>(null);
   const animationRef = useRef<number | null>(null);
+  const resizeTimeoutRef = useRef<ReturnType<typeof setTimeout> | null>(null);
+  const isMountedRef = useRef(false);
   const isVisibleRef = useRef(true);
   const isPageVisibleRef = useRef(true);
   const letters = useRef<
@@ -126,9 +128,10 @@ const LetterGlitch = ({
   };
 
   const drawLetters = () => {
-    if (!context.current || letters.current.length === 0) return;
+    const canvas = canvasRef.current;
+    if (!canvas || !context.current || letters.current.length === 0) return;
     const ctx = context.current;
-    const { width, height } = canvasRef.current!.getBoundingClientRect();
+    const { width, height } = canvas.getBoundingClientRect();
     ctx.clearRect(0, 0, width, height);
     ctx.font = `${fontSize}px monospace`;
     ctx.textBaseline = "top";
@@ -188,7 +191,11 @@ const LetterGlitch = ({
   };
 
   const animate = () => {
-    if (!isVisibleRef.current || !isPageVisibleRef.current) {
+    if (
+      !isMountedRef.current ||
+      !isVisibleRef.current ||
+      !isPageVisibleRef.current
+    ) {
       animationRef.current = null;
       return;
     }
@@ -212,6 +219,7 @@ const LetterGlitch = ({
     if (!canvas) return;
 
     context.current = canvas.getContext("2d");
+    isMountedRef.current = true;
     const prefersReducedMotion = window.matchMedia(
       "(prefers-reduced-motion: reduce)",
     ).matches;
@@ -251,8 +259,8 @@ const LetterGlitch = ({
     let resizeTimeout: ReturnType<typeof setTimeout>;
 
     const handleResize = () => {
-      clearTimeout(resizeTimeout);
-      resizeTimeout = setTimeout(() => {
+      if (resizeTimeoutRef.current) clearTimeout(resizeTimeoutRef.current);
+      resizeTimeoutRef.current = setTimeout(() => {
         cancelAnimationFrame(animationRef.current as number);
         resizeCanvas();
         if (!prefersReducedMotion) animate();
@@ -262,10 +270,13 @@ const LetterGlitch = ({
     window.addEventListener("resize", handleResize);
 
     return () => {
+      isMountedRef.current = false;
       cancelAnimationFrame(animationRef.current!);
+      if (resizeTimeoutRef.current) clearTimeout(resizeTimeoutRef.current);
       window.removeEventListener("resize", handleResize);
       document.removeEventListener("visibilitychange", handleVisibilityChange);
       observer.disconnect();
+      context.current = null;
     };
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [glitchSpeed, smooth]);

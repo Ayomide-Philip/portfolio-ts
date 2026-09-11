@@ -20,7 +20,7 @@ export default function Toggle({ className = "" }: { className?: string }) {
   return (
     <button
       onClick={() => setTheme(isDark ? "light" : "dark")}
-      className={`p-2 rounded-lg transition-colors duration-300 mr-2 ${className}`}
+      className={`p-2 rounded-lg transition-colors cursor-pointer duration-300 mr-2 ${className}`}
       aria-label="Toggle dark mode"
       title={isDark ? "Switch to light mode" : "Switch to dark mode"}
     >
