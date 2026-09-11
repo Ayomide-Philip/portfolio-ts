@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 import Link from "next/link";
-import { ArrowUpRight, ExternalLink, GitBranch, Layers3 } from "lucide-react";
+import { ArrowUpRight, ExternalLink, GitBranch } from "lucide-react";
 import { Card, Section } from "@/components/ui";
 
 type ProjectCategory = "All" | "Web App" | "Mobile" | "System";
@@ -12,7 +12,7 @@ interface Project {
   category: Exclude<ProjectCategory, "All">;
   description: string;
   stack: string[];
-  accent: keyof typeof accentStyles;
+  accent: "cyan" | "amber" | "emerald" | "violet";
   liveUrl: string;
   sourceUrl: string;
   featured?: boolean;
@@ -28,8 +28,8 @@ const projects: Project[] = [
       "A real-time analytics workspace designed to make complex product data easy to scan, compare, and act on.",
     stack: ["Next.js", "TypeScript", "Node.js", "PostgreSQL"],
     accent: "cyan",
-    liveUrl: "#",
-    sourceUrl: "https://github.com/yourusername/saas-dashboard",
+    liveUrl: "https://e2e-tbki.onrender.com/",
+    sourceUrl: "https://github.com/Ayomide-Philip/E2E",
     featured: true,
   },
   {
@@ -64,52 +64,30 @@ const projects: Project[] = [
   },
 ];
 
-const accentStyles = {
-  cyan: {
-    wash: "from-cyan-300/60 via-cyan-200/20 to-transparent",
-    glow: "bg-cyan-300/50 dark:bg-cyan-400/25",
-    mark: "text-cyan-950/70 dark:text-cyan-100/80",
-  },
-  amber: {
-    wash: "from-amber-300/60 via-amber-200/20 to-transparent",
-    glow: "bg-amber-300/50 dark:bg-amber-400/25",
-    mark: "text-amber-950/70 dark:text-amber-100/80",
-  },
-  emerald: {
-    wash: "from-emerald-300/60 via-emerald-200/20 to-transparent",
-    glow: "bg-emerald-300/50 dark:bg-emerald-400/25",
-    mark: "text-emerald-950/70 dark:text-emerald-100/80",
-  },
-  violet: {
-    wash: "from-violet-300/50 via-violet-200/20 to-transparent",
-    glow: "bg-violet-300/40 dark:bg-violet-400/20",
-    mark: "text-violet-950/70 dark:text-violet-100/80",
-  },
+const getPreviewImage = (project: Project) => {
+  const repository = project.sourceUrl
+    .replace("https://github.com/", "")
+    .replace(/\/$/, "");
+
+  return `https://opengraph.githubassets.com/1/${repository}`;
 };
 
 function ProjectVisual({ project }: { project: Project }) {
-  const style = accentStyles[project.accent];
+  const previewImage = getPreviewImage(project);
 
   return (
     <div className="relative h-56 overflow-hidden border-b border-white/35 dark:border-white/10">
       <div
-        aria-hidden="true"
-        className={`absolute inset-0 bg-linear-to-br ${style.wash} dark:opacity-50`}
+        aria-label={`${project.title} preview`}
+        role="img"
+        className="absolute inset-0 z-0 bg-cover bg-center transition-transform duration-700 group-hover:scale-105"
+        style={{ backgroundImage: `url(${previewImage})` }}
       />
-      <div
-        aria-hidden="true"
-        className={`absolute left-1/2 top-1/2 h-40 w-40 -translate-x-1/2 -translate-y-1/2 rounded-full blur-3xl ${style.glow}`}
-      />
-      <div className="absolute inset-0 flex items-center justify-center">
-        <div className="relative flex h-24 w-24 items-center justify-center rounded-3xl border border-white/70 bg-white/45 shadow-[inset_0_1px_0_rgba(255,255,255,0.9),0_24px_50px_-28px_rgba(0,0,0,0.7)] backdrop-blur-md transition-transform duration-500 group-hover:-rotate-6 group-hover:scale-110 dark:border-white/15 dark:bg-white/10">
-          <Layers3 className={style.mark} size={42} strokeWidth={1.25} />
-        </div>
-      </div>
-      <span className="absolute left-5 top-5 rounded-full border border-white/60 bg-white/45 px-3 py-1 text-[10px] font-semibold uppercase tracking-[0.18em] text-black/60 backdrop-blur-md dark:border-white/15 dark:bg-white/10 dark:text-white/65">
+      <span className="absolute left-5 top-5 z-10 rounded-full border border-white/60 bg-white/45 px-3 py-1 text-[10px] font-semibold uppercase tracking-[0.18em] text-black/60 backdrop-blur-md dark:border-white/15 dark:bg-white/10 dark:text-white/65">
         {project.category}
       </span>
       {project.featured && (
-        <span className="absolute right-5 top-5 rounded-full bg-black/75 px-3 py-1 text-[10px] font-semibold uppercase tracking-[0.18em] text-white backdrop-blur-md dark:bg-white/80 dark:text-black">
+        <span className="absolute right-5 top-5 z-10 rounded-full bg-black/75 px-3 py-1 text-[10px] font-semibold uppercase tracking-[0.18em] text-white backdrop-blur-md dark:bg-white/80 dark:text-black">
           Featured
         </span>
       )}
@@ -119,7 +97,7 @@ function ProjectVisual({ project }: { project: Project }) {
 
 function ProjectCard({ project }: { project: Project }) {
   return (
-    <Card className="group flex h-full flex-col transition-all duration-500 hover:-translate-y-2 hover:border-white/80 hover:shadow-[0_30px_80px_-28px_rgba(0,0,0,0.45)] dark:hover:border-white/25 dark:hover:shadow-[0_30px_80px_-28px_rgba(0,0,0,0.95)]">
+    <Card className="group flex h-full flex-col transition-all duration-500 hover:-translate-y-2 hover:bordser-white/80 hover:shadow-[0_30px_80px_-28px_rgba(0,0,0,0.45)] dark:hover:border-white/25 dark:hover:shadow-[0_30px_80px_-28px_rgba(0,0,0,0.95)]">
       <ProjectVisual project={project} />
       <div className="flex flex-1 flex-col gap-5 p-6">
         <div className="space-y-2">
@@ -143,7 +121,7 @@ function ProjectCard({ project }: { project: Project }) {
         </div>
 
         <div className="mt-auto flex flex-wrap items-center gap-3 pt-2">
-          {project?.liveUrl ?? (
+          {project.liveUrl !== "#" && (
             <Link
               href={project.liveUrl}
               className="inline-flex items-center gap-2 rounded-full bg-black px-4 py-2.5 text-xs font-semibold text-white transition-transform duration-300 hover:-translate-y-0.5 dark:bg-white dark:text-black"
@@ -152,7 +130,7 @@ function ProjectCard({ project }: { project: Project }) {
               <ExternalLink size={14} />
             </Link>
           )}
-          {project?.sourceUrl ?? (
+          {project.sourceUrl && (
             <Link
               href={project?.sourceUrl}
               target="_blank"
