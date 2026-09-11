@@ -2,21 +2,21 @@
 
 import { Section } from "@/components/ui";
 import {
-  SiDocker,
+  // SiDocker,
   SiGit,
-  SiGraphql,
+  // SiGraphql,
   SiJavascript,
   SiMongodb,
   SiNextdotjs,
   SiNodedotjs,
   SiPostgresql,
-  SiPython,
+  // SiPython,
   SiReact,
   SiTailwindcss,
   SiTypescript,
-  SiVuedotjs,
+  // SiVuedotjs,
 } from "react-icons/si";
-import { FaAws, FaTools } from "react-icons/fa";
+// import { FaAws, FaTools } from "react-icons/fa";
 import { TbApi } from "react-icons/tb";
 import type { IconType } from "react-icons";
 
@@ -31,18 +31,18 @@ const allSkills: SkillItem[] = [
   { name: "TypeScript", icon: SiTypescript, color: "#3178C6" },
   { name: "Next.js", icon: SiNextdotjs, color: "#000000" },
   { name: "Tailwind", icon: SiTailwindcss, color: "#06B6D4" },
-  { name: "Vue.js", icon: SiVuedotjs, color: "#4FC08D" },
+  // { name: "Vue.js", icon: SiVuedotjs, color: "#4FC08D" },
   { name: "JavaScript", icon: SiJavascript, color: "#F7DF1E" },
   { name: "Node.js", icon: SiNodedotjs, color: "#5FA04E" },
-  { name: "Python", icon: SiPython, color: "#3776AB" },
+  // { name: "Python", icon: SiPython, color: "#3776AB" },
   { name: "PostgreSQL", icon: SiPostgresql, color: "#4169E1" },
   { name: "MongoDB", icon: SiMongodb, color: "#47A248" },
   { name: "REST APIs", icon: TbApi, color: "#FF6C37" },
   { name: "Git", icon: SiGit, color: "#F05032" },
-  { name: "Docker", icon: SiDocker, color: "#2496ED" },
-  { name: "AWS", icon: FaAws, color: "#FF9900" },
-  { name: "GraphQL", icon: SiGraphql, color: "#E10098" },
-  { name: "DevOps", icon: FaTools, color: "#6B7280" },
+  // { name: "Docker", icon: SiDocker, color: "#2496ED" },
+  // { name: "AWS", icon: FaAws, color: "#FF9900" },
+  // { name: "GraphQL", icon: SiGraphql, color: "#E10098" },
+  // { name: "DevOps", icon: FaTools, color: "#6B7280" },
 ];
 
 const SkillBadge: React.FC<{ item: SkillItem; index: number }> = ({
