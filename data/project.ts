@@ -27,4 +27,14 @@ export const Projects: Project[] = [
     sourceUrl: "https://github.com/Ayomide-Philip/digital-attendance",
     featured: false,
   },
+  {
+    title: "Classora – Teach more, Manage less!",
+    category: "Full-Stack",
+    description:
+      " Core pillars are class management, community engagement, real‑time chat, searchable venue mapping and advanced reminders.",
+    stack: ["Next.js", "Javascript", "Tailwindcss", "MongoDB"],
+    liveUrl: "https://classora-eight.vercel.app/",
+    sourceUrl: "https://github.com/Ayomide-Philip/Classora",
+    featured: false,
+  },
 ];

@@ -8,9 +8,12 @@ export interface Project {
   featured?: boolean;
 }
 
-export type ProjectCategory =
-  | "All"
-  | "Web App"
-  | "Full-Stack"
-  | "System"
-  | "WebSocket";
+export type ProjectCategory = (typeof ProjectCategorys)[number];
+
+export const ProjectCategorys = [
+  "All",
+  "Web App",
+  "Full-Stack",
+  "System",
+  "WebSocket",
+] as const;

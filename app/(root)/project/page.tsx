@@ -4,60 +4,9 @@ import { useState } from "react";
 import Link from "next/link";
 import { ArrowUpRight, ExternalLink, GitBranch } from "lucide-react";
 import { Card, Section } from "@/components/ui";
-
-type ProjectCategory = "All" | "Web App" | "Mobile" | "System";
-
-interface Project {
-  title: string;
-  category: Exclude<ProjectCategory, "All">;
-  description: string;
-  stack: string[];
-  liveUrl: string;
-  sourceUrl: string;
-  featured?: boolean;
-}
-
-const categories: ProjectCategory[] = ["All", "Web App", "Mobile", "System"];
-
-const projects: Project[] = [
-  {
-    title: "SaaS Dashboard",
-    category: "Web App",
-    description:
-      "A real-time analytics workspace designed to make complex product data easy to scan, compare, and act on.",
-    stack: ["Next.js", "TypeScript", "Node.js", "PostgreSQL"],
-    liveUrl: "https://e2e-tbki.onrender.com/",
-    sourceUrl: "https://github.com/Ayomide-Philip/E2E",
-    featured: true,
-  },
-  {
-    title: "Mobile App",
-    category: "Mobile",
-    description:
-      "An offline-first mobile experience with resilient sync, focused navigation, and a fast path to the important actions.",
-    stack: ["React Native", "Firebase", "Redux"],
-    liveUrl: "",
-    sourceUrl: "https://github.com/yourusername/mobile-app",
-  },
-  {
-    title: "Design System",
-    category: "System",
-    description:
-      "A reusable component library and token system that gives enterprise teams a shared visual and engineering language.",
-    stack: ["React", "Storybook", "TypeScript"],
-    liveUrl: "",
-    sourceUrl: "https://github.com/yourusername/design-system",
-  },
-  {
-    title: "Commerce Platform",
-    category: "Web App",
-    description:
-      "A streamlined storefront foundation with flexible content blocks, fast search, and a checkout flow built for clarity.",
-    stack: ["Next.js", "MongoDB", "Stripe"],
-    liveUrl: "",
-    sourceUrl: "https://github.com/yourusername/commerce-platform",
-  },
-];
+import { Projects } from "@/data/project";
+import type { Project, ProjectCategory } from "@/types/project.types";
+import { ProjectCategorys } from "@/types/project.types";
 
 const getPreviewImage = (project: Project) => {
   const repository = project.sourceUrl
@@ -147,8 +96,8 @@ export default function Project() {
     useState<ProjectCategory>("All");
   const visibleProjects =
     selectedCategory === "All"
-      ? projects
-      : projects.filter((project) => project.category === selectedCategory);
+      ? Projects
+      : Projects.filter((project) => project.category === selectedCategory);
 
   return (
     <main>
@@ -170,7 +119,7 @@ export default function Project() {
             className="mx-auto flex w-fit max-w-full gap-1 overflow-x-auto rounded-full p-1 scrollbar-none"
             aria-label="Project categories"
           >
-            {categories.map((category) => (
+            {ProjectCategorys.map((category) => (
               <button
                 key={category}
                 type="button"
@@ -204,7 +153,7 @@ export default function Project() {
             </p>
           </div>
           <Link
-            href="mailto:hello@example.com"
+            href="mailto:areoayomide2008@gmail.com"
             className="inline-flex shrink-0 items-center gap-2 rounded-full bg-black px-5 py-3 text-sm font-semibold text-white transition-transform duration-300 hover:-translate-y-0.5 dark:bg-white dark:text-black"
           >
             Start a conversation
