@@ -16,4 +16,6 @@ export const ProjectCategorys = [
   "Full-Stack",
   "System",
   "WebSocket",
+  "Frontend",
+  "Backend",
 ] as const;

@@ -27,7 +27,7 @@ function ProjectVisual({ project }: { project: Project }) {
         className="absolute inset-0 z-0 bg-cover bg-center transition-transform duration-700 group-hover:scale-105"
         style={{ backgroundImage: `url(${previewImage})` }}
       />
-      <span className="absolute left-5 top-5 z-10 rounded-full border border-white/60 bg-white/45 px-3 py-1 text-[10px] font-semibold uppercase tracking-[0.18em] text-black/60 backdrop-blur-md dark:border-white/15 dark:bg-white/10 dark:text-white/65">
+      <span className="absolute left-5 top-5 z-10 rounded-full border border-white/60 bg-white/45 px-3 py-1 text-[10px] font-semibold uppercase tracking-[0.18em] text-black/60 backdrop-blur-md dark:border-white/15 dark:bg-white/10">
         {project.category}
       </span>
       {project.featured && (

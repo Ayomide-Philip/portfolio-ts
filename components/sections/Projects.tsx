@@ -135,7 +135,6 @@ export default function Projects() {
 
   return (
     <Section size="md" id="projects" className="relative overflow-hidden">
-      {/* ambient light behind the frosted panels */}
       <div
         aria-hidden="true"
         className="pointer-events-none absolute inset-0 -z-10"

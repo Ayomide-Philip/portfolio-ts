@@ -37,4 +37,14 @@ export const Projects: Project[] = [
     sourceUrl: "https://github.com/Ayomide-Philip/Classora",
     featured: false,
   },
+  {
+    title: "Country Explorer",
+    category: "Frontend",
+    description:
+      " Core pillars are class management, community engagement, real‑time chat, searchable venue mapping and advanced reminders.",
+    stack: ["Next.js", "Javascript", "Tailwindcss", "REST APIs"],
+    liveUrl: "https://country-explorer-rosy.vercel.app/",
+    sourceUrl: "https://github.com/Ayomide-Philip/country-explorer",
+    featured: false,
+  },
 ];
