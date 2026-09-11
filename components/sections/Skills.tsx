@@ -2,90 +2,47 @@
 
 import { Section } from "@/components/ui";
 import {
-  Code2,
-  Database,
-  Server,
-  GitBranch,
-  Package,
-  Zap,
-  Terminal,
-  Cloud,
-  Layers,
-  Cpu,
-  Box,
-  Wrench,
-} from "lucide-react";
+  SiDocker,
+  SiGit,
+  SiGraphql,
+  SiJavascript,
+  SiMongodb,
+  SiNextdotjs,
+  SiNodedotjs,
+  SiPostgresql,
+  SiPython,
+  SiReact,
+  SiTailwindcss,
+  SiTypescript,
+  SiVuedotjs,
+} from "react-icons/si";
+import { FaAws, FaTools } from "react-icons/fa";
+import { TbApi } from "react-icons/tb";
+import type { IconType } from "react-icons";
 
 interface SkillItem {
   name: string;
-  icon: React.ReactNode;
+  icon: IconType;
+  color: string;
 }
 
 const allSkills: SkillItem[] = [
-  {
-    name: "React",
-    icon: <Code2 className="w-6 h-6" />,
-  },
-  {
-    name: "TypeScript",
-    icon: <Terminal className="w-6 h-6" />,
-  },
-  {
-    name: "Next.js",
-    icon: <Layers className="w-6 h-6" />,
-  },
-  {
-    name: "Tailwind",
-    icon: <Zap className="w-6 h-6" />,
-  },
-  {
-    name: "Vue.js",
-    icon: <Code2 className="w-6 h-6" />,
-  },
-  {
-    name: "JavaScript",
-    icon: <Package className="w-6 h-6" />,
-  },
-  {
-    name: "Node.js",
-    icon: <Server className="w-6 h-6" />,
-  },
-  {
-    name: "Python",
-    icon: <Cpu className="w-6 h-6" />,
-  },
-  {
-    name: "PostgreSQL",
-    icon: <Database className="w-6 h-6" />,
-  },
-  {
-    name: "MongoDB",
-    icon: <Database className="w-6 h-6" />,
-  },
-  {
-    name: "REST APIs",
-    icon: <Server className="w-6 h-6" />,
-  },
-  {
-    name: "Git",
-    icon: <GitBranch className="w-6 h-6" />,
-  },
-  {
-    name: "Docker",
-    icon: <Box className="w-6 h-6" />,
-  },
-  {
-    name: "AWS",
-    icon: <Cloud className="w-6 h-6" />,
-  },
-  {
-    name: "GraphQL",
-    icon: <Zap className="w-6 h-6" />,
-  },
-  {
-    name: "DevOps",
-    icon: <Wrench className="w-6 h-6" />,
-  },
+  { name: "React", icon: SiReact, color: "#61DAFB" },
+  { name: "TypeScript", icon: SiTypescript, color: "#3178C6" },
+  { name: "Next.js", icon: SiNextdotjs, color: "#000000" },
+  { name: "Tailwind", icon: SiTailwindcss, color: "#06B6D4" },
+  { name: "Vue.js", icon: SiVuedotjs, color: "#4FC08D" },
+  { name: "JavaScript", icon: SiJavascript, color: "#F7DF1E" },
+  { name: "Node.js", icon: SiNodedotjs, color: "#5FA04E" },
+  { name: "Python", icon: SiPython, color: "#3776AB" },
+  { name: "PostgreSQL", icon: SiPostgresql, color: "#4169E1" },
+  { name: "MongoDB", icon: SiMongodb, color: "#47A248" },
+  { name: "REST APIs", icon: TbApi, color: "#FF6C37" },
+  { name: "Git", icon: SiGit, color: "#F05032" },
+  { name: "Docker", icon: SiDocker, color: "#2496ED" },
+  { name: "AWS", icon: FaAws, color: "#FF9900" },
+  { name: "GraphQL", icon: SiGraphql, color: "#E10098" },
+  { name: "DevOps", icon: FaTools, color: "#6B7280" },
 ];
 
 const SkillBadge: React.FC<{ item: SkillItem; index: number }> = ({
@@ -98,7 +55,12 @@ const SkillBadge: React.FC<{ item: SkillItem; index: number }> = ({
       className={`absolute -right-8 -top-8 h-20 w-20 rounded-full blur-2xl transition-opacity duration-500 group-hover:opacity-100 ${index % 3 === 0 ? "bg-cyan-300/35" : index % 3 === 1 ? "bg-emerald-300/35" : "bg-amber-300/35"}`}
     />
     <div className="relative flex h-11 w-11 items-center justify-center rounded-2xl border border-white/70 bg-white/55 shadow-[inset_0_1px_0_rgba(255,255,255,0.9)] backdrop-blur-md transition-transform duration-500 group-hover:scale-110 group-hover:-rotate-6 dark:border-white/15 dark:bg-white/10">
-      {item.icon}
+      <item.icon
+        size={25}
+        color={item.color}
+        className={item.name === "Next.js" ? "dark:invert" : undefined}
+        aria-hidden="true"
+      />
     </div>
     <span className="relative text-center text-sm font-medium text-black/75 dark:text-white/80">
       {item.name}
