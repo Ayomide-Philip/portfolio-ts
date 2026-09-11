@@ -1,13 +1,20 @@
 import Link from "next/link";
 import {
   ArrowUpRight,
-  Check,
+  Box,
   Code2,
   Database,
+  GitBranch,
+  Layers,
   Mail,
   MapPin,
+  Palette,
   Server,
+  // ShieldCheck,
   Sparkles,
+  Terminal,
+  Zap,
+  // type LucideIcon,
 } from "lucide-react";
 import { Card, Section } from "@/components/ui";
 
@@ -15,17 +22,35 @@ const skillGroups = [
   {
     title: "Frontend",
     icon: Code2,
-    skills: ["React", "Next.js", "TypeScript", "JavaScript", "Tailwind CSS"],
+    description: "Interfaces that feel clear, fast, and considered.",
+    skills: [
+      { name: "React", icon: Code2 },
+      { name: "Next.js", icon: Layers },
+      { name: "TypeScript", icon: Terminal },
+      { name: "Tailwind CSS", icon: Palette },
+    ],
   },
   {
     title: "Backend",
     icon: Server,
-    skills: ["Node.js", "REST APIs", "GraphQL", "Python", "Authentication"],
+    description: "Reliable services and APIs behind the experience.",
+    skills: [
+      { name: "Node.js", icon: Server },
+      { name: "REST APIs", icon: Zap },
+      { name: "GraphQL", icon: Database },
+      { name: "Python", icon: Terminal },
+    ],
   },
   {
     title: "Data & Cloud",
     icon: Database,
-    skills: ["PostgreSQL", "MongoDB", "Docker", "AWS", "Git"],
+    description: "The infrastructure that keeps products dependable.",
+    skills: [
+      { name: "PostgreSQL", icon: Database },
+      { name: "MongoDB", icon: Database },
+      { name: "Docker", icon: Box },
+      { name: "Git", icon: GitBranch },
+    ],
   },
 ];
 
@@ -107,41 +132,73 @@ export default function Page() {
       </Section>
 
       <Section size="md" className="pt-0">
-        <div className="mb-10 space-y-3">
+        <div className="mb-10 text-center">
           <SectionLabel>What I work with</SectionLabel>
-          <h2 className="text-3xl font-bold tracking-tight text-black md:text-5xl dark:text-white">
-            Skills that move ideas forward.
+          <h2 className="mt-4 text-3xl font-bold tracking-tight text-black md:text-5xl dark:text-white">
+            Skills & expertise
           </h2>
-          <p className="max-w-2xl text-black/60 dark:text-white/60">
-            A practical toolkit for building complete products, from the first
-            component to the systems that keep it running.
+          <p className="mx-auto mt-4 max-w-2xl text-black/60 dark:text-white/60">
+            A visual map of the tools I use to design, build, and ship complete
+            digital products.
           </p>
         </div>
 
         <div className="grid gap-5 md:grid-cols-3">
-          {skillGroups.map((group) => {
+          {skillGroups.map((group, index) => {
             const GroupIcon = group.icon;
+            const accents = [
+              "bg-cyan-300/40 dark:bg-cyan-400/20",
+              "bg-amber-300/40 dark:bg-amber-400/20",
+              "bg-emerald-300/40 dark:bg-emerald-400/20",
+            ];
+
             return (
-              <Card key={group.title} variant="bordered" className="p-6">
-                <div className="mb-8 flex items-center gap-3">
-                  <div className="flex h-10 w-10 items-center justify-center rounded-2xl border border-white/70 bg-white/55 text-black shadow-[inset_0_1px_0_rgba(255,255,255,0.9)] backdrop-blur-md dark:border-white/15 dark:bg-white/10 dark:text-white">
-                    <GroupIcon size={18} />
+              <Card
+                key={group.title}
+                variant="bordered"
+                className="group relative overflow-hidden p-6 transition-all duration-500 hover:-translate-y-1.5 hover:shadow-[0_28px_70px_-28px_rgba(0,0,0,0.45)] dark:hover:shadow-[0_28px_70px_-28px_rgba(0,0,0,0.9)]"
+              >
+                <span
+                  aria-hidden="true"
+                  className={`pointer-events-none absolute -right-10 -top-10 h-32 w-32 rounded-full blur-3xl transition-transform duration-500 group-hover:scale-125 ${accents[index]}`}
+                />
+                <div className="relative mb-7 flex items-start justify-between gap-4">
+                  <div>
+                    <p className="mb-2 text-[10px] font-semibold uppercase tracking-[0.22em] text-black/40 dark:text-white/40">
+                      0{index + 1}
+                    </p>
+                    <h3 className="text-xl font-semibold text-black dark:text-white">
+                      {group.title}
+                    </h3>
+                    <p className="mt-2 max-w-[18rem] text-sm leading-relaxed text-black/55 dark:text-white/55">
+                      {group.description}
+                    </p>
                   </div>
-                  <h3 className="text-lg font-semibold text-black dark:text-white">
-                    {group.title}
-                  </h3>
+                  <div className="flex h-11 w-11 shrink-0 items-center justify-center rounded-2xl border border-white/70 bg-white/55 text-black shadow-[inset_0_1px_0_rgba(255,255,255,0.9)] backdrop-blur-md transition-transform duration-500 group-hover:-rotate-6 group-hover:scale-110 dark:border-white/15 dark:bg-white/10 dark:text-white">
+                    <GroupIcon size={20} strokeWidth={1.6} />
+                  </div>
                 </div>
-                <ul className="space-y-3">
-                  {group.skills.map((skill) => (
-                    <li
-                      key={skill}
-                      className="flex items-center gap-2 text-sm text-black/65 dark:text-white/65"
-                    >
-                      <Check size={15} className="text-emerald-500" />
-                      {skill}
-                    </li>
-                  ))}
-                </ul>
+
+                <div className="relative grid grid-cols-2 gap-3">
+                  {group.skills.map((skill) => {
+                    const SkillIcon = skill.icon;
+                    return (
+                      <div
+                        key={skill.name}
+                        className="flex min-h-24 flex-col items-center justify-center gap-2 rounded-2xl border border-white/60 bg-white/35 p-3 text-center backdrop-blur-md transition-all duration-300 hover:-translate-y-1 hover:bg-white/60 dark:border-white/10 dark:bg-white/5 dark:hover:bg-white/10"
+                      >
+                        <SkillIcon
+                          size={21}
+                          strokeWidth={1.7}
+                          className="text-black/75 dark:text-white/80"
+                        />
+                        <span className="text-xs font-medium text-black/70 dark:text-white/70">
+                          {skill.name}
+                        </span>
+                      </div>
+                    );
+                  })}
+                </div>
               </Card>
             );
           })}
@@ -161,7 +218,7 @@ export default function Page() {
             </p>
           </div>
 
-          <div className="relative space-y-4 before:absolute before:bottom-5 before:left-[19px] before:top-5 before:w-px before:bg-black/10 dark:before:bg-white/10">
+          <div className="relative space-y-4 before:absolute before:bottom-5 before:left-4.75 before:top-5 before:w-px before:bg-black/10 dark:before:bg-white/10">
             {experience.map((item) => (
               <Card
                 key={`${item.company}-${item.period}`}
