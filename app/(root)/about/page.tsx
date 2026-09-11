@@ -10,7 +10,6 @@ import {
   MapPin,
   Palette,
   Server,
-  // ShieldCheck,
   Sparkles,
   Terminal,
   Zap,
@@ -83,7 +82,7 @@ const experience = [
 
 function SectionLabel({ children }: { children: React.ReactNode }) {
   return (
-    <p className="flex items-center gap-2 text-[11px] font-semibold uppercase tracking-[0.24em] text-black/45 dark:text-white/45">
+    <p className="flex lg:hidden items-center justify-center gap-2 text-[11px] font-semibold uppercase tracking-[0.24em] text-black/45 dark:text-white/45">
       <span className="h-1.5 w-1.5 rounded-full bg-emerald-400 shadow-[0_0_12px_rgba(52,211,153,0.9)]" />
       {children}
     </p>
@@ -143,7 +142,7 @@ export default function Page() {
           </p>
         </div>
 
-        <div className="grid gap-5 md:grid-cols-3">
+        <div className="space-y-12">
           {skillGroups.map((group, index) => {
             const GroupIcon = group.icon;
             const accents = [
@@ -153,16 +152,12 @@ export default function Page() {
             ];
 
             return (
-              <Card
-                key={group.title}
-                variant="bordered"
-                className="group relative overflow-hidden p-6 transition-all duration-500 hover:-translate-y-1.5 hover:shadow-[0_28px_70px_-28px_rgba(0,0,0,0.45)] dark:hover:shadow-[0_28px_70px_-28px_rgba(0,0,0,0.9)]"
-              >
+              <section key={group.title} className="group relative">
                 <span
                   aria-hidden="true"
                   className={`pointer-events-none absolute -right-10 -top-10 h-32 w-32 rounded-full blur-3xl transition-transform duration-500 group-hover:scale-125 ${accents[index]}`}
                 />
-                <div className="relative mb-7 flex items-start justify-between gap-4">
+                <div className="relative mb-6 flex items-start justify-between gap-4 border-b border-black/10 pb-5 dark:border-white/10">
                   <div>
                     <p className="mb-2 text-[10px] font-semibold uppercase tracking-[0.22em] text-black/40 dark:text-white/40">
                       0{index + 1}
@@ -179,7 +174,7 @@ export default function Page() {
                   </div>
                 </div>
 
-                <div className="relative grid grid-cols-2 gap-3">
+                <div className="relative grid grid-cols-2 gap-3 sm:grid-cols-4">
                   {group.skills.map((skill) => {
                     const SkillIcon = skill.icon;
                     return (
@@ -199,7 +194,7 @@ export default function Page() {
                     );
                   })}
                 </div>
-              </Card>
+              </section>
             );
           })}
         </div>
