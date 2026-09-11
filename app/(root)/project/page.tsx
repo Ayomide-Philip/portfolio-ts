@@ -12,7 +12,6 @@ interface Project {
   category: Exclude<ProjectCategory, "All">;
   description: string;
   stack: string[];
-  accent: "cyan" | "amber" | "emerald" | "violet";
   liveUrl: string;
   sourceUrl: string;
   featured?: boolean;
@@ -27,7 +26,6 @@ const projects: Project[] = [
     description:
       "A real-time analytics workspace designed to make complex product data easy to scan, compare, and act on.",
     stack: ["Next.js", "TypeScript", "Node.js", "PostgreSQL"],
-    accent: "cyan",
     liveUrl: "https://e2e-tbki.onrender.com/",
     sourceUrl: "https://github.com/Ayomide-Philip/E2E",
     featured: true,
@@ -38,8 +36,7 @@ const projects: Project[] = [
     description:
       "An offline-first mobile experience with resilient sync, focused navigation, and a fast path to the important actions.",
     stack: ["React Native", "Firebase", "Redux"],
-    accent: "amber",
-    liveUrl: "#",
+    liveUrl: "",
     sourceUrl: "https://github.com/yourusername/mobile-app",
   },
   {
@@ -48,8 +45,7 @@ const projects: Project[] = [
     description:
       "A reusable component library and token system that gives enterprise teams a shared visual and engineering language.",
     stack: ["React", "Storybook", "TypeScript"],
-    accent: "emerald",
-    liveUrl: "#",
+    liveUrl: "",
     sourceUrl: "https://github.com/yourusername/design-system",
   },
   {
@@ -58,8 +54,7 @@ const projects: Project[] = [
     description:
       "A streamlined storefront foundation with flexible content blocks, fast search, and a checkout flow built for clarity.",
     stack: ["Next.js", "MongoDB", "Stripe"],
-    accent: "violet",
-    liveUrl: "#",
+    liveUrl: "",
     sourceUrl: "https://github.com/yourusername/commerce-platform",
   },
 ];
@@ -121,7 +116,7 @@ function ProjectCard({ project }: { project: Project }) {
         </div>
 
         <div className="mt-auto flex flex-wrap items-center gap-3 pt-2">
-          {project.liveUrl !== "#" && (
+          {project?.liveUrl?.length > 0 && (
             <Link
               href={project.liveUrl}
               className="inline-flex items-center gap-2 rounded-full bg-black px-4 py-2.5 text-xs font-semibold text-white transition-transform duration-300 hover:-translate-y-0.5 dark:bg-white dark:text-black"
@@ -130,7 +125,7 @@ function ProjectCard({ project }: { project: Project }) {
               <ExternalLink size={14} />
             </Link>
           )}
-          {project.sourceUrl && (
+          {project?.sourceUrl?.length > 0 && (
             <Link
               href={project?.sourceUrl}
               target="_blank"
