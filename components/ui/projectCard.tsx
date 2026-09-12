@@ -63,6 +63,8 @@ export function ProjectCard({ project }: { project: Project }) {
           {project?.liveUrl?.length > 0 && (
             <Link
               href={project.liveUrl}
+              target="_blank"
+              rel="noopener noreferrer"
               className="inline-flex items-center gap-2 rounded-full bg-black px-4 py-2.5 text-xs font-semibold text-white transition-transform duration-300 hover:-translate-y-0.5 dark:bg-white dark:text-black"
             >
               Live preview

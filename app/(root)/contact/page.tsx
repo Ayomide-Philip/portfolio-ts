@@ -2,7 +2,7 @@ import Link from "next/link";
 import {
   ArrowUpRight,
   GitBranch,
-  Network,
+  // Network,
   Mail,
   MapPin,
   Send,
@@ -12,22 +12,22 @@ import { Card, Section } from "@/components/ui";
 const contactLinks = [
   {
     label: "Email",
-    value: "hello@example.com",
-    href: "mailto:hello@example.com",
+    value: "areoayomide2008@gmail.com",
+    href: "mailto:areoayomide2008@gmail.com",
     icon: Mail,
   },
   {
     label: "GitHub",
     value: "Explore my code",
-    href: "https://github.com",
+    href: "https://github.com/Ayomide Philip",
     icon: GitBranch,
   },
-  {
-    label: "LinkedIn",
-    value: "Let&apos;s connect",
-    href: "https://linkedin.com",
-    icon: Network,
-  },
+  // {
+  //   label: "LinkedIn",
+  //   value: "Let&apos;s connect",
+  //   href: "https://linkedin.com",
+  //   icon: Network,
+  // },
 ];
 
 export default function ContactPage() {
@@ -115,7 +115,7 @@ export default function ContactPage() {
               </h2>
             </div>
             <form
-              action="mailto:hello@example.com"
+              action="mailto:areoayomide"
               method="post"
               encType="text/plain"
               className="space-y-5"
@@ -148,12 +148,12 @@ export default function ContactPage() {
                   required
                   rows={6}
                   placeholder="A few words about your project..."
-                  className="w-full resize-y rounded-2xl border border-white/60 bg-white/45 px-4 py-3 text-sm leading-relaxed text-black outline-none backdrop-blur-md placeholder:text-black/35 focus:border-black/30 dark:border-white/10 dark:bg-white/5 dark:text-white dark:placeholder:text-white/35 dark:focus:border-white/35"
+                  className="w-full rounded-2xl border resize-none border-white/60 bg-white/45 px-4 py-3 text-sm leading-relaxed text-black outline-none backdrop-blur-md placeholder:text-black/35 focus:border-black/30 dark:border-white/10 dark:bg-white/5 dark:text-white dark:placeholder:text-white/35 dark:focus:border-white/35"
                 />
               </label>
               <button
                 type="submit"
-                className="inline-flex items-center gap-2 rounded-full bg-black px-5 py-3 text-sm font-semibold text-white transition-transform duration-300 hover:-translate-y-0.5 dark:bg-white dark:text-black"
+                className="inline-flex cursor-pointer items-center gap-2 rounded-full bg-black px-5 py-3 text-sm font-semibold text-white transition-transform duration-300 hover:-translate-y-0.5 dark:bg-white dark:text-black"
               >
                 Send message
                 <ArrowUpRight size={16} />

@@ -1,7 +1,7 @@
 import Link from "next/link";
 import {
   ArrowUpRight,
-  Box,
+  // Box,
   Code2,
   Database,
   GitBranch,
@@ -10,7 +10,6 @@ import {
   // MapPin,
   Palette,
   Server,
-  Sparkles,
   Terminal,
   Zap,
   // type LucideIcon,
@@ -36,8 +35,8 @@ const skillGroups = [
     skills: [
       { name: "Node.js", icon: Server },
       { name: "REST APIs", icon: Zap },
-      { name: "GraphQL", icon: Database },
-      { name: "Python", icon: Terminal },
+      // { name: "GraphQL", icon: Database },
+      // { name: "Python", icon: Terminal },
     ],
   },
   {
@@ -47,7 +46,7 @@ const skillGroups = [
     skills: [
       { name: "PostgreSQL", icon: Database },
       { name: "MongoDB", icon: Database },
-      { name: "Docker", icon: Box },
+      // { name: "Docker", icon: Box },
       { name: "Git", icon: GitBranch },
     ],
   },
@@ -111,17 +110,11 @@ export default function Page() {
               About me
             </h1>
             <p className="mx-auto max-w-2xl text-lg leading-relaxed text-black/65 dark:text-white/65 md:text-xl">
-              I&apos;m Alex, a full-stack developer who enjoys turning complex
+              I&apos;m Philip, a full-stack developer who enjoys turning complex
               ideas into simple, useful digital products. I care about the
               details people feel: fast interfaces, thoughtful systems, and
               software that is easy to keep improving.
             </p>
-            <div className="flex flex-wrap justify-center gap-x-5 gap-y-3 text-sm text-black/55 dark:text-white/55">
-              <span className="inline-flex capitalize items-center gap-2">
-                <Sparkles size={15} />
-                Open to solve problems
-              </span>
-            </div>
           </div>
         </div>
       </Section>

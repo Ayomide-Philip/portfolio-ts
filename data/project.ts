@@ -5,7 +5,7 @@ export const Projects: Project[] = [
     title: "End to End Encryption",
     category: "WebSocket",
     description:
-      "A secure, real-time chat application built with Next.js, WebSockets, and AES-GCM 256-bit encryption. Messages are encrypted in the browser before being sent — the server only relays ciphertext.",
+      "A secure, real-time chat application built with Next.js, WebSockets, and AES-GCM 256-bit encryption. Messages are encrypted in the browser before being sent",
     stack: [
       "Next.js",
       "TypeScript",
@@ -15,6 +15,16 @@ export const Projects: Project[] = [
     ],
     liveUrl: "https://e2e-tbki.onrender.com/",
     sourceUrl: "https://github.com/Ayomide-Philip/E2E",
+    featured: true,
+  },
+  {
+    title: "Fashion E-Commerce",
+    category: "Full-Stack",
+    description:
+      " AI-Based Personalized Recommendation System for Fashion E-Commerce with Content-based AI recommendations and AI image classification",
+    stack: ["Next.js", "Typescript", "Tailwindcss", "REST APIs", "MongoDB"],
+    liveUrl: "https://ecommerce-fashion-7fz3.onrender.com/",
+    sourceUrl: "https://github.com/Ayomide-Philip/ecommerce-project",
     featured: true,
   },
   {
@@ -28,7 +38,7 @@ export const Projects: Project[] = [
     featured: false,
   },
   {
-    title: "Classora – Teach more, Manage less!",
+    title: "Classora",
     category: "Full-Stack",
     description:
       " Core pillars are class management, community engagement, real‑time chat, searchable venue mapping and advanced reminders.",
@@ -45,6 +55,16 @@ export const Projects: Project[] = [
     stack: ["Next.js", "Javascript", "Tailwindcss", "REST APIs"],
     liveUrl: "https://country-explorer-rosy.vercel.app/",
     sourceUrl: "https://github.com/Ayomide-Philip/country-explorer",
+    featured: false,
+  },
+  {
+    title: "DevSpace",
+    category: "Full-Stack",
+    description:
+      " Core pillars are class management, community engagement, real‑time chat, searchable venue mapping and advanced reminders.",
+    stack: ["Next.js", "Javascript", "Tailwindcss", "REST APIs", "MongoDB"],
+    liveUrl: "https://dev-space-tau.vercel.app/",
+    sourceUrl: "https://github.com/Ayomide-Philip/DevSpace",
     featured: false,
   },
 ];
