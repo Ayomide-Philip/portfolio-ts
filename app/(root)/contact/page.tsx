@@ -22,18 +22,12 @@ const contactLinks = [
     href: "https://github.com/Ayomide Philip",
     icon: GitBranch,
   },
-  // {
-  //   label: "LinkedIn",
-  //   value: "Let&apos;s connect",
-  //   href: "https://linkedin.com",
-  //   icon: Network,
-  // },
 ];
 
 export default function ContactPage() {
   return (
     <main>
-      <Section size="md" className="pt-32 md:pt-36">
+      <Section size="md" className="pt-10 md:pt-30">
         <div className="mb-12 space-y-6 text-center">
           <div className="space-y-3">
             <p className="text-[11px] font-semibold uppercase tracking-[0.24em] text-black/45 dark:text-white/45">
