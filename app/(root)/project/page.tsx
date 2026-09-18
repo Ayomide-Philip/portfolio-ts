@@ -70,8 +70,8 @@ export default function Project() {
               No projects found
             </h2>
             <p className="mt-2 max-w-sm text-sm leading-relaxed text-black/60 dark:text-white/60">
-              There are no projects in the {selectedCategory} category yet.
-              Try another filter to keep exploring.
+              There are no projects in the {selectedCategory} category yet. Try
+              another filter to keep exploring.
             </p>
             <button
               type="button"

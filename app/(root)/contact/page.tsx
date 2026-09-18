@@ -1,12 +1,5 @@
 import Link from "next/link";
-import {
-  ArrowUpRight,
-  GitBranch,
-  // Network,
-  Mail,
-  MapPin,
-  Send,
-} from "lucide-react";
+import { ArrowUpRight, GitBranch, Mail, MapPin, Send } from "lucide-react";
 import { Card, Section } from "@/components/ui";
 
 const contactLinks = [
@@ -19,7 +12,7 @@ const contactLinks = [
   {
     label: "GitHub",
     value: "Explore my code",
-    href: "https://github.com/Ayomide Philip",
+    href: "https://github.com/Ayomide-Philip",
     icon: GitBranch,
   },
 ];
