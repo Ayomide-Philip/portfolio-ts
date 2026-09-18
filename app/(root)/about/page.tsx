@@ -35,8 +35,6 @@ const skillGroups = [
     skills: [
       { name: "Node.js", icon: Server },
       { name: "REST APIs", icon: Zap },
-      // { name: "GraphQL", icon: Database },
-      // { name: "Python", icon: Terminal },
     ],
   },
   {
@@ -46,7 +44,6 @@ const skillGroups = [
     skills: [
       { name: "PostgreSQL", icon: Database },
       { name: "MongoDB", icon: Database },
-      // { name: "Docker", icon: Box },
       { name: "Git", icon: GitBranch },
     ],
   },
@@ -112,7 +109,7 @@ export default function Page() {
             <p className="mx-auto max-w-2xl text-lg leading-relaxed text-black/65 dark:text-white/65 md:text-xl">
               I&apos;m Philip, a full-stack developer who enjoys turning complex
               ideas into simple, useful digital products. I care about the
-              details people feel: fast interfaces, thoughtful systems, and
+              details people feel; fast interfaces, thoughtful systems, and
               software that is easy to keep improving.
             </p>
           </div>
