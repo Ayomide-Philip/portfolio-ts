@@ -24,7 +24,7 @@ export const Projects: Project[] = [
       " AI-Based Personalized Recommendation System for Fashion E-Commerce with Content-based AI recommendations and AI image classification",
     stack: ["Next.js", "Typescript", "Tailwindcss", "REST APIs", "MongoDB"],
     liveUrl: "https://ecommerce-fashion-7fz3.onrender.com/",
-    sourceUrl: "https://github.com/Ayomide-Philip/ecommerce-project",
+    sourceUrl: "",
     featured: true,
   },
   {

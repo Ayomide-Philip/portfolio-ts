@@ -16,7 +16,7 @@ export default function CallToAction() {
         </div>
 
         <div className="flex flex-col sm:flex-row gap-4 justify-center pt-4">
-          <Link href="mailto:hello@example.com">
+          <Link href="mailto:areoayomide2008@gmail.com">
             <Button size="lg" variant="primary">
               Get in Touch
             </Button>
