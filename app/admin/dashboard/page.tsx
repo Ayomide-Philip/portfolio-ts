@@ -13,6 +13,7 @@ import {
   FileText,
   FolderKanban,
   LayoutDashboard,
+  LogOut,
   Menu,
   MessageSquare,
   MoreHorizontal,
@@ -88,6 +89,7 @@ const metrics = [
 export default function AdminDashboardPage() {
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
   const [isSidebarCollapsed, setIsSidebarCollapsed] = useState(false);
+  const [isProfileMenuOpen, setIsProfileMenuOpen] = useState(false);
   const [activeItem, setActiveItem] = useState("Overview");
   const [notice, setNotice] = useState("");
 
@@ -109,14 +111,18 @@ export default function AdminDashboardPage() {
         )}
 
         <aside
-          className={`fixed inset-y-0 left-0 z-50 flex flex-col border-r border-white/50 bg-white/75 p-5 backdrop-blur-2xl transition-[width,transform] duration-300 dark:border-white/10 dark:bg-zinc-950/75 lg:static lg:translate-x-0 ${isSidebarCollapsed ? "lg:w-20" : "lg:w-72"} w-72 ${isSidebarOpen ? "translate-x-0" : "-translate-x-full"}`}
+          className={`fixed inset-y-0 left-0 z-50 flex w-72 flex-col border-r border-white/50 p-5 backdrop-blur-2xl transition-[width,transform] duration-300 dark:border-white/10 dark:bg-zinc-950/75 lg:static lg:translate-x-0 ${isSidebarCollapsed ? "lg:w-20 lg:p-3" : "lg:w-72"} ${isSidebarOpen ? "translate-x-0" : "-translate-x-full"} lg:relative`}
         >
-          <div className="flex items-center justify-between px-2">
+          <div
+            className={`flex items-center justify-between px-2 ${isSidebarCollapsed ? "lg:flex-col lg:gap-3 lg:px-0" : ""}`}
+          >
             <Link
               href="/admin/dashboard"
               className={`flex items-center gap-3 ${isSidebarCollapsed ? "lg:justify-center" : ""}`}
             >
-              <span className="flex h-10 w-10 items-center justify-center rounded-2xl bg-black text-sm font-bold text-white dark:bg-white dark:text-black">
+              <span
+                className={`flex h-10 w-10 items-center justify-center bg-black text-sm font-bold text-white dark:bg-white dark:text-black ${isSidebarCollapsed ? "lg:rounded-full" : "rounded-2xl"}`}
+              >
                 A
               </span>
               <span className={isSidebarCollapsed ? "lg:hidden" : ""}>
@@ -131,8 +137,9 @@ export default function AdminDashboardPage() {
               aria-label={
                 isSidebarCollapsed ? "Expand sidebar" : "Collapse sidebar"
               }
+              title={isSidebarCollapsed ? "Expand sidebar" : "Collapse sidebar"}
               onClick={() => setIsSidebarCollapsed((collapsed) => !collapsed)}
-              className="hidden rounded-xl p-2 text-black/50 hover:bg-black/5 lg:block dark:text-white/50 dark:hover:bg-white/10"
+              className="absolute right-0 top-8 z-10 hidden h-9 w-9 translate-x-1/2 items-center justify-center rounded-full border border-white/70 bg-white/85 p-0 text-black/55 shadow-lg backdrop-blur-xl transition-colors hover:bg-white dark:border-white/15 dark:bg-zinc-900/90 dark:text-white/60 dark:hover:bg-zinc-800 lg:flex"
             >
               {isSidebarCollapsed ? (
                 <ChevronRight size={18} />
@@ -168,7 +175,7 @@ export default function AdminDashboardPage() {
                       setActiveItem(item.label);
                       setIsSidebarOpen(false);
                     }}
-                    className={`flex w-full items-center gap-3 rounded-2xl px-3 py-3 text-sm font-medium transition-colors ${isSidebarCollapsed ? "lg:justify-center" : ""} ${isActive ? "bg-black text-white shadow-lg shadow-black/10 dark:bg-white dark:text-black" : "text-black/55 hover:bg-black/5 hover:text-black dark:text-white/55 dark:hover:bg-white/10 dark:hover:text-white"}`}
+                    className={`flex w-full items-center gap-3 rounded-2xl px-3 py-3 text-sm font-medium transition-colors ${isSidebarCollapsed ? "lg:mx-auto lg:h-11 lg:w-11 lg:justify-center lg:rounded-full lg:p-0" : ""} ${isActive ? "bg-black text-white shadow-lg shadow-black/10 dark:bg-white dark:text-black" : "text-black/55 hover:bg-black/5 hover:text-black dark:text-white/55 dark:hover:bg-white/10 dark:hover:text-white"}`}
                   >
                     <ItemIcon size={18} strokeWidth={1.7} />
                     <span className={isSidebarCollapsed ? "lg:hidden" : ""}>
@@ -191,30 +198,66 @@ export default function AdminDashboardPage() {
               onClick={() =>
                 showNotice("Settings are ready for configuration.")
               }
-              className={`flex w-full items-center gap-3 rounded-2xl px-3 py-3 text-sm font-medium text-black/55 hover:bg-black/5 hover:text-black dark:text-white/55 dark:hover:bg-white/10 dark:hover:text-white ${isSidebarCollapsed ? "lg:justify-center" : ""}`}
+              className={`flex w-full items-center gap-3 rounded-2xl px-3 py-3 text-sm font-medium text-black/55 hover:bg-black/5 hover:text-black dark:text-white/55 dark:hover:bg-white/10 dark:hover:text-white ${isSidebarCollapsed ? "lg:mx-auto lg:h-11 lg:w-11 lg:justify-center lg:rounded-full lg:p-0" : ""}`}
             >
               <Settings size={18} strokeWidth={1.7} />
               <span className={isSidebarCollapsed ? "lg:hidden" : ""}>
                 Settings
               </span>
             </button>
-            <div className="mt-4 flex items-center gap-3 rounded-2xl border border-white/60 bg-white/45 p-3 dark:border-white/10 dark:bg-white/5">
-              <span className="flex h-9 w-9 items-center justify-center rounded-xl bg-linear-to-br from-cyan-400 to-emerald-400 text-xs font-bold text-black">
-                AP
-              </span>
-              <div
-                className={`min-w-0 ${isSidebarCollapsed ? "lg:hidden" : ""}`}
+            <div className="relative mt-4">
+              {isProfileMenuOpen && (
+                <div className="absolute bottom-full left-0 right-0 mb-2 rounded-2xl border border-white/60 bg-white/90 p-2 shadow-xl backdrop-blur-xl dark:border-white/10 dark:bg-zinc-900/95">
+                  <p className="px-3 py-2 text-xs leading-relaxed text-black/55 dark:text-white/55">
+                    Signed in as Ayomide Philip
+                  </p>
+                  <button
+                    type="button"
+                    onClick={() => showNotice("Profile settings selected.")}
+                    className="w-full rounded-xl px-3 py-2 text-left text-xs font-medium text-black/70 hover:bg-black/5 dark:text-white/70 dark:hover:bg-white/10"
+                  >
+                    Account details
+                  </button>
+                </div>
+              )}
+              <button
+                type="button"
+                aria-label="Open account menu"
+                aria-expanded={isProfileMenuOpen}
+                onClick={() => setIsProfileMenuOpen((open) => !open)}
+                className={`flex w-full items-center gap-3 rounded-2xl border border-white/60 bg-white/45 p-3 text-left transition-colors hover:bg-white/70 dark:border-white/10 dark:bg-white/5 dark:hover:bg-white/10 ${isSidebarCollapsed ? "lg:mx-auto lg:h-11 lg:w-11 lg:justify-center lg:rounded-full lg:p-0" : ""}`}
               >
-                <p className="truncate text-sm font-semibold">Ayomide Philip</p>
-                <p className="truncate text-xs text-black/45 dark:text-white/45">
-                  Administrator
-                </p>
-              </div>
-              <ChevronDown
-                size={15}
-                className={`ml-auto shrink-0 text-black/40 dark:text-white/40 ${isSidebarCollapsed ? "lg:hidden" : ""}`}
-              />
+                <span
+                  className={`flex h-9 w-9 items-center justify-center bg-linear-to-br from-cyan-400 to-emerald-400 text-xs font-bold text-black ${isSidebarCollapsed ? "lg:rounded-full" : "rounded-xl"}`}
+                >
+                  AP
+                </span>
+                <div
+                  className={`min-w-0 ${isSidebarCollapsed ? "lg:hidden" : ""}`}
+                >
+                  <p className="truncate text-sm font-semibold">
+                    Ayomide Philip
+                  </p>
+                  <p className="truncate text-xs text-black/45 dark:text-white/45">
+                    Administrator
+                  </p>
+                </div>
+                <ChevronDown
+                  size={15}
+                  className={`ml-auto shrink-0 text-black/40 dark:text-white/40 ${isSidebarCollapsed ? "lg:hidden" : ""}`}
+                />
+              </button>
             </div>
+            <button
+              type="button"
+              onClick={() => showNotice("Logout is ready to connect.")}
+              className={`flex w-full items-center gap-3 rounded-2xl px-3 py-3 text-sm font-medium text-red-600/75 transition-colors hover:bg-red-500/10 hover:text-red-600 dark:text-red-300/75 dark:hover:text-red-300 ${isSidebarCollapsed ? "lg:justify-center" : ""}`}
+            >
+              <LogOut size={18} strokeWidth={1.7} />
+              <span className={isSidebarCollapsed ? "lg:hidden" : ""}>
+                Log out
+              </span>
+            </button>
           </div>
         </aside>
 
