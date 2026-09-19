@@ -1,3 +1,5 @@
+import AdminNavBar from "@/components/navigation/adminNavBar";
+
 export default function Layout({ children }: { children: React.ReactNode }) {
-  return <>{children}</>;
+    return (<AdminNavBar>{children}</AdminNavBar>);
 }
