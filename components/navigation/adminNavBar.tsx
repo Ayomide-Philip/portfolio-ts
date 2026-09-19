@@ -5,19 +5,16 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import {
   Bell,
-  ChevronDown,
   ChevronLeft,
   ChevronRight,
   FileText,
   FolderKanban,
   LayoutDashboard,
   LogOut,
-  Menu,
   MessageSquare,
   Plus,
   Search,
   Settings,
-  X,
 } from "lucide-react";
 import Toggle from "../toggle";
 
@@ -33,9 +30,7 @@ export default function AdminNavBar({
 }: {
   children: React.ReactNode;
 }) {
-  const [isSidebarOpen, setIsSidebarOpen] = useState(false);
   const [isSidebarCollapsed, setIsSidebarCollapsed] = useState(false);
-  const [isProfileMenuOpen, setIsProfileMenuOpen] = useState(false);
   const [notice, setNotice] = useState("");
   const pathname = usePathname();
   const activeItem =
@@ -50,17 +45,8 @@ export default function AdminNavBar({
   return (
     <main className="min-h-dvh bg-transparent text-black dark:text-white">
       <div className="mx-auto flex min-h-dvh max-w-[1600px]">
-        {isSidebarOpen && (
-          <button
-            type="button"
-            aria-label="Close navigation"
-            onClick={() => setIsSidebarOpen(false)}
-            className="fixed inset-0 z-40 bg-black/20 backdrop-blur-sm lg:hidden"
-          />
-        )}
-
         <aside
-          className={`fixed inset-y-0 left-0 z-50 flex w-72 flex-col border-r border-white/50 p-5 backdrop-blur-2xl transition-[width,transform] duration-300 dark:border-white/10 dark:bg-zinc-950/75 lg:static lg:translate-x-0 ${isSidebarCollapsed ? "lg:w-20 lg:p-3" : "lg:w-72"} ${isSidebarOpen ? "translate-x-0" : "-translate-x-full"} lg:relative`}
+          className={`hidden w-72 flex-col border-r border-white/50 p-5 backdrop-blur-2xl transition-[width] duration-300 dark:border-white/10 dark:bg-zinc-950/75 lg:relative lg:flex ${isSidebarCollapsed ? "lg:w-20 lg:p-3" : "lg:w-72"}`}
         >
           <div
             className={`flex items-center justify-between px-2 ${isSidebarCollapsed ? "lg:flex-col lg:gap-3 lg:px-0" : ""}`}
@@ -96,14 +82,6 @@ export default function AdminNavBar({
                 <ChevronLeft size={18} />
               )}
             </button>
-            <button
-              type="button"
-              aria-label="Close navigation"
-              onClick={() => setIsSidebarOpen(false)}
-              className="rounded-xl p-2 text-black/50 hover:bg-black/5 lg:hidden dark:text-white/50 dark:hover:bg-white/10"
-            >
-              <X size={18} />
-            </button>
           </div>
 
           <div className="mt-12">
@@ -120,7 +98,6 @@ export default function AdminNavBar({
                   <Link
                     key={item.label}
                     href={item.href}
-                    onClick={() => setIsSidebarOpen(false)}
                     className={`flex w-full items-center gap-3 rounded-2xl px-3 py-3 text-sm font-medium transition-colors ${isSidebarCollapsed ? "lg:mx-auto lg:h-11 lg:w-11 lg:justify-center lg:rounded-full lg:p-0" : ""} ${isActive ? "bg-black text-white shadow-lg shadow-black/10 dark:bg-white dark:text-black" : "text-black/55 hover:bg-black/5 hover:text-black dark:text-white/55 dark:hover:bg-white/10 dark:hover:text-white"}`}
                   >
                     <ItemIcon size={18} strokeWidth={1.7} />
@@ -141,7 +118,6 @@ export default function AdminNavBar({
           <div className="mt-auto space-y-1">
             <Link
               href="/admin/dashboard/settings"
-              onClick={() => setIsSidebarOpen(false)}
               className={`flex w-full items-center gap-3 rounded-2xl px-3 py-3 text-sm font-medium text-black/55 hover:bg-black/5 hover:text-black dark:text-white/55 dark:hover:bg-white/10 dark:hover:text-white ${isSidebarCollapsed ? "lg:mx-auto lg:h-11 lg:w-11 lg:justify-center lg:rounded-full lg:p-0" : ""}`}
             >
               <Settings size={18} strokeWidth={1.7} />
@@ -149,48 +125,22 @@ export default function AdminNavBar({
                 Settings
               </span>
             </Link>
-            <div className="relative mt-4">
-              {isProfileMenuOpen && (
-                <div className="absolute bottom-full left-0 right-0 mb-2 rounded-2xl border border-white/60 bg-white/90 p-2 shadow-xl backdrop-blur-xl dark:border-white/10 dark:bg-zinc-900/95">
-                  <p className="px-3 py-2 text-xs leading-relaxed text-black/55 dark:text-white/55">
-                    Signed in as Ayomide Philip
-                  </p>
-                  <button
-                    type="button"
-                    onClick={() => showNotice("Profile settings selected.")}
-                    className="w-full rounded-xl px-3 py-2 text-left text-xs font-medium text-black/70 hover:bg-black/5 dark:text-white/70 dark:hover:bg-white/10"
-                  >
-                    Account details
-                  </button>
-                </div>
-              )}
-              <button
-                type="button"
-                aria-label="Open account menu"
-                aria-expanded={isProfileMenuOpen}
-                onClick={() => setIsProfileMenuOpen((open) => !open)}
-                className={`flex w-full items-center gap-3 rounded-2xl border border-white/60 bg-white/45 p-3 text-left transition-colors hover:bg-white/70 dark:border-white/10 dark:bg-white/5 dark:hover:bg-white/10 ${isSidebarCollapsed ? "lg:mx-auto lg:h-11 lg:w-11 lg:justify-center lg:rounded-full lg:p-0" : ""}`}
+            <div
+              className={`mt-4 flex w-full items-center gap-3 rounded-2xl border border-white/60 bg-white/45 p-3 dark:border-white/10 dark:bg-white/5 ${isSidebarCollapsed ? "lg:mx-auto lg:h-11 lg:w-11 lg:justify-center lg:rounded-full lg:p-0" : ""}`}
+            >
+              <span
+                className={`flex h-9 w-9 items-center justify-center bg-linear-to-br from-cyan-400 to-emerald-400 text-xs font-bold text-black ${isSidebarCollapsed ? "lg:rounded-full" : "rounded-xl"}`}
               >
-                <span
-                  className={`flex h-9 w-9 items-center justify-center bg-linear-to-br from-cyan-400 to-emerald-400 text-xs font-bold text-black ${isSidebarCollapsed ? "lg:rounded-full" : "rounded-xl"}`}
-                >
-                  AP
-                </span>
-                <div
-                  className={`min-w-0 ${isSidebarCollapsed ? "lg:hidden" : ""}`}
-                >
-                  <p className="truncate text-sm font-semibold">
-                    Ayomide Philip
-                  </p>
-                  <p className="truncate text-xs text-black/45 dark:text-white/45">
-                    Administrator
-                  </p>
-                </div>
-                <ChevronDown
-                  size={15}
-                  className={`ml-auto shrink-0 text-black/40 dark:text-white/40 ${isSidebarCollapsed ? "lg:hidden" : ""}`}
-                />
-              </button>
+                AP
+              </span>
+              <div
+                className={`min-w-0 ${isSidebarCollapsed ? "lg:hidden" : ""}`}
+              >
+                <p className="truncate text-sm font-semibold">Ayomide Philip</p>
+                <p className="truncate text-xs text-black/45 dark:text-white/45">
+                  Administrator
+                </p>
+              </div>
             </div>
             <button
               type="button"
@@ -205,27 +155,26 @@ export default function AdminNavBar({
           </div>
         </aside>
 
-        <section className="min-w-0 flex-1 px-4 py-5 sm:px-6 lg:px-10 lg:py-8">
-          <header className="flex items-center justify-between gap-4">
-            <div className="flex items-center gap-3">
-              <button
-                type="button"
-                aria-label="Open navigation"
-                onClick={() => setIsSidebarOpen(true)}
-                className="rounded-xl border border-white/60 bg-white/45 p-2.5 text-black/65 backdrop-blur-md lg:hidden dark:border-white/10 dark:bg-white/5 dark:text-white/65"
-              >
-                <Menu size={20} />
-              </button>
-              <div>
-                <p className="text-xs font-semibold uppercase tracking-[0.18em] text-black/40 dark:text-white/40">
-                  {activeItem}
-                </p>
-                <h1 className="mt-1 text-2xl font-bold tracking-tight sm:text-3xl">
-                  Good morning, Ayomide.
-                </h1>
+        <section className="min-w-0 flex-1 px-3 py-3 pb-24 sm:px-6 sm:py-5 sm:pb-24 lg:px-10 lg:py-8 lg:pb-8">
+          <header className="mb-5 flex items-center justify-between gap-3 lg:mb-8">
+            <div className="flex min-w-0 items-center gap-2.5 sm:gap-3 lg:gap-4">
+              <div className="flex min-w-0 items-center gap-2.5">
+                <span className="flex h-9 w-9 shrink-0 items-center justify-center rounded-xl bg-black text-xs font-bold text-white lg:hidden dark:bg-white dark:text-black">
+                  A
+                </span>
+                <div className="min-w-0">
+                  <p className="truncate text-[10px] font-semibold uppercase tracking-[0.18em] text-black/40 dark:text-white/40 lg:text-xs">
+                    {activeItem}
+                  </p>
+                  <h1 className="truncate text-base font-bold tracking-tight sm:text-xl lg:mt-1 lg:text-3xl lg:font-bold">
+                    {pathname === "/admin/dashboard"
+                      ? "Good morning, Ayomide."
+                      : activeItem}
+                  </h1>
+                </div>
               </div>
             </div>
-            <div className="flex items-center gap-2 sm:gap-3">
+            <div className="flex shrink-0 items-center gap-1.5 sm:gap-3 lg:gap-4">
               <button
                 type="button"
                 aria-label="Search"
@@ -234,7 +183,7 @@ export default function AdminNavBar({
                     "Search is available in the next dashboard update.",
                   )
                 }
-                className="hidden rounded-xl border border-white/60 bg-white/45 p-2.5 text-black/55 backdrop-blur-md hover:bg-white/70 sm:block dark:border-white/10 dark:bg-white/5 dark:text-white/55 dark:hover:bg-white/10"
+                className="hidden h-11 w-11 items-center justify-center rounded-xl border border-white/60 bg-white/45 p-2.5 text-black/55 backdrop-blur-md hover:bg-white/70 md:flex dark:border-white/10 dark:bg-white/5 dark:text-white/55 dark:hover:bg-white/10"
               >
                 <Search size={18} />
               </button>
@@ -242,12 +191,14 @@ export default function AdminNavBar({
                 type="button"
                 aria-label="Notifications"
                 onClick={() => showNotice("You have 4 unread messages.")}
-                className="relative rounded-xl border border-white/60 bg-white/45 p-2.5 text-black/55 backdrop-blur-md hover:bg-white/70 dark:border-white/10 dark:bg-white/5 dark:text-white/55 dark:hover:bg-white/10"
+                className="relative flex h-10 w-10 items-center justify-center rounded-xl border border-white/60 bg-white/45 p-2.5 text-black/55 backdrop-blur-md hover:bg-white/70 lg:h-11 lg:w-11 dark:border-white/10 dark:bg-white/5 dark:text-white/55 dark:hover:bg-white/10"
               >
                 <Bell size={18} />
                 <span className="absolute right-1.5 top-1.5 h-1.5 w-1.5 rounded-full bg-amber-400" />
               </button>
-              <Toggle />
+              <div className="flex h-10 w-10 items-center justify-center lg:h-11 lg:w-11">
+                <Toggle />
+              </div>
               <button
                 type="button"
                 onClick={() =>
@@ -262,6 +213,33 @@ export default function AdminNavBar({
           {children}
         </section>
       </div>
+      <nav
+        aria-label="Mobile admin navigation"
+        className="fixed inset-x-3 bottom-3 z-40 grid grid-cols-5 rounded-2xl border border-white/60 bg-white/85 p-1.5 shadow-[0_18px_45px_-22px_rgba(0,0,0,0.45)] backdrop-blur-2xl lg:hidden dark:border-white/10 dark:bg-zinc-950/85"
+      >
+        {[
+          ...navigation,
+          {
+            label: "Settings",
+            href: "/admin/dashboard/settings",
+            icon: Settings,
+          },
+        ].map((item) => {
+          const ItemIcon = item.icon;
+          const isActive = activeItem === item.label;
+
+          return (
+            <Link
+              key={item.label}
+              href={item.href}
+              className={`flex min-w-0 flex-col items-center justify-center gap-1 rounded-xl px-1 py-2 text-[10px] font-semibold leading-none transition-colors ${isActive ? "bg-black text-white dark:bg-white dark:text-black" : "text-black/50 hover:bg-black/5 hover:text-black dark:text-white/50 dark:hover:bg-white/10 dark:hover:text-white"}`}
+            >
+              <ItemIcon size={17} strokeWidth={1.8} />
+              <span className="w-full truncate text-center">{item.label}</span>
+            </Link>
+          );
+        })}
+      </nav>
       {notice && (
         <div
           role="status"
