@@ -31,16 +31,10 @@ export default function AdminNavBar({
   children: React.ReactNode;
 }) {
   const [isSidebarCollapsed, setIsSidebarCollapsed] = useState(false);
-  const [notice, setNotice] = useState("");
   const pathname = usePathname();
   const activeItem =
     navigation.find((item) => item.href === pathname)?.label ??
     (pathname === "/admin/dashboard/settings" ? "Settings" : "Overview");
-
-  const showNotice = (message: string) => {
-    setNotice(message);
-    window.setTimeout(() => setNotice(""), 2200);
-  };
 
   return (
     <main className="min-h-dvh bg-transparent text-black dark:text-white">
@@ -144,7 +138,6 @@ export default function AdminNavBar({
             </div>
             <button
               type="button"
-              onClick={() => showNotice("Logout is ready to connect.")}
               className={`flex w-full items-center gap-3 rounded-2xl px-3 py-3 text-sm font-medium text-red-600/75 transition-colors hover:bg-red-500/10 hover:text-red-600 dark:text-red-300/75 dark:hover:text-red-300 ${isSidebarCollapsed ? "lg:justify-center" : ""}`}
             >
               <LogOut size={18} strokeWidth={1.7} />
@@ -178,11 +171,6 @@ export default function AdminNavBar({
               <button
                 type="button"
                 aria-label="Search"
-                onClick={() =>
-                  showNotice(
-                    "Search is available in the next dashboard update.",
-                  )
-                }
                 className="hidden h-11 w-11 items-center justify-center rounded-xl border border-white/60 bg-white/45 p-2.5 text-black/55 backdrop-blur-md hover:bg-white/70 md:flex dark:border-white/10 dark:bg-white/5 dark:text-white/55 dark:hover:bg-white/10"
               >
                 <Search size={18} />
@@ -190,7 +178,6 @@ export default function AdminNavBar({
               <button
                 type="button"
                 aria-label="Notifications"
-                onClick={() => showNotice("You have 4 unread messages.")}
                 className="relative flex h-10 w-10 items-center justify-center rounded-xl border border-white/60 bg-white/45 p-2.5 text-black/55 backdrop-blur-md hover:bg-white/70 lg:h-11 lg:w-11 dark:border-white/10 dark:bg-white/5 dark:text-white/55 dark:hover:bg-white/10"
               >
                 <Bell size={18} />
@@ -201,9 +188,6 @@ export default function AdminNavBar({
               </div>
               <button
                 type="button"
-                onClick={() =>
-                  showNotice("New content form is ready to connect.")
-                }
                 className="hidden items-center gap-2 rounded-xl bg-black px-4 py-2.5 text-xs font-semibold text-white sm:flex dark:bg-white dark:text-black"
               >
                 <Plus size={16} /> New content
@@ -240,14 +224,6 @@ export default function AdminNavBar({
           );
         })}
       </nav>
-      {notice && (
-        <div
-          role="status"
-          className="fixed bottom-5 left-1/2 z-[60] -translate-x-1/2 rounded-full border border-white/60 bg-black/85 px-4 py-2.5 text-xs font-medium text-white shadow-xl backdrop-blur-xl dark:border-white/15 dark:bg-white/90 dark:text-black"
-        >
-          {notice}
-        </div>
-      )}
     </main>
   );
 }
