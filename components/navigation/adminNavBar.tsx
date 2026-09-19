@@ -38,9 +38,9 @@ export default function AdminNavBar({
 
   return (
     <main className="min-h-dvh bg-transparent text-black dark:text-white">
-      <div className="mx-auto flex min-h-dvh max-w-[1600px]">
+      <div className="mx-auto flex min-h-dvh max-w-400">
         <aside
-          className={`hidden w-72 flex-col border-r border-white/50 p-5 backdrop-blur-2xl transition-[width] duration-300 dark:border-white/10 dark:bg-zinc-950/75 lg:relative lg:flex ${isSidebarCollapsed ? "lg:w-20 lg:p-3" : "lg:w-72"}`}
+          className={`hidden w-72 flex-col border-r border-zinc-200 p-5 backdrop-blur-2xl transition-[width] duration-300 dark:border-white/10 dark:bg-zinc-950/75 lg:relative lg:flex ${isSidebarCollapsed ? "lg:w-20 lg:p-3" : "lg:w-72"}`}
         >
           <div
             className={`flex items-center justify-between px-2 ${isSidebarCollapsed ? "lg:flex-col lg:gap-3 lg:px-0" : ""}`}
@@ -68,7 +68,7 @@ export default function AdminNavBar({
               }
               title={isSidebarCollapsed ? "Expand sidebar" : "Collapse sidebar"}
               onClick={() => setIsSidebarCollapsed((collapsed) => !collapsed)}
-              className="absolute right-0 top-8 z-10 hidden h-9 w-9 translate-x-1/2 items-center justify-center rounded-full border border-white/70 bg-white/85 p-0 text-black/55 shadow-lg backdrop-blur-xl transition-colors hover:bg-white dark:border-white/15 dark:bg-zinc-900/90 dark:text-white/60 dark:hover:bg-zinc-800 lg:flex"
+              className="absolute cursor-pointer right-0 top-8 z-10 hidden h-9 w-9 translate-x-1/2 items-center justify-center rounded-full border border-white/70 bg-white/85 p-0 text-black/55 shadow-lg backdrop-blur-xl transition-colors hover:bg-white dark:border-white/15 dark:bg-zinc-900/90 dark:text-white/60 dark:hover:bg-zinc-800 lg:flex"
             >
               {isSidebarCollapsed ? (
                 <ChevronRight size={18} />
