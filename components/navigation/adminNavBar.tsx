@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 import {
   Bell,
   ChevronDown,
@@ -21,10 +22,10 @@ import {
 import Toggle from "../toggle";
 
 const navigation = [
-  { label: "Overview", icon: LayoutDashboard },
-  { label: "Projects", icon: FolderKanban },
-  { label: "Posts", icon: FileText },
-  { label: "Messages", icon: MessageSquare },
+  { label: "Overview", href: "/admin/dashboard", icon: LayoutDashboard },
+  { label: "Projects", href: "/admin/dashboard/projects", icon: FolderKanban },
+  { label: "Posts", href: "/admin/dashboard/posts", icon: FileText },
+  { label: "Messages", href: "/admin/dashboard/messages", icon: MessageSquare },
 ];
 
 export default function AdminNavBar({
@@ -35,8 +36,11 @@ export default function AdminNavBar({
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
   const [isSidebarCollapsed, setIsSidebarCollapsed] = useState(false);
   const [isProfileMenuOpen, setIsProfileMenuOpen] = useState(false);
-  const [activeItem, setActiveItem] = useState("Overview");
   const [notice, setNotice] = useState("");
+  const pathname = usePathname();
+  const activeItem =
+    navigation.find((item) => item.href === pathname)?.label ??
+    (pathname === "/admin/dashboard/settings" ? "Settings" : "Overview");
 
   const showNotice = (message: string) => {
     setNotice(message);
@@ -113,13 +117,10 @@ export default function AdminNavBar({
                 const ItemIcon = item.icon;
                 const isActive = activeItem === item.label;
                 return (
-                  <button
+                  <Link
                     key={item.label}
-                    type="button"
-                    onClick={() => {
-                      setActiveItem(item.label);
-                      setIsSidebarOpen(false);
-                    }}
+                    href={item.href}
+                    onClick={() => setIsSidebarOpen(false)}
                     className={`flex w-full items-center gap-3 rounded-2xl px-3 py-3 text-sm font-medium transition-colors ${isSidebarCollapsed ? "lg:mx-auto lg:h-11 lg:w-11 lg:justify-center lg:rounded-full lg:p-0" : ""} ${isActive ? "bg-black text-white shadow-lg shadow-black/10 dark:bg-white dark:text-black" : "text-black/55 hover:bg-black/5 hover:text-black dark:text-white/55 dark:hover:bg-white/10 dark:hover:text-white"}`}
                   >
                     <ItemIcon size={18} strokeWidth={1.7} />
@@ -131,25 +132,23 @@ export default function AdminNavBar({
                         4
                       </span>
                     )}
-                  </button>
+                  </Link>
                 );
               })}
             </nav>
           </div>
 
           <div className="mt-auto space-y-1">
-            <button
-              type="button"
-              onClick={() =>
-                showNotice("Settings are ready for configuration.")
-              }
+            <Link
+              href="/admin/dashboard/settings"
+              onClick={() => setIsSidebarOpen(false)}
               className={`flex w-full items-center gap-3 rounded-2xl px-3 py-3 text-sm font-medium text-black/55 hover:bg-black/5 hover:text-black dark:text-white/55 dark:hover:bg-white/10 dark:hover:text-white ${isSidebarCollapsed ? "lg:mx-auto lg:h-11 lg:w-11 lg:justify-center lg:rounded-full lg:p-0" : ""}`}
             >
               <Settings size={18} strokeWidth={1.7} />
               <span className={isSidebarCollapsed ? "lg:hidden" : ""}>
                 Settings
               </span>
-            </button>
+            </Link>
             <div className="relative mt-4">
               {isProfileMenuOpen && (
                 <div className="absolute bottom-full left-0 right-0 mb-2 rounded-2xl border border-white/60 bg-white/90 p-2 shadow-xl backdrop-blur-xl dark:border-white/10 dark:bg-zinc-900/95">

@@ -1,0 +1,13 @@
+import { FileText } from "lucide-react";
+
+export default function AdminPostsPage() {
+  return (
+    <section className="rounded-3xl border border-white/60 bg-white/45 p-8 backdrop-blur-xl dark:border-white/10 dark:bg-white/5">
+      <FileText className="text-violet-500" size={24} />
+      <h1 className="mt-5 text-3xl font-bold">Posts</h1>
+      <p className="mt-2 text-sm text-black/60 dark:text-white/60">
+        Create and organize your portfolio articles.
+      </p>
+    </section>
+  );
+}
