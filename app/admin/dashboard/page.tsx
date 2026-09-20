@@ -40,30 +40,26 @@ const metrics = [
   {
     label: "Published projects",
     value: "12",
-    change: "+3 this month",
     icon: FolderKanban,
     tone: "text-cyan-600 dark:text-cyan-300",
   },
   {
+    label: "Drafts in progress",
+    value: "03",
+    icon: Clock3,
+    tone: "text-amber-600 dark:text-amber-300",
+  },
+  {
     label: "Published articles",
     value: "08",
-    change: "+2 this month",
     icon: FileText,
     tone: "text-violet-600 dark:text-violet-300",
   },
   {
-    label: "Profile visits",
-    value: "2,847",
-    change: "+18.4% this month",
-    icon: TrendingUp,
-    tone: "text-emerald-600 dark:text-emerald-300",
-  },
-  {
     label: "Unread messages",
     value: "04",
-    change: "Needs attention",
     icon: MessageSquare,
-    tone: "text-amber-600 dark:text-amber-300",
+    tone: "text-rose-600 dark:text-rose-300",
   },
 ];
 
@@ -100,9 +96,9 @@ export default function AdminDashboardPage() {
         <div className="rounded-3xl border border-white/60 bg-white/45 p-5 shadow-[0_18px_50px_-30px_rgba(0,0,0,0.35)] backdrop-blur-xl sm:p-6 dark:border-white/10 dark:bg-white/5">
           <div className="flex items-start justify-between gap-4">
             <div>
-              <p className="text-sm font-semibold">Portfolio activity</p>
+              <p className="text-sm font-semibold">Publishing activity</p>
               <p className="mt-1 text-xs text-black/45 dark:text-white/45">
-                Views and content performance over the last 30 days
+                Projects and articles you have shipped this year
               </p>
             </div>
             <button
@@ -137,15 +133,11 @@ export default function AdminDashboardPage() {
           </div>
           <div className="mt-4 flex items-center gap-4 text-xs text-black/45 dark:text-white/45">
             <span className="inline-flex items-center gap-1.5">
-              <span className="h-2 w-2 rounded-full bg-emerald-400" /> Profile
-              visits
-            </span>
-            <span className="inline-flex items-center gap-1.5">
-              <span className="h-2 w-2 rounded-full bg-cyan-400" /> Content
-              views
+              <span className="h-2 w-2 rounded-full bg-cyan-400" /> Published
+              items
             </span>
             <span className="ml-auto inline-flex items-center gap-1 text-emerald-600 dark:text-emerald-300">
-              <TrendingUp size={14} /> 18.4%
+              <TrendingUp size={14} /> 11 shipped this year
             </span>
           </div>
         </div>
