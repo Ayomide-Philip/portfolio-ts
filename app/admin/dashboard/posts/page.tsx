@@ -13,6 +13,7 @@ import {
   SearchX,
   Star,
   Trash2,
+  X,
 } from "lucide-react";
 import { Posts as initialPosts } from "@/data/blog";
 import { PostStatusFilters } from "@/types/blog.types";
@@ -48,7 +49,15 @@ export default function AdminPostsPage() {
     (post) => post.status === "Published",
   ).length;
   const draftCount = posts.filter((post) => post.status === "Draft").length;
+  const scheduledCount = posts.filter(
+    (post) => post.status === "Scheduled",
+  ).length;
   const hasPosts = posts.length > 0;
+
+  const countForStatus = (item: PostStatusFilter) =>
+    item === "All"
+      ? posts.length
+      : posts.filter((post) => post.status === item).length;
 
   const visiblePosts = useMemo(() => {
     const search = query.trim().toLowerCase();
@@ -78,43 +87,67 @@ export default function AdminPostsPage() {
   return (
     <div className="space-y-5">
       {hasPosts && (
-        <div className={`${panelClass} p-4 sm:p-5`}>
-          <div className="flex flex-col gap-4 lg:flex-row lg:items-center lg:justify-between">
-            <div className="flex items-center gap-3">
-              <span className="flex h-10 w-10 shrink-0 items-center justify-center rounded-2xl border border-white/70 bg-white/55 text-black shadow-[inset_0_1px_0_rgba(255,255,255,0.9)] dark:border-white/15 dark:bg-white/10 dark:text-white">
-                <FileText size={19} strokeWidth={1.7} />
+        <div className={`${panelClass} relative overflow-hidden p-5 sm:p-6`}>
+          <span
+            aria-hidden="true"
+            className="pointer-events-none absolute inset-x-10 top-0 h-px bg-linear-to-r from-transparent via-white to-transparent dark:via-white/30"
+          />
+          <span
+            aria-hidden="true"
+            className="pointer-events-none absolute -right-16 -top-24 h-56 w-56 rounded-full bg-violet-300/20 blur-3xl dark:bg-violet-400/10"
+          />
+
+          <div className="relative flex flex-col gap-6 lg:flex-row lg:items-center lg:justify-between">
+            <div className="flex items-center gap-4">
+              <span className="flex h-14 w-14 shrink-0 items-center justify-center rounded-2xl border border-white/70 bg-white/60 text-violet-600 shadow-[inset_0_1px_0_rgba(255,255,255,0.9),0_16px_35px_-22px_rgba(0,0,0,0.5)] backdrop-blur-md dark:border-white/15 dark:bg-white/10 dark:text-violet-300">
+                <FileText size={23} strokeWidth={1.6} />
               </span>
-              <div>
-                <p className="text-sm font-semibold">
-                  {posts.length} post{posts.length === 1 ? "" : "s"}
+              <div className="min-w-0">
+                <p className="text-[11px] font-semibold uppercase tracking-[0.2em] text-black/45 dark:text-white/45">
+                  Total posts
                 </p>
-                <p className="mt-0.5 text-xs text-black/50 dark:text-white/50">
-                  {publishedCount} published · {draftCount} draft
-                  {draftCount === 1 ? "" : "s"}
-                </p>
+                <div className="mt-1.5 flex flex-wrap items-baseline gap-x-3 gap-y-1">
+                  <p className="text-3xl font-bold leading-none tracking-tight">
+                    {posts.length}
+                  </p>
+                  <p className="text-xs text-black/50 dark:text-white/50">
+                    {publishedCount} published · {draftCount} draft
+                    {draftCount === 1 ? "" : "s"} · {scheduledCount} scheduled
+                  </p>
+                </div>
               </div>
             </div>
 
             <div className="flex flex-col gap-3 sm:flex-row sm:items-center">
-              <label className="relative flex min-w-0 flex-1 items-center sm:w-64 sm:flex-none">
+              <label className="relative flex min-w-0 flex-1 items-center sm:w-72 sm:flex-none">
                 <span className="sr-only">Search posts</span>
                 <Search
                   size={16}
-                  className="pointer-events-none absolute left-3 text-black/35 dark:text-white/35"
+                  className="pointer-events-none absolute left-4 text-black/35 dark:text-white/35"
                 />
                 <input
                   value={query}
                   onChange={(event) => setQuery(event.target.value)}
                   placeholder="Search posts..."
-                  className="h-11 w-full rounded-xl border border-white/60 bg-white/45 pl-9 pr-3 text-sm text-black outline-none backdrop-blur-md placeholder:text-black/35 focus:border-black/25 dark:border-white/10 dark:bg-white/5 dark:text-white dark:placeholder:text-white/35 dark:focus:border-white/30"
+                  className="h-12 w-full rounded-2xl border border-white/60 bg-white/50 pl-10 pr-10 text-sm text-black shadow-[inset_0_1px_0_rgba(255,255,255,0.7)] outline-none backdrop-blur-md transition-colors placeholder:text-black/35 focus:border-black/25 focus:bg-white/70 dark:border-white/10 dark:bg-white/5 dark:text-white dark:placeholder:text-white/35 dark:focus:border-white/30 dark:focus:bg-white/10"
                 />
+                {query.length > 0 && (
+                  <button
+                    type="button"
+                    aria-label="Clear search"
+                    onClick={() => setQuery("")}
+                    className="absolute right-2 flex h-8 w-8 items-center justify-center rounded-xl text-black/40 transition-colors hover:bg-black/5 hover:text-black dark:text-white/40 dark:hover:bg-white/10 dark:hover:text-white"
+                  >
+                    <X size={15} />
+                  </button>
+                )}
               </label>
               <button
                 type="button"
                 onClick={() =>
                   showNotice("The new post editor is ready to connect.")
                 }
-                className="inline-flex h-11 items-center justify-center gap-2 rounded-xl bg-black px-4 text-xs font-semibold text-white transition-transform duration-300 hover:-translate-y-0.5 dark:bg-white dark:text-black"
+                className="inline-flex h-12 items-center justify-center gap-2 rounded-2xl bg-black px-5 text-xs font-semibold text-white shadow-[0_12px_30px_-18px_rgba(0,0,0,0.8)] transition-transform duration-300 hover:-translate-y-0.5 dark:bg-white dark:text-black"
               >
                 <Plus size={16} />
                 New post
@@ -124,7 +157,7 @@ export default function AdminPostsPage() {
 
           <div
             aria-label="Filter posts by status"
-            className="mt-4 flex gap-1.5 overflow-x-auto border-t border-black/5 pt-4 dark:border-white/5"
+            className="relative mt-6 flex gap-2 overflow-x-auto border-t border-black/5 pt-5 dark:border-white/5"
           >
             {PostStatusFilters.map((item) => {
               const isActive = status === item;
@@ -134,13 +167,22 @@ export default function AdminPostsPage() {
                   type="button"
                   aria-pressed={isActive}
                   onClick={() => setStatus(item)}
-                  className={`whitespace-nowrap rounded-full px-3.5 py-2 text-xs font-semibold transition-colors ${
+                  className={`inline-flex shrink-0 items-center gap-2 rounded-full px-3.5 py-2 text-xs font-semibold transition-colors ${
                     isActive
                       ? "bg-black text-white shadow-md dark:bg-white dark:text-black"
-                      : "text-black/55 hover:bg-black/5 hover:text-black dark:text-white/55 dark:hover:bg-white/10 dark:hover:text-white"
+                      : "border border-white/60 bg-white/35 text-black/60 backdrop-blur-md hover:bg-white/60 hover:text-black dark:border-white/10 dark:bg-white/5 dark:text-white/60 dark:hover:bg-white/10 dark:hover:text-white"
                   }`}
                 >
                   {item}
+                  <span
+                    className={`rounded-full px-1.5 py-0.5 text-[10px] font-bold ${
+                      isActive
+                        ? "bg-white/20 text-white dark:bg-black/15 dark:text-black"
+                        : "bg-black/5 text-black/50 dark:bg-white/10 dark:text-white/50"
+                    }`}
+                  >
+                    {countForStatus(item)}
+                  </span>
                 </button>
               );
             })}
