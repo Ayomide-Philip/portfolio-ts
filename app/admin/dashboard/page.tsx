@@ -8,7 +8,6 @@ import {
   FileText,
   FolderKanban,
   MessageSquare,
-  MoreHorizontal,
   Plus,
   TrendingUp,
 } from "lucide-react";
@@ -85,19 +84,12 @@ export default function AdminDashboardPage() {
                 >
                   <MetricIcon size={19} />
                 </span>
-                <MoreHorizontal
-                  size={18}
-                  className="text-black/30 dark:text-white/30"
-                />
               </div>
               <p className="mt-5 text-sm text-black/50 dark:text-white/50">
                 {metric.label}
               </p>
               <div className="mt-1 flex items-end justify-between gap-2">
                 <p className="text-2xl font-bold">{metric.value}</p>
-                <p className="text-[11px] font-medium text-emerald-600 dark:text-emerald-300">
-                  {metric.change}
-                </p>
               </div>
             </div>
           );
