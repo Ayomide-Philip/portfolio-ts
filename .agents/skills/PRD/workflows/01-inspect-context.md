@@ -45,12 +45,12 @@ Do not assume that an existing codebase requires a feature-specific PRD if the u
 
 Use the following conventions:
 
-- New product: `docs/prd.md`
-- Existing project feature: `docs/prd-<feature-name>.md`
+- New product: `PRD.md` (always in the project root)
+- Existing project feature: `docs/<feature-name>.md`
 - PRD update: Preserve the existing document's location and structure where practical.
 - Brainstorming or review only: Do not create files.
 
-If the destination directory does not exist, it may be created only after the user approves PRD generation.
+If the destination directory does not exist (such as `docs/` for a feature PRD), it may be created only after the user approves PRD generation.
 
 ### E. Determine Discovery Readiness
 
