@@ -17,9 +17,25 @@ After generating the PRD, perform a structured quality review before presenting 
 
 The objective is to ensure the document accurately represents the established requirements, contains no significant contradictions, and is suitable for human review and AI-assisted implementation.
 
+### Review Depth by Scope Tier
+
+The validation depth scales with the scope tier, but the approval requirement remains universal:
+
+- **Light Tier Review:** Rapid check. Verify that:
+  1. The core problem and proposed solution are clear.
+  2. The primary user flow is defined.
+  3. Requirements have unique identifiers (`FR-001` etc.) with testable acceptance criteria.
+  4. Assumptions and open questions are documented.
+  5. No internal contradictions exist.
+  *(Skip formal MoSCoW auditing, success metrics, and cross-feature validation).*
+- **Standard Tier Review:** Core audit. Review criteria 1 through 8 below for all sections present in the document.
+- **Full Tier Review:** Exhaustive audit. Complete evaluation of all 9 criteria below, including formal traceability, dependency graphs, edge-case coverage, and cross-feature validation.
+
+> **Mandatory Rule:** The explicit user approval gate (Section E) applies to **all tiers** (Light, Standard, and Full). Only the depth of validation changes.
+
 ## A. Automated PRD Validation
 
-Review the generated PRD against the following criteria:
+Review the generated PRD against the following criteria according to the active tier:
 
 ### 1. Completeness
 
@@ -168,7 +184,7 @@ Follow the PRD Update Rules established in Workflow 3 when modifying an existing
 
 ## E. Obtain Explicit User Approval
 
-After the user has reviewed the PRD and all requested modifications have been addressed, request explicit approval.
+After the user has reviewed the PRD and all requested modifications have been addressed, request explicit approval. This approval gate is non-negotiable and runs across all tiers (Light, Standard, and Full).
 
 Accept clear responses such as:
 

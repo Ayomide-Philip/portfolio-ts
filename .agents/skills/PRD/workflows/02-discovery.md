@@ -51,7 +51,12 @@ These dimensions are discovery guides, not a mandatory questionnaire. Only inves
 
 ### C. Conduct Adaptive Discovery
 
-Ask context-aware questions based on the gaps identified.
+State the chosen scope tier in one line (e.g. _"Using Light tier for this feature"_) when initiating discovery or presenting initial questions, and accept any user overrides (e.g. _"make it light"_, _"use full tier"_) immediately.
+
+Ask context-aware questions based on the gaps identified and the selected scope tier:
+
+- **Light Tier:** Keep discovery minimal. Ask only the 1-3 essential questions needed to clarify the core user problem, basic flow, and major technical constraints.
+- **Standard & Full Tiers:** Explore functional requirements, UI/UX expectations, edge cases, and technical integrations in proportionate depth.
 
 Rules:
 

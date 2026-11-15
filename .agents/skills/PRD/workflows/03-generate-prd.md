@@ -6,14 +6,28 @@ The PRD must serve as a single source of truth for both human developers and AI 
 
 It must clearly communicate what is being built, why it is being built, how the product should behave, and the constraints that implementation must respect.
 
-### A. Select the Appropriate PRD Structure
+### A. Scope Tier Structure Mapping
 
-Adapt the document structure to the project's scope and complexity.
+Generate the document using the scope tier determined in Workflow 1 (or overridden by the user):
 
-- New products require a complete product PRD.
-- Features in existing codebases require a feature-specific PRD.
-- Small features should not receive unnecessarily lengthy documentation.
-- Complex platforms require more detailed functional, technical, and operational specifications.
+| Section | Light Tier | Standard Tier | Full Tier |
+| :--- | :---: | :---: | :---: |
+| **1. Document Overview** | Omit (or 1-line title) | Yes (core metadata) | Yes (formal versioning & changelog) |
+| **2. Product / Feature Overview** | Yes (problem + solution) | Yes (vision, goals, non-goals) | Yes (full problem, vision, goals) |
+| **3. Target Users & User Roles** | Omit | Yes (applicable personas/roles) | Yes (detailed roles & permissions) |
+| **4. Functional Requirements** | Yes (`FR-001` with testable AC) | Yes (`FR-xxx` with rules & AC) | Yes (`FR-xxx`, rules, dependencies, AC) |
+| **5. User Journeys & Workflows** | Yes (concise primary flow) | Yes (happy path & error flow) | Yes (comprehensive journeys & edge cases) |
+| **6. UI/UX Requirements** | Omit (unless requested) | Yes (core screens & states) | Yes (full screen inventory & all 5 states) |
+| **7. Data & Technical Requirements**| Omit (unless requested) | Yes (key models & stack constraints) | Yes (schemas, API contracts, security) |
+| **8. Non-Functional Requirements** | Omit (unless requested) | Yes (essential performance & a11y) | Yes (full performance, security, SLAs) |
+| **9. MVP Scope & Prioritization** | Omit (unless requested) | Yes (core MoSCoW buckets) | Yes (formal MoSCoW & out-of-scope) |
+| **10. Success Metrics** | Omit | Omit / Optional | Yes (measurable KPIs) |
+| **11. Assumptions & Open Questions**| Yes (open questions) | Yes (assumptions & open questions) | Yes (assumptions, risks, open questions) |
+| **12. Cross-Feature Validation** | Omit | Omit | Yes (multi-feature interaction tests) |
+
+- **Light Tier:** A small feature or simple app. The PRD is short: problem, user flow, numbered requirements (`FR-001` etc.) with acceptance criteria, and open questions. No changelog, MoSCoW, success metrics, or cross-feature validation unless the user asks.
+- **Standard Tier:** A typical project. Use the core sections that apply, skipping any that are empty.
+- **Full Tier:** A large or long-lived project, such as a multi-role platform or a repo many people will maintain. All sections, plus versioning, changelog, and full validation.
 
 For Existing Feature PRDs:
 
@@ -22,7 +36,7 @@ For Existing Feature PRDs:
 - Focus on the feature objective, user flows, functional requirements, UI states, permissions, and integration/data changes.
 - Reference existing documentation where appropriate instead of duplicating it.
 
-Do not force every project into an identical template.
+Do not force every project into an identical template. Adapt according to the active tier.
 
 ### B. PRD Document Structure
 
@@ -251,12 +265,17 @@ Avoid vague instructions such as "make it user-friendly", "ensure it is scalable
 
 When updating an existing PRD:
 
-- Increment the document version appropriately (e.g. v1.0 to v1.1).
-- Add a brief changelog entry describing the modifications.
-- Preserve existing requirement identifiers such as FR-001.
-- Assign new requirement identifiers sequentially without reusing existing IDs.
-- Mark requirements that are no longer applicable as [DEPRECATED] rather than silently deleting them.
-- Preserve relevant historical decisions, assumptions, and out-of-scope notes unless their removal is explicitly requested.
+- **Full Tier (Strict Lifecycle):**
+  - Increment the document version appropriately (e.g. v1.0 to v1.1).
+  - Add a brief changelog entry describing the modifications.
+  - Preserve existing requirement identifiers such as FR-001.
+  - Assign new requirement identifiers sequentially without reusing existing IDs.
+  - Mark requirements that are no longer applicable as [DEPRECATED] rather than silently deleting them.
+  - Preserve relevant historical decisions, assumptions, and out-of-scope notes unless their removal is explicitly requested.
+- **Light & Standard Tiers:**
+  - Update requirements, user flows, and open questions directly to reflect current user intent.
+  - Formal changelog entries and [DEPRECATED] tags are omitted unless explicitly requested.
+  - Ensure any active functional requirements continue to have unique identifiers (`FR-001`, etc.).
 - Avoid rewriting unrelated sections.
 
 Do not write application code, scaffold the application, install dependencies, or begin implementation during this workflow.

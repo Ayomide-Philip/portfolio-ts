@@ -1,4 +1,4 @@
-## 1. Inspect Context & Determine Intent (Silent Step)
+## 1. Inspect Context, Determine Intent & Select Scope Tier (Silent Step)
 
 Before asking questions, creating files, modifying documentation, or writing code, understand the user's request and the existing workspace.
 
@@ -30,7 +30,21 @@ Determine which of the following intents best describes the request:
 
 If the request is ambiguous, infer the most reasonable intent from the conversation. Ask for clarification only when necessary.
 
-### C. Determine Project Context
+### C. Select Scope Tier
+
+Choose one of three tiers based on the project's complexity and scale:
+
+- **Light:** A small feature or simple app. The PRD is short: problem statement, basic user flow, numbered requirements (`FR-001` etc.) with observable acceptance criteria, and open questions/assumptions. No changelog, MoSCoW prioritization, success metrics, or cross-feature validation unless explicitly requested by the user.
+- **Standard:** A typical project. Use the core sections that apply, skipping any that are empty.
+- **Full:** A large or long-lived project, such as a multi-role platform or a repository many people will maintain. All sections, plus versioning, changelog, and full multi-point validation.
+
+**Selection Guidelines:**
+
+- **Default to Light when unsure.** Scale up to Standard or Full only when the request clearly involves multiple user roles, payments, complex third-party integrations, or multiple contributors.
+- **State the tier clearly:** Announce the chosen tier in a single concise line (e.g., _"Using Light tier for this feature"_).
+- **Accept user overrides:** Honor user overrides like _"make it light"_, _"use standard tier"_, or _"full PRD"_ at any point in the conversation.
+
+### D. Determine Project Context
 
 Establish:
 
@@ -41,26 +55,26 @@ Establish:
 
 Do not assume that an existing codebase requires a feature-specific PRD if the user explicitly wants to redefine the entire product.
 
-### D. Determine Document Destination
+### E. Determine Document Destination
 
 Use the following conventions:
 
-- New product: `PRD.md` (always in the project root)
-- Existing project feature: `docs/<feature-name>.md`
-- PRD update: Preserve the existing document's location and structure where practical.
-- Brainstorming or review only: Do not create files.
+- **Projects in a repository (Git / GitHub):** Save in `docs/` (e.g., `docs/prd.md` for a product, or `docs/<feature-name>.md` for a feature) so it is committed and versioned alongside the code.
+- **Standalone projects / project root preference:** `PRD.md` in the project root.
+- **PRD update:** Preserve the existing document's location and structure where practical.
+- **Brainstorming or review only:** Do not create files.
 
-If the destination directory does not exist (such as `docs/` for a feature PRD), it may be created only after the user approves PRD generation.
+If the destination directory (such as `docs/`) does not exist, it may be created only after the user approves PRD generation.
 
-### E. Determine Discovery Readiness
+### F. Determine Discovery Readiness
 
 Assess whether the user's request and available project context provide sufficient information to proceed to requirements clarification.
 
-Do not ask questions during this workflow. Carry identified gaps, assumptions, and relevant context into Workflow 2.
+Do not ask questions about things the workspace can answer. Carry real gaps, assumptions, and relevant context into Workflow 2.
 
 ### Constraints
 
 - This workflow is read-only.
 - Do not write code, scaffold files, install dependencies, or modify project files.
-- Do not ask questions that can be answered by inspecting the workspace.
+- Do not ask questions about things the workspace can answer.
 - Do not assume requirements that the user has not provided.
