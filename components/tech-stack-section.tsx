@@ -294,6 +294,48 @@ const TECH_ITEMS: TechItem[] = [
   },
 ];
 
+function escapeHtml(str: string) {
+  return str.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;");
+}
+
+function highlightCodeLine(line: string): string {
+  if (line.trim().startsWith("//")) {
+    return `<span class="token-comment">${escapeHtml(line)}</span>`;
+  }
+
+  const strings: string[] = [];
+  let processed = line.replace(/(["'`])(?:(?=(\\?))\2.)*?\1/g, (match) => {
+    strings.push(match);
+    return `___STR_${strings.length - 1}___`;
+  });
+
+  processed = processed.replace(
+    /\b(export|import|from|async|await|function|const|let|var|return|new|as|type|interface|default|class|extends|implements|enum)\b/g,
+    '<span class="token-keyword">$1</span>',
+  );
+
+  processed = processed.replace(
+    /\b(true|false|null|undefined|\d+)\b/g,
+    '<span class="token-bool">$1</span>',
+  );
+
+  processed = processed.replace(
+    /\b([a-zA-Z_$][a-zA-Z0-9_$]*)(?=\s*:)/g,
+    '<span class="token-prop">$1</span>',
+  );
+
+  processed = processed.replace(
+    /\b([a-zA-Z_$][a-zA-Z0-9_$]*)(?=\s*\()/g,
+    '<span class="token-id">$1</span>',
+  );
+
+  processed = processed.replace(/___STR_(\d+)___/g, (_, i) => {
+    return `<span class="token-str">${escapeHtml(strings[Number(i)])}</span>`;
+  });
+
+  return processed;
+}
+
 export function TechStackSection() {
   const [activeCategory, setActiveCategory] = useState<CategoryId>("all");
   const [selectedTechId, setSelectedTechId] = useState<string>("typescript");
@@ -354,7 +396,7 @@ export function TechStackSection() {
               className={`inline-flex items-center gap-2 rounded-full px-4 py-2 text-xs sm:text-sm font-medium transition-all duration-200 cursor-pointer shrink-0 whitespace-nowrap ${
                 isActive
                   ? "bg-slate-900 text-white shadow-xs dark:bg-white dark:text-slate-950"
-                  : "bg-slate-100/80 text-slate-600 hover:bg-slate-200/70 dark:bg-white/5 dark:text-slate-300 dark:hover:bg-white/10 dark:hover:text-white"
+                  : "backdrop-blur-xl bg-white/65 text-slate-800 border border-slate-200/85 shadow-[inset_0_1px_1px_rgba(255,255,255,0.9),0_2px_8px_rgba(15,23,42,0.04)] hover:bg-white/90 hover:border-slate-300 dark:bg-white/6 dark:text-slate-200 dark:border-white/12 dark:shadow-[inset_0_1px_1px_rgba(255,255,255,0.16)] dark:hover:bg-white/12 dark:hover:border-white/22"
               }`}
             >
               <span>{cat.label}</span>
@@ -382,10 +424,10 @@ export function TechStackSection() {
               <button
                 key={tech.id}
                 onClick={() => handleSelectTech(tech.id)}
-                className={`group relative flex flex-col justify-between text-left p-4 rounded-2xl transition-all duration-200 cursor-pointer select-none ${
+                className={`group relative flex flex-col justify-between text-left p-4 rounded-2xl transition-all duration-200 cursor-pointer select-none backdrop-blur-xl ${
                   isSelected
-                    ? "bg-white dark:bg-slate-800/90 border-2 border-teal-600 dark:border-teal-400 shadow-[0_8px_24px_rgba(15,23,42,0.08)] -translate-y-1"
-                    : "bg-white/60 dark:bg-slate-900/40 border border-slate-200/80 dark:border-white/8 hover:bg-white hover:border-slate-300 dark:hover:bg-slate-900/70 dark:hover:border-white/20 hover:-translate-y-0.5"
+                    ? "bg-white/90 border-2 border-teal-600 shadow-[inset_0_1px_1px_rgba(255,255,255,0.95),0_8px_24px_rgba(13,148,136,0.18)] -translate-y-1 dark:bg-white/12 dark:border-teal-400 dark:shadow-[inset_0_1px_1px_rgba(255,255,255,0.25),0_0_24px_-4px_rgba(45,212,191,0.35)]"
+                    : "bg-white/65 text-slate-900 border border-slate-200/85 shadow-[inset_0_1px_1px_rgba(255,255,255,0.9),0_2px_8px_rgba(15,23,42,0.04)] hover:bg-white/90 hover:border-slate-300 hover:-translate-y-0.5 dark:bg-white/6 dark:text-slate-100 dark:border-white/12 dark:shadow-[inset_0_1px_1px_rgba(255,255,255,0.16)] dark:hover:bg-white/12 dark:hover:border-white/22 dark:hover:-translate-y-0.5"
                 }`}
               >
                 <div>
@@ -394,7 +436,7 @@ export function TechStackSection() {
                       className={`flex h-10 w-10 items-center justify-center rounded-xl transition-transform duration-200 group-hover:scale-105 shrink-0 ${
                         isSelected
                           ? "bg-teal-500/15 border border-teal-600/30"
-                          : "bg-slate-100/90 dark:bg-white/6 border border-slate-200/70 dark:border-white/8"
+                          : "backdrop-blur-md bg-white/80 dark:bg-white/8 border border-slate-200/80 dark:border-white/10 shadow-2xs"
                       }`}
                     >
                       <IconComponent size={20} className={tech.iconColor} />
@@ -493,13 +535,33 @@ export function TechStackSection() {
                 {selectedTech.role}
               </p>
 
-              <div className="rounded-xl bg-slate-900 dark:bg-[#0c1017] p-3.5 text-slate-100 overflow-hidden font-mono text-[11px] leading-relaxed">
-                <div className="flex items-center justify-between pb-2 border-b border-white/8 text-slate-400 text-[11px]">
-                  <span>{selectedTech.file}</span>
-                  <span className="text-teal-400 font-medium">Config</span>
+              <div className="rounded-2xl border border-slate-800/80 bg-[#0c1017] dark:bg-[#030712] p-4 text-slate-100 overflow-hidden font-mono text-xs leading-relaxed shadow-inner">
+                <div className="flex items-center justify-between pb-2.5 border-b border-white/8 text-slate-400 text-[11px]">
+                  <div className="flex items-center gap-2">
+                    <span className="h-2 w-2 rounded-full bg-teal-400" />
+                    <span className="font-semibold text-slate-300 font-mono">
+                      {selectedTech.file}
+                    </span>
+                  </div>
+                  <span className="text-teal-400 font-medium font-mono text-[10px] uppercase tracking-wider">
+                    Config
+                  </span>
                 </div>
-                <pre className="mt-2 text-[11px] font-mono overflow-x-auto text-slate-300 whitespace-pre scrollbar-none">
-                  {selectedTech.snippet}
+
+                <pre className="mt-3 text-xs font-mono overflow-x-auto whitespace-pre scrollbar-none leading-relaxed">
+                  {selectedTech.snippet.split("\n").map((line, idx) => (
+                    <div key={idx} className="table-row">
+                      <span className="table-cell pr-3 text-slate-600 select-none text-[11px] text-right font-mono">
+                        {idx + 1}
+                      </span>
+                      <span
+                        className="table-cell font-mono"
+                        dangerouslySetInnerHTML={{
+                          __html: highlightCodeLine(line) || "&nbsp;",
+                        }}
+                      />
+                    </div>
+                  ))}
                 </pre>
               </div>
 
