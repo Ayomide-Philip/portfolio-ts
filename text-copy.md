@@ -1,291 +1,215 @@
-# Portfolio Public Page Copy
+# Portfolio Copy: Ayomide Philip
 
-This document contains all user-facing text for the public pages of the portfolio. Every section was written and reviewed to sound natural and grounded: no em dashes, no forced groups of three, no exaggerated claims, and no generic promotional filler.
+This document contains the user-facing text for the public pages of the portfolio for **Ayomide Philip**, Fullstack Developer. Every section is written in a natural, direct voice with no em dashes, no forced groups of three, and no generic promotional filler.
 
 ---
 
 ## 1. Global Navigation & Footer
 
 ### Navigation Bar
-- **Brand / Home:** Home (represented by the terminal icon)
-- **Links:**
+
+- **Brand / Home Icon:** Minimalist code terminal icon linking to `/`
+- **Navigation Links:**
   - Home
   - About
   - Projects
   - Blog
   - Contact
-- **CTA Button:** Get in touch
+- **Action Button:** Get in touch
 
 ### Footer
-- **Tagline:** Built with Next.js 16, TypeScript, Tailwind CSS v4, and Prisma.
-- **Copyright:** (c) 2026 Alex Morgan. All rights reserved.
+
+- **Tagline:** Built with Next.js, TypeScript, Tailwind CSS, and MongoDB.
+- **Copyright:** (c) 2026 Ayomide Philip. All rights reserved.
+- **Status:** Available for remote roles and contract work.
+- **Links:**
+  - GitHub
+  - LinkedIn
+  - Contact
 - **Back to Top:** Back to top
-- **Unlisted Admin Access:** Admin gateway (subtle, accessible at `/admin/login`)
+- **Admin Gateway:** Unlisted link at `/admin/login`
 
 ---
 
 ## 2. Home Page (`/`)
 
 ### Hero Section
-- **Role Headline:** Senior Full-Stack Engineer and Distributed Systems Architect
-- **Introductory Paragraph:**
-  I design backend services, event pipelines, and web applications that stay fast under load. Over the past eight years, I have helped engineering teams scale data infrastructure, cut cloud costs, and ship maintainable TypeScript codebases.
-- **Primary CTA:** View projects
-- **Secondary CTA:** Read engineering notes
 
-### Approach & Engineering Priorities
-- **Section Title:** How I work
-- **Subtitle:** Practical priorities gathered from building and maintaining production systems.
-- **Priority 1:**
-  - **Heading:** Clear code over clever code
-  - **Body:** Code is read twenty times more often than it is written. I prefer explicit data flows, readable types, and straightforward functions over abstract meta-programming that saves three keystrokes.
-- **Priority 2:**
-  - **Heading:** Measure before optimizing
-  - **Body:** Performance work starts with profiling data, query plans, and traces. Guessing bottlenecks usually wastes engineering time and fixes the wrong problem.
-- **Priority 3:**
-  - **Heading:** Operable by default
-  - **Body:** A feature is not done when it passes local tests. It needs structured logs, health checks, sensible timeouts, and alerts so on-call engineers can debug issues quickly.
+- **Name:** Ayomide Philip
+- **Role Headline:** Fullstack Developer
+- **Introductory Copy:**
+  I build fast, responsive web applications using React, Next.js, TypeScript, and MongoDB. I focus on clean code, solid database design, and interfaces that feel effortless to use.
+- **Availability Tag:** Available for remote work
+- **Primary Action Button:** View my work
+- **Secondary Action Button:** Get in touch
 
-### Featured Projects Preview
+### What I Do (Core Focus)
+
+- **Section Title:** What I build
+- **Subtitle:** Practical web development focused on performance, usability, and maintainability.
+- **Area 1:**
+  - **Heading:** Frontend engineering
+  - **Description:** Building responsive, accessible interfaces with React, Next.js, and Tailwind CSS. I care about fast load times, smooth interactions, and layouts that look sharp on any screen.
+- **Area 2:**
+  - **Heading:** Backend and APIs
+  - **Description:** Creating reliable backend services and REST APIs with Node.js, Next.js route handlers, and MongoDB. Structured data modeling, secure authentication, and clear error handling.
+- **Area 3:**
+  - **Heading:** Clean workflows
+  - **Description:** Version control with Git, modular component design, and end-to-end type safety with TypeScript to keep codebases readable and easy to update.
+
+### Tech Stack Overview
+
+- **Section Title:** Technologies I use
+- **Subtitle:** The tools and libraries I reach for to build production applications.
+- **Core Languages & Frameworks:**
+  - JavaScript, TypeScript, React, Next.js, Node.js
+- **Styling & Design:**
+  - Tailwind CSS, HTML5, CSS Custom Properties
+- **Databases & State:**
+  - MongoDB, Mongoose, Prisma, REST APIs
+- **Tooling & Workflow:**
+  - Git, GitHub, VS Code, npm, pnpm
+
+### Featured Projects Teaser
+
+_(Note: Project case studies will be updated with your real projects as we build them.)_
+
 - **Section Title:** Selected projects
-- **Subtitle:** Production architectures, developer tooling, and database systems.
-- **Project 1 Card:**
-  - **Category:** Distributed Systems
-  - **Title:** Real-Time Event Pipeline
-  - **Summary:** Distributed event streaming platform handling 25,000 writes per second with sub-50ms processing latency. Built with Kafka, Node.js, and Redis.
-  - **Link Text:** Read case study
-- **Project 2 Card:**
-  - **Category:** Database Infrastructure
-  - **Title:** Zero-Downtime Schema Migration Toolkit
-  - **Summary:** Automated data synchronization engine that cut cutover windows from four hours of scheduled downtime down to zero seconds during major PostgreSQL migrations.
-  - **Link Text:** Read case study
-- **Project 3 Card:**
-  - **Category:** Web Performance
-  - **Title:** Edge Analytics Dashboard
-  - **Summary:** Real-time metrics visualization platform built with Next.js App Router and ClickHouse, rendering queries over 40 million records in under 200 milliseconds.
-  - **Link Text:** Read case study
-- **Section CTA:** View all projects
+- **Subtitle:** Recent applications and tools I have built.
+- **Placeholder Card 1:**
+  - **Title:** Modern Web Application
+  - **Description:** Fullstack web application built with Next.js, Tailwind CSS, and MongoDB, featuring user authentication, real-time data updates, and responsive layouts.
+  - **Tech:** Next.js, TypeScript, MongoDB, Tailwind CSS
+- **Placeholder Card 2:**
+  - **Title:** Interactive Dashboard Platform
+  - **Description:** Data-driven dashboard with dynamic filtering, secure API endpoints, and clean UI state management.
+  - **Tech:** React, Next.js, Tailwind CSS
+- **Section Button:** View all projects
 
-### Technical Stack
-- **Section Title:** Stack and tooling
-- **Subtitle:** Technologies I reach for most often based on operational stability and developer productivity.
-- **Group 1: Languages & Runtime:**
-  - TypeScript, JavaScript (Node.js, Bun), Go, SQL
-- **Group 2: Frontend & UI:**
-  - Next.js (App Router), React 19, Tailwind CSS v4, HTML5, CSS Custom Properties
-- **Group 3: Backend & APIs:**
-  - REST, GraphQL, WebSockets, gRPC, Auth.js
-- **Group 4: Storage & Streaming:**
-  - PostgreSQL, MongoDB, Redis, Apache Kafka, ClickHouse, Prisma ORM
-- **Group 5: Infrastructure & DevOps:**
-  - Docker, Kubernetes, AWS (ECS, RDS, S3), GitHub Actions, Cloudflare
+### Home Page Contact Prompt
 
-### Closing Call to Action
-- **Heading:** Let's discuss your next project
-- **Body:** I am open to consulting engagements, architectural reviews, and senior full-time engineering roles. Send a message to see if we are a good fit.
-- **Button:** Contact me
+- **Heading:** Have a project in mind?
+- **Body:** I am currently open to remote full-time positions, contract roles, and collaborative projects.
+- **Button:** Send me a message
 
 ---
 
 ## 3. About Page (`/about`)
 
 ### Header
+
 - **Page Title:** About me
 - **Lead Text:**
-  I am a software engineer based in Berlin. I specialize in backend infrastructure, distributed data systems, and web applications built with TypeScript and Go.
+  Hello, I'm Ayomide Philip. I am a remote fullstack developer who enjoys turning ideas into clean, functional web applications.
 
-### Professional Background
-- **Section Title:** Background
+### About Ayomide
+
+- **Section Title:** How I work
 - **Paragraph 1:**
-  I started writing software in 2017, initially building internal tools and billing integrations for SaaS companies. As those platforms grew, I moved closer to the infrastructure layer, focusing on query optimization, caching strategies, and event-driven architectures.
+  I spend most of my time working across the JavaScript and TypeScript ecosystem. On the frontend, I use React and Next.js paired with Tailwind CSS to build interfaces that load quickly and adapt smoothly to any screen size.
 - **Paragraph 2:**
-  Most of my recent work involves untangling legacy monolithic services into decoupled systems, fixing database bottlenecks, and designing clean APIs that product teams can ship against without friction. I enjoy writing clear technical documentation just as much as writing code.
+  On the backend, I design database schemas in MongoDB and write API endpoints that handle data reliably. I value straightforward solutions, readable code, and well-organized project structures over unnecessary complexity.
 - **Paragraph 3:**
-  When I am not writing code, you will find me reading systems papers, tinkering with mechanical keyboards, or cycling around Brandenburg.
+  Working remotely has taught me the value of clear communication, thoughtful pull requests, and owning features from the initial design down to deployment.
 
-### Core Philosophy
-- **Section Title:** Engineering principles
+### Principles
+
 - **Principle 1:**
-  - **Title:** Boring technology wins in production
-  - **Description:** Postgres, Redis, and standard HTTP solve 95% of software problems reliably. New frameworks and databases should carry a strong operational justification before entering a critical path.
+  - **Heading:** Keep it simple
+  - **Body:** The best code is easy to read, test, and change later. I avoid over-engineering when a clean, straightforward function gets the job done.
 - **Principle 2:**
-  - **Title:** Write tests that document behavior
-  - **Description:** Tests should verify business outcomes and edge cases, not mirror implementation details line for line. When tests are brittle, refactoring stops happening.
+  - **Heading:** Attention to detail
+  - **Body:** Good user experiences come from small things done right: proper form validation, accessible buttons, and fast response times.
 - **Principle 3:**
-  - **Title:** Small pull requests ship faster
-  - **Description:** A pull request with 200 lines gets reviewed thoroughly in twenty minutes. A pull request with 2,000 lines gets approved with an emoji and breaks production.
-
-### Experience Timeline
-- **Section Title:** Work history
-- **Role 1 (2023 - Present):**
-  - **Title:** Staff Software Engineer
-  - **Company:** LayerShift Technologies
-  - **Summary:** Lead architect for the core data platform. Managed the migration from an unindexed Postgres database to a partitioned cluster handling 100M+ events daily. Reduced average API response time from 380ms to 45ms.
-- **Role 2 (2020 - 2023):**
-  - **Title:** Senior Full-Stack Engineer
-  - **Company:** VectorMetrics
-  - **Summary:** Built customer-facing dashboard features in Next.js and designed worker queues in Go to ingest web analytics from 1,200 tenant domains. Mentored junior and mid-level engineers on database indexing and API design.
-- **Role 3 (2018 - 2020):**
-  - **Title:** Software Engineer
-  - **Company:** CloudBridge Labs
-  - **Summary:** Developed integrations between payment gateways, accounting systems, and CRM tools. Implemented retry logic with exponential backoff and dead-letter queues to eliminate transaction loss.
-
-### Resume & Contact Prompt
-- **Button:** Download resume (PDF)
-- **Alternate Link:** View GitHub profile
+  - **Heading:** Continuous learning
+  - **Body:** Web development moves fast. I regularly build side projects and explore new tools to sharpen my skills and find better ways to solve problems.
 
 ---
 
-## 4. Projects Page (`/projects` & Case Studies)
+## 4. Projects Page (`/projects`)
 
 ### Header
-- **Page Title:** Projects and case studies
+
+- **Page Title:** Projects
 - **Lead Text:**
-  A collection of production platforms, developer tools, and architecture experiments I have designed and deployed.
+  A showcase of web applications and platforms I have built. Each project represents real problem-solving, clean architecture, and responsive design.
 
-### Filter Categories
-- All projects
-- Distributed systems
-- Developer tools
-- Web applications
-- Open source
+### Structure (To be filled with your specific projects)
 
-### Project 1: Distributed Real-Time Event Pipeline
-- **Slug:** `distributed-real-time-event-pipeline`
-- **Tagline:** Ingestion engine for high-volume telemetry data.
-- **Metrics:** 25k req/sec throughput, 42ms p99 latency, 99.98% uptime.
-- **Technologies:** Node.js, Kafka, Redis, Docker, TypeScript.
-- **Problem:**
-  The client's single-node ingestion service was dropping incoming telemetry events during daily traffic spikes. Database CPU spiked to 100%, causing cascading timeouts across client dashboards.
-- **Solution:**
-  Decoupled the ingestion endpoint from the database write path using a Kafka cluster. Deployed a fleet of lightweight consumer workers that batch incoming records before persisting them to cold storage and Redis caching tiers.
-- **Outcome:**
-  Zero dropped events during peak traffic bursts, with ingestion latency dropping below 50 milliseconds.
-
-### Project 2: Zero-Downtime Schema Migration Platform
-- **Slug:** `zero-downtime-schema-migration`
-- **Tagline:** Non-blocking database cutover toolkit for large relational tables.
-- **Metrics:** 0 seconds downtime, 12M rows migrated, 100% data parity.
-- **Technologies:** PostgreSQL, Prisma, TypeScript, Docker.
-- **Problem:**
-  Altering a 12-million-row financial ledger table locked writes for up to 45 minutes, violating customer SLAs and requiring stressful midnight maintenance windows.
-- **Solution:**
-  Implemented a dual-write and backfill pattern with asynchronous verification checks. Created a migration runner that replicated historical records in batches while shadow-writing new events.
-- **Outcome:**
-  Completed the schema cutover during normal business hours with zero downtime and verified data integrity down to the millisecond.
-
-### Project 3: Edge Analytics SDK & Dashboard
-- **Slug:** `edge-analytics-sdk`
-- **Tagline:** Cookieless analytics tracking library and visualization panel.
-- **Metrics:** 2.8kb bundle size, <200ms query time over 40M records.
-- **Technologies:** Next.js 16, TypeScript, ClickHouse, Tailwind CSS.
-- **Problem:**
-  Existing third-party analytics scripts added 45kb of bloat to client landing pages and caused layout shifts that degraded Core Web Vitals.
-- **Solution:**
-  Wrote a minimal 2.8kb tracking snippet using the `sendBeacon` API. Built an analytical reporting interface on top of ClickHouse to aggregate page views and interaction heatmaps in real time.
-- **Outcome:**
-  Maintained 100/100 Lighthouse performance scores across all client sites and gave teams instant query reporting without sample rate throttling.
-
-### Project 4: Autonomous Workflow & Queue Orchestrator
-- **Slug:** `workflow-queue-orchestrator`
-- **Tagline:** Fault-tolerant job queue with step retries and task dependency graphs.
-- **Metrics:** 50,000 daily jobs, automated failure recovery, webhook triggers.
-- **Technologies:** TypeScript, Node.js, BullMQ, Redis, PostgreSQL.
-- **Problem:**
-  Multi-step document generation workflows failed midway whenever external OCR services timed out, forcing users to start over and re-upload files manually.
-- **Solution:**
-  Structured workflows into directed acyclic graphs (DAGs) where each step commits its output to persistent state before executing the next step. Added individual retry budgets per step.
-- **Outcome:**
-  Reduced failed workflow runs by 87% and eliminated redundant API calls to expensive third-party endpoints.
+- **Status Note:** Specific project case studies, screenshots, and live demo links will be plugged in here directly as we build the projects section.
 
 ---
 
-## 5. Blog Page (`/blog` & Article Previews)
+## 5. Blog Page (`/blog`)
 
 ### Header
-- **Page Title:** Engineering notes
+
+- **Page Title:** Blog and notes
 - **Lead Text:**
-  Thoughts on distributed systems, TypeScript internals, database patterns, and lessons learned from production incidents.
+  Articles and notes about web development, lessons learned while building with React and Next.js, and practical tips on writing clean code.
 
-### Article 1: Handling Race Conditions in Postgres Without Locking the World
-- **Date:** October 14, 2026
-- **Read Time:** 7 min read
-- **Tags:** PostgreSQL, Database Design, Concurrency
-- **Excerpt:**
-  Row-level locks (`SELECT FOR UPDATE`) prevent double-booking bugs, but they can quickly degrade throughput under concurrent load. Here is how we used advisory locks and conditional updates to eliminate race conditions without bottlenecking the database.
+### Sample Topics
 
-### Article 2: Why We Replaced Raw SQL with Prisma (and Where It Bit Us)
-- **Date:** August 29, 2026
-- **Read Time:** 9 min read
-- **Tags:** TypeScript, Prisma, Architecture
-- **Excerpt:**
-  Type safety across database queries catches typos before they hit production, but ORMs can hide expensive N+1 queries behind innocent object lookups. A look at the real trade-offs we encountered after six months in production.
-
-### Article 3: Building Offline-First Web Apps with React 19 and Web Workers
-- **Date:** July 12, 2026
-- **Read Time:** 6 min read
-- **Tags:** React, Web Performance, Frontend
-- **Excerpt:**
-  Offloading data parsing and indexedDB synchronization to a dedicated Web Worker keeps your main UI thread running at a smooth 60 frames per second, even when processing messy 5MB payloads.
-
-### Article 4: Pragmatic TypeScript: When Strict Mode Helps and When It Gets in the Way
-- **Date:** May 19, 2026
-- **Read Time:** 5 min read
-- **Tags:** TypeScript, Best Practices
-- **Excerpt:**
-  TypeScript exists to help you ship working software with fewer runtime surprises. When your type definitions require fifty lines of generic gymnastics just to validate an internal config object, you have stopped solving the actual user problem.
+- **Post 1:**
+  - **Title:** Building clean forms in Next.js with client-side validation
+  - **Summary:** How to handle user input, validation states, and API submissions cleanly without clunky re-renders.
+  - **Tags:** Next.js, React, Forms
+- **Post 2:**
+  - **Title:** Structuring MongoDB schemas for growing applications
+  - **Summary:** Practical approaches to modeling relationships, embedding documents, and indexing queries in MongoDB.
+  - **Tags:** MongoDB, Backend, Database
+- **Post 3:**
+  - **Title:** Getting the most out of Tailwind CSS in Next.js App Router
+  - **Summary:** Tips on organizing utility classes, creating reusable components, and managing theme variables.
+  - **Tags:** Tailwind CSS, Frontend
 
 ---
 
 ## 6. Contact Page (`/contact`)
 
 ### Header
+
 - **Page Title:** Get in touch
 - **Lead Text:**
-  Have a technical question, a project you want to collaborate on, or an engineering role you are hiring for? Send me a message below or email me directly.
+  Whether you have an opportunity, a project idea, or just want to connect, feel free to send me a message below.
 
-### Direct Contact Details
-- **Email:** alex@alexmorgan.dev
-- **Response Time:** I typically respond within 24 to 48 hours on business days.
-- **Location:** Berlin, Germany (Central European Time, UTC+1 / UTC+2)
-- **Preferred Inquiries:**
-  - Full-stack TypeScript and Go contracts
-  - Database schema audits and performance tuning
-  - Technical advisory and mentoring
+### Contact Details
 
-### Form Fields & Microcopy
+- **Status:** Open to remote full-time roles, contracts, and freelance projects.
+- **Location:** Remote (flexible across time zones).
+- **Direct Email:** (To be added or configured through the contact form)
+
+### Contact Form Fields & Copy
+
 - **Name Field:**
-  - Label: Your name
-  - Placeholder: Jane Doe
-  - Error: Please provide your name.
+  - **Label:** Your name
+  - **Placeholder:** Enter your name
+  - **Error:** Please enter your name.
 - **Email Field:**
-  - Label: Email address
-  - Placeholder: jane@company.com
-  - Error: Please provide a valid email address so I can reply.
+  - **Label:** Email address
+  - **Placeholder:** you@example.com
+  - **Error:** Please enter a valid email address.
 - **Subject Field:**
-  - Label: Subject
-  - Placeholder: Project inquiry or discussion topic
-  - Error: Please provide a subject line.
+  - **Label:** Subject
+  - **Placeholder:** What is this regarding?
+  - **Error:** Please provide a subject.
 - **Message Field:**
-  - Label: Message
-  - Placeholder: Tell me about your project, timeline, and what you are looking to build...
-  - Error: Message must be at least 20 characters long.
+  - **Label:** Message
+  - **Placeholder:** Tell me about your project, timeline, or question...
+  - **Error:** Please enter a message (at least 20 characters).
 - **Submit Button:** Send message
-- **Submitting State:** Sending message...
-- **Success Alert:**
-  - Heading: Message delivered
-  - Body: Thank you for reaching out. I have received your message and will get back to you shortly.
-- **Error Alert:**
-  - Heading: Message failed to send
-  - Body: Something went wrong while submitting the form. Please try again or email me directly at alex@alexmorgan.dev.
+- **Submitting State:** Sending...
+- **Success Notification:**
+  - **Heading:** Message sent
+  - **Body:** Thanks for reaching out, Ayomide will get back to you soon.
+- **Error Notification:**
+  - **Heading:** Delivery issue
+  - **Body:** There was a problem sending your message. Please try again in a moment.
 
 ---
 
-## 7. Not Found Page (`/_not-found`)
+## 7. 404 Page (`/_not-found`)
 
-- **Status Code:** 404
 - **Heading:** Page not found
-- **Body:**
-  The page you are looking for does not exist or may have been moved to a new route. Check the URL for typos or head back to the home page.
-- **Action Button:** Return to home
-- **Secondary Link:** View projects
+- **Body:** The page you are looking for does not exist or has been moved.
+- **Button:** Return to home
