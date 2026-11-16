@@ -1,0 +1,1131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Design System — portfolio-ts</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Instrument+Sans:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+
+  <style>
+    /* ==========================================================================
+       Design Tokens
+       ========================================================================== */
+    :root {
+      /* Palette - Light Mode */
+      --color-bg: #F8FAFC;
+      --color-surface: #FFFFFF;
+      --color-surface-muted: #F1F5F9;
+      --color-border: #E2E8F0;
+      --color-border-hover: #CBD5E1;
+      --color-text: #0F172A;
+      --color-text-muted: #475569;
+      --color-text-subtle: #94A3B8;
+      --color-accent: #0F766E;
+      --color-highlight: #D97706;
+
+      --sidebar-active-bg: rgba(15, 23, 42, 0.08);
+      --sidebar-active-text: #0F172A;
+
+      /* Typography */
+      --font-body: 'Instrument Sans', system-ui, -apple-system, sans-serif;
+      --font-heading: 'Instrument Sans', system-ui, -apple-system, sans-serif;
+      --font-mono: 'JetBrains Mono', monospace;
+
+      --text-xs: 0.75rem;
+      --text-sm: 0.875rem;
+      --text-base: 1rem;
+      --text-lg: 1.25rem;
+      --text-xl: 1.75rem;
+      --text-2xl: 2.25rem;
+
+      --leading-tight: 1.2;
+      --leading-normal: 1.6;
+
+      /* Spacing (8px Base) */
+      --space-1: 0.25rem;  /* 4px */
+      --space-2: 0.5rem;   /* 8px */
+      --space-3: 0.75rem;  /* 12px */
+      --space-4: 1rem;     /* 16px */
+      --space-5: 1.5rem;   /* 24px */
+      --space-6: 2rem;     /* 32px */
+      --space-7: 3rem;     /* 48px */
+      --space-8: 4rem;     /* 64px */
+
+      /* Radius */
+      --radius-sm: 6px;
+      --radius-md: 10px;
+      --radius-lg: 14px;
+      --radius-full: 9999px;
+
+      /* Shadows */
+      --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+      --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.07), 0 2px 4px -2px rgba(0, 0, 0, 0.05);
+
+      --transition: 150ms ease;
+    }
+
+    /* System Dark Mode */
+    @media (prefers-color-scheme: dark) {
+      :root:not([data-theme="light"]) {
+        --color-bg: #080B11;
+        --color-surface: #111622;
+        --color-surface-muted: #171E2E;
+        --color-border: #1E283D;
+        --color-border-hover: #334466;
+        --color-text: #F1F5F9;
+        --color-text-muted: #94A3B8;
+        --color-text-subtle: #64748B;
+        --color-accent: #2DD4BF;
+        --color-highlight: #F59E0B;
+
+        --sidebar-active-bg: rgba(255, 255, 255, 0.08);
+        --sidebar-active-text: #F8FAFC;
+
+        --shadow-sm: none;
+        --shadow-md: none;
+      }
+    }
+
+    /* Manual Dark Mode Override */
+    :root[data-theme="dark"] {
+      --color-bg: #080B11;
+      --color-surface: #111622;
+      --color-surface-muted: #171E2E;
+      --color-border: #1E283D;
+      --color-border-hover: #334466;
+      --color-text: #F1F5F9;
+      --color-text-muted: #94A3B8;
+      --color-text-subtle: #64748B;
+      --color-accent: #2DD4BF;
+      --color-highlight: #F59E0B;
+
+        --sidebar-active-bg: rgba(255, 255, 255, 0.08);
+        --sidebar-active-text: #F8FAFC;
+
+        --shadow-sm: none;
+        --shadow-md: none;
+    }
+
+    /* Manual Light Mode Override */
+    :root[data-theme="light"] {
+      --color-bg: #F8FAFC;
+      --color-surface: #FFFFFF;
+      --color-surface-muted: #F1F5F9;
+      --color-border: #E2E8F0;
+      --color-border-hover: #CBD5E1;
+      --color-text: #0F172A;
+      --color-text-muted: #475569;
+      --color-text-subtle: #94A3B8;
+      --color-accent: #0F766E;
+      --color-highlight: #D97706;
+
+      --sidebar-active-bg: rgba(15, 23, 42, 0.08);
+      --sidebar-active-text: #0F172A;
+
+      --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+      --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.07), 0 2px 4px -2px rgba(0, 0, 0, 0.05);
+    }
+
+    /* ==========================================================================
+       Reset & Base Styles
+       ========================================================================== */
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      background-color: var(--color-bg);
+      color: var(--color-text);
+      font-family: var(--font-body);
+      font-size: var(--text-base);
+      line-height: var(--leading-normal);
+      transition: background-color var(--transition), color var(--transition);
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+    }
+
+    /* ==========================================================================
+       Top Navigation Bar
+       ========================================================================== */
+    .top-nav {
+      position: sticky;
+      top: 0;
+      z-index: 50;
+      background-color: var(--color-bg);
+      border-bottom: 1px solid var(--color-border);
+      padding: 0 var(--space-6);
+      height: 56px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      transition: background-color var(--transition), border-color var(--transition);
+    }
+
+    .brand-group {
+      display: flex;
+      align-items: center;
+      gap: var(--space-3);
+    }
+
+    .brand-logo {
+      font-weight: 700;
+      font-size: var(--text-base);
+      color: var(--color-text);
+      text-decoration: none;
+      letter-spacing: -0.02em;
+    }
+
+    .brand-logo span {
+      color: var(--color-accent);
+    }
+
+    .brand-separator {
+      width: 1px;
+      height: 14px;
+      background-color: var(--color-border);
+    }
+
+    .brand-subtitle {
+      font-size: var(--text-sm);
+      color: var(--color-text-muted);
+    }
+
+    .theme-toggle-btn {
+      background: none;
+      border: none;
+      color: var(--color-text-muted);
+      cursor: pointer;
+      padding: var(--space-2);
+      border-radius: var(--radius-sm);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: color var(--transition);
+    }
+
+    .theme-toggle-btn:hover {
+      color: var(--color-text);
+    }
+
+    .theme-toggle-btn svg {
+      width: 18px;
+      height: 18px;
+      stroke: currentColor;
+      fill: none;
+      stroke-width: 2;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+    }
+
+    /* ==========================================================================
+       Layout: Two-Column (Sidebar + Content)
+       ========================================================================== */
+    .app-layout {
+      max-width: 1280px;
+      margin: 0 auto;
+      padding: var(--space-7) var(--space-6);
+      display: grid;
+      grid-template-columns: 220px 1fr;
+      gap: var(--space-8);
+      align-items: start;
+    }
+
+    @media (max-width: 860px) {
+      .app-layout {
+        grid-template-columns: 1fr;
+        gap: var(--space-6);
+        padding: var(--space-5) var(--space-4);
+      }
+      .sidebar {
+        position: static !important;
+        display: flex;
+        overflow-x: auto;
+        padding-bottom: var(--space-2);
+        gap: var(--space-1);
+      }
+      .sidebar-nav {
+        display: flex;
+        flex-direction: row !important;
+      }
+    }
+
+    /* ==========================================================================
+       Left Sidebar Navigation
+       ========================================================================== */
+    .sidebar {
+      position: sticky;
+      top: 88px;
+    }
+
+    .sidebar-nav {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 2px;
+    }
+
+    .sidebar-link {
+      display: block;
+      padding: 7px 14px;
+      font-size: var(--text-sm);
+      font-weight: 500;
+      color: var(--color-text-muted);
+      text-decoration: none;
+      border-radius: var(--radius-sm);
+      transition: background-color var(--transition), color var(--transition);
+      white-space: nowrap;
+    }
+
+    .sidebar-link:hover {
+      color: var(--color-text);
+    }
+
+    .sidebar-link.active {
+      background-color: var(--sidebar-active-bg);
+      color: var(--sidebar-active-text);
+      font-weight: 600;
+    }
+
+    /* ==========================================================================
+       Main Content Area
+       ========================================================================== */
+    .content-area {
+      display: flex;
+      flex-direction: column;
+      gap: var(--space-7);
+      max-width: 880px;
+    }
+
+    /* Header Section */
+    .doc-header {
+      padding-bottom: var(--space-6);
+      border-bottom: 1px solid var(--color-border);
+      display: flex;
+      flex-direction: column;
+      gap: var(--space-2);
+    }
+
+    .doc-title {
+      font-size: var(--text-2xl);
+      font-weight: 700;
+      letter-spacing: -0.03em;
+      line-height: var(--leading-tight);
+    }
+
+    .doc-subtitle {
+      font-size: var(--text-base);
+      color: var(--color-text-muted);
+      max-width: 620px;
+      line-height: var(--leading-normal);
+    }
+
+    /* Section Component */
+    .doc-section {
+      display: flex;
+      flex-direction: column;
+      gap: var(--space-5);
+      scroll-margin-top: 80px;
+    }
+
+    .section-header {
+      display: flex;
+      flex-direction: column;
+      gap: var(--space-2);
+    }
+
+    .section-title {
+      font-size: var(--text-xl);
+      font-weight: 700;
+      letter-spacing: -0.02em;
+    }
+
+    .section-desc {
+      font-size: var(--text-sm);
+      color: var(--color-text-muted);
+      max-width: 680px;
+      line-height: var(--leading-normal);
+    }
+
+    /* Sub-category Label */
+    .category-label {
+      font-size: var(--text-xs);
+      font-weight: 600;
+      color: var(--color-text-muted);
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      margin-bottom: var(--space-3);
+    }
+
+    /* ==========================================================================
+       Colour Swatches (Exact Figma/Remit card style)
+       ========================================================================== */
+    .swatches-group {
+      display: flex;
+      flex-direction: column;
+      gap: var(--space-2);
+    }
+
+    .swatches-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(130px, 1fr));
+      gap: var(--space-3);
+    }
+
+    .swatch-item {
+      display: flex;
+      flex-direction: column;
+      gap: var(--space-2);
+    }
+
+    .swatch-card {
+      height: 72px;
+      border-radius: var(--radius-md);
+      border: 1px solid var(--color-border);
+      transition: transform var(--transition);
+    }
+
+    .swatch-item:hover .swatch-card {
+      transform: translateY(-2px);
+    }
+
+    .swatch-info {
+      display: flex;
+      flex-direction: column;
+      gap: 1px;
+    }
+
+    .swatch-title {
+      font-size: var(--text-sm);
+      font-weight: 600;
+      color: var(--color-text);
+    }
+
+    .swatch-var {
+      font-family: var(--font-mono);
+      font-size: var(--text-xs);
+      color: var(--color-text-subtle);
+    }
+
+    /* ==========================================================================
+       Typography Section
+       ========================================================================== */
+    .type-specimens {
+      display: flex;
+      flex-direction: column;
+      gap: var(--space-5);
+      background-color: var(--color-surface);
+      border: 1px solid var(--color-border);
+      border-radius: var(--radius-lg);
+      padding: var(--space-6);
+    }
+
+    .type-specimen-row {
+      display: flex;
+      flex-direction: column;
+      gap: var(--space-1);
+      padding-bottom: var(--space-4);
+      border-bottom: 1px solid var(--color-border);
+    }
+
+    .type-specimen-row:last-child {
+      padding-bottom: 0;
+      border-bottom: none;
+    }
+
+    .type-specimen-meta {
+      font-family: var(--font-mono);
+      font-size: var(--text-xs);
+      color: var(--color-text-subtle);
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+    }
+
+    .type-display-2xl { font-size: var(--text-2xl); font-weight: 700; letter-spacing: -0.03em; }
+    .type-display-xl { font-size: var(--text-xl); font-weight: 700; letter-spacing: -0.02em; }
+    .type-display-lg { font-size: var(--text-lg); font-weight: 600; }
+    .type-display-base { font-size: var(--text-base); }
+    .type-display-sm { font-size: var(--text-sm); color: var(--color-text-muted); }
+
+    .code-block {
+      font-family: var(--font-mono);
+      font-size: var(--text-sm);
+      background-color: var(--color-bg);
+      border: 1px solid var(--color-border);
+      border-radius: var(--radius-sm);
+      padding: var(--space-3) var(--space-4);
+      color: var(--color-accent);
+      overflow-x: auto;
+    }
+
+    /* ==========================================================================
+       Spacing & Radius Section
+       ========================================================================== */
+    .tokens-card {
+      background-color: var(--color-surface);
+      border: 1px solid var(--color-border);
+      border-radius: var(--radius-lg);
+      padding: var(--space-6);
+      display: flex;
+      flex-direction: column;
+      gap: var(--space-4);
+    }
+
+    .spacing-item {
+      display: flex;
+      align-items: center;
+      gap: var(--space-4);
+    }
+
+    .spacing-meta {
+      font-family: var(--font-mono);
+      font-size: var(--text-xs);
+      color: var(--color-text-muted);
+      width: 140px;
+      flex-shrink: 0;
+    }
+
+    .spacing-bar {
+      height: 18px;
+      background-color: var(--color-accent);
+      border-radius: var(--radius-sm);
+    }
+
+    .radius-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(130px, 1fr));
+      gap: var(--space-3);
+    }
+
+    .radius-box {
+      background-color: var(--color-surface-muted);
+      border: 1px solid var(--color-border);
+      height: 80px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 2px;
+      text-align: center;
+    }
+
+    /* ==========================================================================
+       Buttons Section
+       ========================================================================== */
+    .buttons-container {
+      display: flex;
+      flex-wrap: wrap;
+      gap: var(--space-3);
+      align-items: center;
+      background-color: var(--color-surface);
+      border: 1px solid var(--color-border);
+      border-radius: var(--radius-lg);
+      padding: var(--space-6);
+    }
+
+    .btn {
+      font-family: var(--font-body);
+      font-size: var(--text-sm);
+      font-weight: 600;
+      padding: 9px 18px;
+      border-radius: var(--radius-sm);
+      cursor: pointer;
+      transition: all var(--transition);
+      display: inline-flex;
+      align-items: center;
+      gap: var(--space-2);
+      text-decoration: none;
+    }
+
+    .btn-primary {
+      background-color: var(--color-accent);
+      color: var(--color-bg);
+      border: 1px solid var(--color-accent);
+    }
+
+    .btn-primary:hover {
+      opacity: 0.9;
+      transform: translateY(-1px);
+    }
+
+    .btn-secondary {
+      background-color: transparent;
+      color: var(--color-text);
+      border: 1px solid var(--color-border);
+    }
+
+    .btn-secondary:hover {
+      border-color: var(--color-accent);
+      color: var(--color-accent);
+    }
+
+    .btn-highlight {
+      background-color: var(--color-highlight);
+      color: var(--color-bg);
+      border: 1px solid var(--color-highlight);
+    }
+
+    .btn-highlight:hover {
+      opacity: 0.9;
+      transform: translateY(-1px);
+    }
+
+    /* ==========================================================================
+       Fields & Inputs Section
+       ========================================================================== */
+    .fields-container {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+      gap: var(--space-4);
+      background-color: var(--color-surface);
+      border: 1px solid var(--color-border);
+      border-radius: var(--radius-lg);
+      padding: var(--space-6);
+    }
+
+    .input-field-group {
+      display: flex;
+      flex-direction: column;
+      gap: var(--space-2);
+    }
+
+    .field-label {
+      font-size: var(--text-xs);
+      font-weight: 600;
+      color: var(--color-text);
+    }
+
+    .text-field {
+      font-family: var(--font-body);
+      font-size: var(--text-sm);
+      background-color: var(--color-bg);
+      color: var(--color-text);
+      border: 1px solid var(--color-border);
+      border-radius: var(--radius-sm);
+      padding: 9px 12px;
+      outline: none;
+      transition: border-color var(--transition);
+    }
+
+    .text-field:focus {
+      border-color: var(--color-accent);
+    }
+
+    .text-field::placeholder {
+      color: var(--color-text-subtle);
+    }
+
+    /* ==========================================================================
+       Tags & Status Section
+       ========================================================================== */
+    .tags-container {
+      display: flex;
+      flex-wrap: wrap;
+      gap: var(--space-2);
+      background-color: var(--color-surface);
+      border: 1px solid var(--color-border);
+      border-radius: var(--radius-lg);
+      padding: var(--space-6);
+    }
+
+    .pill-tag {
+      font-family: var(--font-mono);
+      font-size: var(--text-xs);
+      font-weight: 500;
+      padding: 4px 12px;
+      border-radius: var(--radius-full);
+      border: 1px solid var(--color-border);
+      background-color: var(--color-surface-muted);
+      color: var(--color-text-muted);
+    }
+
+    .pill-accent {
+      border-color: var(--color-accent);
+      color: var(--color-accent);
+      background-color: transparent;
+    }
+
+    .pill-highlight {
+      border-color: var(--color-highlight);
+      color: var(--color-highlight);
+      background-color: transparent;
+    }
+
+    /* ==========================================================================
+       Project Showcase Cards
+       ========================================================================== */
+    .cards-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+      gap: var(--space-4);
+    }
+
+    .project-card {
+      background-color: var(--color-surface);
+      border: 1px solid var(--color-border);
+      border-radius: var(--radius-lg);
+      padding: var(--space-5);
+      display: flex;
+      flex-direction: column;
+      gap: var(--space-3);
+      transition: transform var(--transition), border-color var(--transition);
+    }
+
+    .project-card:hover {
+      transform: translateY(-2px);
+      border-color: var(--color-accent);
+    }
+
+    .card-top {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .card-title {
+      font-size: var(--text-lg);
+      font-weight: 600;
+      letter-spacing: -0.01em;
+    }
+
+    .card-desc {
+      font-size: var(--text-sm);
+      color: var(--color-text-muted);
+      line-height: var(--leading-normal);
+    }
+
+    .card-meta {
+      font-family: var(--font-mono);
+      font-size: var(--text-xs);
+      color: var(--color-text-subtle);
+      margin-top: auto;
+    }
+
+    .card-link {
+      font-size: var(--text-sm);
+      font-weight: 600;
+      color: var(--color-accent);
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+    }
+
+    .card-link:hover {
+      text-decoration: underline;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Top Sticky Header -->
+  <header class="top-nav">
+    <div class="brand-group">
+      <a href="#" class="brand-logo">portfolio-ts<span>.</span></a>
+      <div class="brand-separator"></div>
+      <span class="brand-subtitle">Design system</span>
+    </div>
+
+    <!-- Theme Toggle Icon Button -->
+    <button id="themeToggle" class="theme-toggle-btn" aria-label="Toggle theme" title="Toggle theme">
+      <!-- Moon Icon (for Dark) -->
+      <svg id="themeIcon" viewBox="0 0 24 24">
+        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+      </svg>
+    </button>
+  </header>
+
+  <!-- App Layout: Left Sidebar + Main Content -->
+  <div class="app-layout">
+
+    <!-- Left Sticky Sidebar Navigation -->
+    <aside class="sidebar">
+      <nav>
+        <ul class="sidebar-nav">
+          <li><a href="#colour" class="sidebar-link active">Colour</a></li>
+          <li><a href="#type" class="sidebar-link">Type</a></li>
+          <li><a href="#spacing-radius" class="sidebar-link">Spacing and radius</a></li>
+          <li><a href="#buttons" class="sidebar-link">Buttons</a></li>
+          <li><a href="#fields" class="sidebar-link">Fields</a></li>
+          <li><a href="#tags" class="sidebar-link">Tags & Status</a></li>
+          <li><a href="#showcase" class="sidebar-link">Project cards</a></li>
+        </ul>
+      </nav>
+    </aside>
+
+    <!-- Main Content Area -->
+    <main class="content-area">
+
+      <!-- Header Introduction -->
+      <section class="doc-header">
+        <h1 class="doc-title">Design system</h1>
+        <p class="doc-subtitle">
+          The tokens and components the portfolio is built from. Change them here first.
+        </p>
+      </section>
+
+      <!-- 1. Colour Section -->
+      <section id="colour" class="doc-section">
+        <div class="section-header">
+          <h2 class="section-title">Colour</h2>
+          <p class="section-desc">
+            Slate surfaces and crisp ink carry the interface. Teal is kept for brand and focus. Amber highlights appear only where key status or callouts are shown.
+          </p>
+        </div>
+
+        <!-- Surfaces -->
+        <div class="swatches-group">
+          <div class="category-label">Surfaces</div>
+          <div class="swatches-grid">
+            <div class="swatch-item">
+              <div class="swatch-card" style="background-color: var(--color-bg);"></div>
+              <div class="swatch-info">
+                <span class="swatch-title">Background</span>
+                <span class="swatch-var">--color-bg</span>
+              </div>
+            </div>
+
+            <div class="swatch-item">
+              <div class="swatch-card" style="background-color: var(--color-surface);"></div>
+              <div class="swatch-info">
+                <span class="swatch-title">Card</span>
+                <span class="swatch-var">--color-surface</span>
+              </div>
+            </div>
+
+            <div class="swatch-item">
+              <div class="swatch-card" style="background-color: var(--color-surface-muted);"></div>
+              <div class="swatch-info">
+                <span class="swatch-title">Muted</span>
+                <span class="swatch-var">--color-surface-muted</span>
+              </div>
+            </div>
+
+            <div class="swatch-item">
+              <div class="swatch-card" style="background-color: var(--color-border);"></div>
+              <div class="swatch-info">
+                <span class="swatch-title">Border</span>
+                <span class="swatch-var">--color-border</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Ink (Text) -->
+        <div class="swatches-group">
+          <div class="category-label">Ink</div>
+          <div class="swatches-grid">
+            <div class="swatch-item">
+              <div class="swatch-card" style="background-color: var(--color-text);"></div>
+              <div class="swatch-info">
+                <span class="swatch-title">Foreground</span>
+                <span class="swatch-var">--color-text</span>
+              </div>
+            </div>
+
+            <div class="swatch-item">
+              <div class="swatch-card" style="background-color: var(--color-text-muted);"></div>
+              <div class="swatch-info">
+                <span class="swatch-title">Muted text</span>
+                <span class="swatch-var">--color-text-muted</span>
+              </div>
+            </div>
+
+            <div class="swatch-item">
+              <div class="swatch-card" style="background-color: var(--color-text-subtle);"></div>
+              <div class="swatch-info">
+                <span class="swatch-title">Subtle</span>
+                <span class="swatch-var">--color-text-subtle</span>
+              </div>
+            </div>
+
+            <div class="swatch-item">
+              <div class="swatch-card" style="background-color: var(--color-accent);"></div>
+              <div class="swatch-info">
+                <span class="swatch-title">Brand Teal</span>
+                <span class="swatch-var">--color-accent</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Status & Accent -->
+        <div class="swatches-group">
+          <div class="category-label">Status & Highlights</div>
+          <div class="swatches-grid">
+            <div class="swatch-item">
+              <div class="swatch-card" style="background-color: var(--color-highlight);"></div>
+              <div class="swatch-info">
+                <span class="swatch-title">Highlight</span>
+                <span class="swatch-var">--color-highlight</span>
+              </div>
+            </div>
+
+            <div class="swatch-item">
+              <div class="swatch-card" style="background-color: #10B981;"></div>
+              <div class="swatch-info">
+                <span class="swatch-title">Live / Active</span>
+                <span class="swatch-var">--status-live</span>
+              </div>
+            </div>
+
+            <div class="swatch-item">
+              <div class="swatch-card" style="background-color: #6366F1;"></div>
+              <div class="swatch-info">
+                <span class="swatch-title">Featured</span>
+                <span class="swatch-var">--status-featured</span>
+              </div>
+            </div>
+
+            <div class="swatch-item">
+              <div class="swatch-card" style="background-color: #EF4444;"></div>
+              <div class="swatch-info">
+                <span class="swatch-title">Urgent / Alert</span>
+                <span class="swatch-var">--status-danger</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- 2. Type Section -->
+      <section id="type" class="doc-section">
+        <div class="section-header">
+          <h2 class="section-title">Type</h2>
+          <p class="section-desc">
+            Instrument Sans brings distinct neo-grotesque geometry to the editorial prose, paired with JetBrains Mono for technical precision.
+          </p>
+        </div>
+
+        <div class="type-specimens">
+          <div class="type-specimen-row">
+            <span class="type-specimen-meta">2xl • 36px / 1.2 leading</span>
+            <div class="type-display-2xl">Senior Full-Stack Architect</div>
+          </div>
+
+          <div class="type-specimen-row">
+            <span class="type-specimen-meta">xl • 28px / 1.2 leading</span>
+            <div class="type-display-xl">High-Throughput Production Systems</div>
+          </div>
+
+          <div class="type-specimen-row">
+            <span class="type-specimen-meta">lg • 20px / 1.2 leading</span>
+            <div class="type-display-lg">Distributed Microservices & Cloud Architecture</div>
+          </div>
+
+          <div class="type-specimen-row">
+            <span class="type-specimen-meta">base • 16px / 1.6 leading</span>
+            <p class="type-display-base">
+              Crafting resilient, maintainable software platforms with modern Next.js patterns, rigorous type-safety, and elegant UI interfaces.
+            </p>
+          </div>
+
+          <div class="type-specimen-row">
+            <span class="type-specimen-meta">sm • 14px / 1.6 leading</span>
+            <p class="type-display-sm">
+              Updated November 2026 • Published in Engineering Case Studies
+            </p>
+          </div>
+
+          <div class="type-specimen-row">
+            <span class="type-specimen-meta">mono code sample</span>
+            <pre class="code-block"><code>const portfolio = { engine: 'Next.js 16', font: 'Instrument Sans', auth: 'Auth.js' };</code></pre>
+          </div>
+        </div>
+      </section>
+
+      <!-- 3. Spacing & Radius Section -->
+      <section id="spacing-radius" class="doc-section">
+        <div class="section-header">
+          <h2 class="section-title">Spacing and radius</h2>
+          <p class="section-desc">
+            A consistent 8px spatial rhythm paired with geometric rounded corners for cards, inputs, and pills.
+          </p>
+        </div>
+
+        <div class="tokens-card">
+          <div class="category-label">Spacing Scale</div>
+          <div class="spacing-item">
+            <span class="spacing-meta">--space-1 (4px)</span>
+            <div class="spacing-bar" style="width: var(--space-1);"></div>
+          </div>
+          <div class="spacing-item">
+            <span class="spacing-meta">--space-2 (8px)</span>
+            <div class="spacing-bar" style="width: var(--space-2);"></div>
+          </div>
+          <div class="spacing-item">
+            <span class="spacing-meta">--space-3 (12px)</span>
+            <div class="spacing-bar" style="width: var(--space-3);"></div>
+          </div>
+          <div class="spacing-item">
+            <span class="spacing-meta">--space-4 (16px)</span>
+            <div class="spacing-bar" style="width: var(--space-4);"></div>
+          </div>
+          <div class="spacing-item">
+            <span class="spacing-meta">--space-5 (24px)</span>
+            <div class="spacing-bar" style="width: var(--space-5);"></div>
+          </div>
+          <div class="spacing-item">
+            <span class="spacing-meta">--space-6 (32px)</span>
+            <div class="spacing-bar" style="width: var(--space-6);"></div>
+          </div>
+          <div class="spacing-item">
+            <span class="spacing-meta">--space-7 (48px)</span>
+            <div class="spacing-bar" style="width: var(--space-7);"></div>
+          </div>
+
+          <div class="category-label" style="margin-top: var(--space-5);">Border Radii</div>
+          <div class="radius-grid">
+            <div class="radius-box" style="border-radius: var(--radius-sm);">
+              <span style="font-weight: 600; font-size: var(--text-sm);">--radius-sm</span>
+              <span style="font-size: var(--text-xs); color: var(--color-text-subtle);">6px</span>
+            </div>
+            <div class="radius-box" style="border-radius: var(--radius-md);">
+              <span style="font-weight: 600; font-size: var(--text-sm);">--radius-md</span>
+              <span style="font-size: var(--text-xs); color: var(--color-text-subtle);">10px</span>
+            </div>
+            <div class="radius-box" style="border-radius: var(--radius-lg);">
+              <span style="font-weight: 600; font-size: var(--text-sm);">--radius-lg</span>
+              <span style="font-size: var(--text-xs); color: var(--color-text-subtle);">14px</span>
+            </div>
+            <div class="radius-box" style="border-radius: var(--radius-full);">
+              <span style="font-weight: 600; font-size: var(--text-sm);">--radius-full</span>
+              <span style="font-size: var(--text-xs); color: var(--color-text-subtle);">9999px</span>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- 4. Buttons Section -->
+      <section id="buttons" class="doc-section">
+        <div class="section-header">
+          <h2 class="section-title">Buttons</h2>
+          <p class="section-desc">
+            Primary, secondary, and highlight actions with hover lifts and focus transitions.
+          </p>
+        </div>
+
+        <div class="buttons-container">
+          <button class="btn btn-primary" type="button">Primary Action</button>
+          <button class="btn btn-secondary" type="button">Secondary Action</button>
+          <button class="btn btn-highlight" type="button">Hire Me</button>
+        </div>
+      </section>
+
+      <!-- 5. Fields Section -->
+      <section id="fields" class="doc-section">
+        <div class="section-header">
+          <h2 class="section-title">Fields</h2>
+          <p class="section-desc">
+            Standard input fields and text areas with accent focus rings.
+          </p>
+        </div>
+
+        <div class="fields-container">
+          <div class="input-field-group">
+            <label class="field-label" for="inp-name">Full Name</label>
+            <input id="inp-name" type="text" class="text-field" placeholder="Alex Morgan">
+          </div>
+
+          <div class="input-field-group">
+            <label class="field-label" for="inp-email">Email Address</label>
+            <input id="inp-email" type="email" class="text-field" placeholder="alex@example.com">
+          </div>
+        </div>
+      </section>
+
+      <!-- 6. Tags & Status Section -->
+      <section id="tags" class="doc-section">
+        <div class="section-header">
+          <h2 class="section-title">Tags & Status</h2>
+          <p class="section-desc">
+            Rounded badge pills for tech stack indicators and project status.
+          </p>
+        </div>
+
+        <div class="tags-container">
+          <span class="pill-tag">Next.js 16</span>
+          <span class="pill-tag">TypeScript</span>
+          <span class="pill-tag">Tailwind CSS</span>
+          <span class="pill-tag pill-accent">● Active Project</span>
+          <span class="pill-tag pill-highlight">★ Featured</span>
+        </div>
+      </section>
+
+      <!-- 7. Project Cards Showcase -->
+      <section id="showcase" class="doc-section">
+        <div class="section-header">
+          <h2 class="section-title">Project cards</h2>
+          <p class="section-desc">
+            Surface containers with subtle borders that lift and illuminate on hover.
+          </p>
+        </div>
+
+        <div class="cards-grid">
+          <article class="project-card">
+            <div class="card-top">
+              <span class="pill-tag pill-accent">Full Stack</span>
+              <span style="font-family: var(--font-mono); font-size: var(--text-xs); color: var(--color-text-subtle);">2026</span>
+            </div>
+            <h3 class="card-title">Real-Time Event Stream Pipeline</h3>
+            <p class="card-desc">Distributed event processing engine handling millions of async events per hour with sub-millisecond dispatch.</p>
+            <div class="card-meta">Next.js • Kafka • Redis • Go</div>
+            <a href="#" class="card-link">View Case Study →</a>
+          </article>
+
+          <article class="project-card">
+            <div class="card-top">
+              <span class="pill-tag pill-highlight">Architecture</span>
+              <span style="font-family: var(--font-mono); font-size: var(--text-xs); color: var(--color-text-subtle);">2026</span>
+            </div>
+            <h3 class="card-title">Zero-Downtime Migration Engine</h3>
+            <p class="card-desc">Automated schema syncing and data migration toolkit enabling non-blocking database cutovers in cloud environments.</p>
+            <div class="card-meta">TypeScript • PostgreSQL • Docker</div>
+            <a href="#" class="card-link">View Case Study →</a>
+          </article>
+        </div>
+      </section>
+
+    </main>
+  </div>
+
+  <!-- Interactive Logic: Theme Toggle & Sidebar Active State -->
+  <script>
+    // Theme Toggle
+    const toggleBtn = document.getElementById('themeToggle');
+    const root = document.documentElement;
+
+    toggleBtn.addEventListener('click', () => {
+      const currentTheme = root.getAttribute('data-theme');
+      const isSystemDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+      
+      const newTheme = (currentTheme === 'dark' || (!currentTheme && isSystemDark)) ? 'light' : 'dark';
+      root.setAttribute('data-theme', newTheme);
+    });
+
+    // Active Sidebar Highlight on Scroll
+    const links = document.querySelectorAll('.sidebar-link');
+    const sections = document.querySelectorAll('.doc-section');
+
+    window.addEventListener('scroll', () => {
+      let currentSection = '';
+      sections.forEach(section => {
+        const top = section.offsetTop - 120;
+        if (window.scrollY >= top) {
+          currentSection = section.getAttribute('id');
+        }
+      });
+
+      links.forEach(link => {
+        link.classList.remove('active');
+        if (link.getAttribute('href') === `#${currentSection}`) {
+          link.classList.add('active');
+        }
+      });
+    });
+  </script>
+</body>
+</html>

@@ -1,26 +1,48 @@
 @import "tailwindcss";
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --background: #F8FAFC;
+  --surface: #FFFFFF;
+  --foreground: #0F172A;
+  --muted: #475569;
+  --accent: #0F766E;
+  --accent-text: #FFFFFF;
+  --highlight: #D97706;
+  --border: #E2E8F0;
+  --border-hover: #CBD5E1;
+}
+
+.dark {
+  --background: #080B11;
+  --surface: #111622;
+  --foreground: #F1F5F9;
+  --muted: #94A3B8;
+  --accent: #2DD4BF;
+  --accent-text: #080B11;
+  --highlight: #F59E0B;
+  --border: #1E283D;
+  --border-hover: #334466;
 }
 
 @theme inline {
   --color-background: var(--background);
+  --color-surface: var(--surface);
   --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
+  --color-muted: var(--muted);
+  --color-accent: var(--accent);
+  --color-accent-text: var(--accent-text);
+  --color-highlight: var(--highlight);
+  --color-border: var(--border);
+  --color-border-hover: var(--border-hover);
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+  --font-sans: "Instrument Sans", system-ui, -apple-system, sans-serif;
+  --font-mono: "JetBrains Mono", monospace;
 }
 
 body {
-  background: var(--background);
+  background-color: var(--background);
   color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: var(--font-sans);
+  min-height: 100vh;
+  transition: background-color 0.25s ease, color 0.25s ease;
 }
