@@ -28,7 +28,7 @@ export default function RootLayout({
           rel="stylesheet"
         />
       </head>
-      <body className="min-h-full flex flex-col bg-[#F8FAFC] text-[#0F172A] font-sans antialiased transition-colors duration-200 dark:bg-[#080B11] dark:text-[#F1F5F9]">
+      <body className="min-h-full flex flex-col bg-background text-foreground font-sans antialiased selection:bg-teal-500/20 selection:text-teal-900 dark:selection:text-teal-200 transition-colors duration-300">
         <ThemeProvider
           attribute="class"
           defaultTheme="dark"
