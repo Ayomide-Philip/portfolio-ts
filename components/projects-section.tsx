@@ -51,48 +51,15 @@ export const Projects: Project[] = [
     image: "/projects/classora.png",
   },
   {
-    title: "End to End Encryption",
-    category: "WebSocket",
+    title: "Mentorship Website",
+    category: "Full-Stack",
     description:
-      "A secure, real-time chat application built with Next.js, WebSockets, and AES-GCM 256-bit encryption. Messages are encrypted in the browser before being sent.",
-    stack: ["Next.js", "TypeScript", "WebSockets", "Tailwindcss"],
-    liveUrl: "https://e2e-tbki.onrender.com/",
-    sourceUrl: "https://github.com/Ayomide-Philip/E2E",
+      "A mentorship platform that connects mentors and mentees, facilitating knowledge sharing and professional growth.",
+    stack: ["Next.js", "Typescript", "MongoDB", "Tailwindcss"],
+    liveUrl: "https://balogun-initiative-beta.vercel.app/",
+    sourceUrl: "",
     featured: true,
-    image: "/projects/e2e-chat.jpg",
-  },
-  {
-    title: "Digital Attendance System",
-    category: "Full-Stack",
-    description:
-      "A location-based web application designed to streamline and secure attendance tracking in educational environments.",
-    stack: ["Next.js", "Javascript", "Tailwindcss", "MongoDB"],
-    liveUrl: "",
-    sourceUrl: "https://github.com/Ayomide-Philip/digital-attendance",
-    featured: false,
-    image: "/projects/digital-attendance.jpg",
-  },
-  {
-    title: "Country Explorer",
-    category: "Frontend",
-    description:
-      "Interactive country data exploration platform featuring search, real-time regional filtering, border indicators, and responsive theme switching.",
-    stack: ["Next.js", "Javascript", "Tailwindcss", "REST APIs"],
-    liveUrl: "https://country-explorer-rosy.vercel.app/",
-    sourceUrl: "https://github.com/Ayomide-Philip/country-explorer",
-    featured: false,
-    image: "/projects/country-explorer.jpg",
-  },
-  {
-    title: "DevSpace",
-    category: "Full-Stack",
-    description:
-      "Developer community ecosystem enabling technical article authoring, real-time discussions, user profiles, and tech stack tagging.",
-    stack: ["Next.js", "Javascript", "Tailwindcss", "REST APIs", "MongoDB"],
-    liveUrl: "https://dev-space-tau.vercel.app/",
-    sourceUrl: "https://github.com/Ayomide-Philip/DevSpace",
-    featured: false,
-    image: "/projects/devspace.jpg",
+    image: "/projects/mentorship-platform.png",
   },
 ];
 
