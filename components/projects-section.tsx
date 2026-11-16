@@ -170,7 +170,7 @@ export function ProjectsSection() {
                   {project.stack.map((item) => (
                     <span
                       key={item}
-                      className="inline-flex items-center gap-1 rounded-full border border-slate-200/80 bg-white/70 dark:border-white/8 dark:bg-white/3 px-2.5 py-0.5 text-[11px] font-mono text-slate-600 dark:text-slate-300 shadow-2xs"
+                      className="inline-flex items-center gap-1.5 rounded-full border border-slate-200/85 bg-white/65 dark:border-white/12 dark:bg-white/8 backdrop-blur-md px-2.5 py-0.5 text-[11px] font-mono text-slate-700 dark:text-slate-200 shadow-[inset_0_1px_1px_rgba(255,255,255,0.8)] dark:shadow-[inset_0_1px_1px_rgba(255,255,255,0.12)]"
                     >
                       {getTechIcon(item)}
                       <span>{item}</span>

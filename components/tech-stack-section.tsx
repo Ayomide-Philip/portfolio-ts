@@ -415,7 +415,7 @@ export function TechStackSection() {
       </div>
 
       <div className="mt-10 grid grid-cols-1 lg:grid-cols-12 gap-6 sm:gap-7 items-start">
-        <div className="lg:col-span-7 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3 sm:gap-3.5">
+        <div className="lg:col-span-7 grid grid-cols-1 sm:grid-cols-3 gap-2.5 sm:gap-3 w-full min-w-0">
           {filteredItems.map((tech) => {
             const IconComponent = tech.icon;
             const isSelected = selectedTech.id === tech.id;
@@ -424,61 +424,24 @@ export function TechStackSection() {
               <button
                 key={tech.id}
                 onClick={() => handleSelectTech(tech.id)}
-                className={`group relative flex flex-col justify-between text-left p-4 rounded-2xl transition-all duration-200 cursor-pointer select-none backdrop-blur-xl ${
+                className={`group relative flex flex-col items-center justify-center text-center p-3.5 sm:p-4 rounded-2xl transition-all duration-200 cursor-pointer select-none backdrop-blur-xl ${
                   isSelected
-                    ? "bg-white/90 border-2 border-teal-600 shadow-[inset_0_1px_1px_rgba(255,255,255,0.95),0_8px_24px_rgba(13,148,136,0.18)] -translate-y-1 dark:bg-white/12 dark:border-teal-400 dark:shadow-[inset_0_1px_1px_rgba(255,255,255,0.25),0_0_24px_-4px_rgba(45,212,191,0.35)]"
+                    ? "bg-white/95 border-2 border-teal-600 shadow-[inset_0_1px_1px_rgba(255,255,255,0.95),0_8px_20px_rgba(13,148,136,0.18)] -translate-y-0.5 dark:bg-white/14 dark:border-teal-400 dark:shadow-[inset_0_1px_1px_rgba(255,255,255,0.25),0_0_24px_-4px_rgba(45,212,191,0.35)]"
                     : "bg-white/65 text-slate-900 border border-slate-200/85 shadow-[inset_0_1px_1px_rgba(255,255,255,0.9),0_2px_8px_rgba(15,23,42,0.04)] hover:bg-white/90 hover:border-slate-300 hover:-translate-y-0.5 dark:bg-white/6 dark:text-slate-100 dark:border-white/12 dark:shadow-[inset_0_1px_1px_rgba(255,255,255,0.16)] dark:hover:bg-white/12 dark:hover:border-white/22 dark:hover:-translate-y-0.5"
                 }`}
               >
-                <div>
-                  <div className="flex items-center justify-between">
-                    <div
-                      className={`flex h-10 w-10 items-center justify-center rounded-xl transition-transform duration-200 group-hover:scale-105 shrink-0 ${
-                        isSelected
-                          ? "bg-teal-500/15 border border-teal-600/30"
-                          : "backdrop-blur-md bg-white/80 dark:bg-white/8 border border-slate-200/80 dark:border-white/10 shadow-2xs"
-                      }`}
-                    >
-                      <IconComponent size={20} className={tech.iconColor} />
-                    </div>
-
-                    <div className="flex items-center gap-1.5">
-                      {isSelected && (
-                        <span className="sm:hidden text-[10px] font-mono text-teal-800 dark:text-teal-300 font-medium">
-                          Active ↓
-                        </span>
-                      )}
-                      <span
-                        className={`h-1.5 w-1.5 rounded-full transition-all ${
-                          isSelected
-                            ? "bg-teal-600 dark:bg-teal-400 scale-125"
-                            : "bg-slate-300 dark:bg-slate-600 group-hover:bg-slate-400"
-                        }`}
-                      />
-                    </div>
-                  </div>
-
-                  <div className="mt-3.5 font-semibold text-sm tracking-tight text-slate-900 dark:text-slate-100 truncate">
-                    {tech.name}
-                  </div>
-                  <div className="mt-0.5 text-[11px] font-mono text-slate-600 dark:text-slate-400 truncate">
-                    {tech.badge}
-                  </div>
+                <div
+                  className={`flex h-11 w-11 sm:h-12 sm:w-12 items-center justify-center rounded-xl sm:rounded-2xl transition-transform duration-200 group-hover:scale-105 shrink-0 mb-2 sm:mb-2.5 ${
+                    isSelected
+                      ? "bg-teal-500/15 border border-teal-600/30"
+                      : "backdrop-blur-md bg-white/80 dark:bg-white/8 border border-slate-200/80 dark:border-white/10 shadow-2xs"
+                  }`}
+                >
+                  <IconComponent size={24} className={tech.iconColor} />
                 </div>
 
-                <div className="mt-3 pt-2.5 border-t border-slate-200/60 dark:border-white/6 flex items-center justify-between text-[11px] font-mono">
-                  <span className="text-slate-600 dark:text-slate-400 capitalize truncate">
-                    {tech.category}
-                  </span>
-                  <span
-                    className={`font-medium truncate ${
-                      isSelected
-                        ? "text-teal-800 dark:text-teal-300"
-                        : "text-slate-500 dark:text-slate-400"
-                    }`}
-                  >
-                    {tech.experience}
-                  </span>
+                <div className="font-semibold text-xs sm:text-sm tracking-tight text-slate-900 dark:text-slate-100 truncate w-full text-center">
+                  {tech.name}
                 </div>
               </button>
             );
@@ -487,37 +450,37 @@ export function TechStackSection() {
 
         <div
           ref={inspectorRef}
-          className="lg:col-span-5 lg:sticky lg:top-24 scroll-mt-24"
+          className="lg:col-span-5 lg:sticky lg:top-24 scroll-mt-24 w-full min-w-0 max-w-full"
         >
-          <div className="rounded-3xl border border-slate-200/80 bg-white/70 p-5 sm:p-6 backdrop-blur-2xl backdrop-saturate-150 shadow-[0_8px_32px_0_rgba(15,23,42,0.06)] dark:border-white/9 dark:bg-slate-900/50">
-            <div className="flex items-center justify-between pb-3.5 border-b border-slate-200/70 dark:border-white/8 min-w-0">
+          <div className="rounded-3xl border border-slate-200/80 bg-white/70 p-4 sm:p-6 backdrop-blur-2xl backdrop-saturate-150 shadow-[0_8px_32px_0_rgba(15,23,42,0.06)] dark:border-white/9 dark:bg-slate-900/50 w-full min-w-0 overflow-hidden">
+            <div className="flex items-center justify-between pb-3.5 border-b border-slate-200/70 dark:border-white/8 min-w-0 gap-2">
               <div className="flex items-center gap-1.5 shrink-0">
                 <span className="h-2.5 w-2.5 rounded-full bg-[#ff5f56]" />
                 <span className="h-2.5 w-2.5 rounded-full bg-[#ffbd2e]" />
                 <span className="h-2.5 w-2.5 rounded-full bg-[#27c93f]" />
               </div>
 
-              <div className="text-[11px] font-mono text-slate-600 dark:text-slate-400 truncate px-2">
+              <div className="text-[10px] sm:text-[11px] font-mono text-slate-500 dark:text-slate-400 truncate px-1 flex-1 text-center min-w-0">
                 inspector://{selectedTech.id}
               </div>
 
-              <span className="inline-flex items-center gap-1 rounded-full border border-teal-600/30 bg-teal-500/10 px-2 py-0.5 text-[11px] font-mono font-medium text-teal-800 dark:text-teal-300 shrink-0">
+              <span className="inline-flex items-center gap-1 rounded-full border border-teal-600/30 bg-teal-500/10 px-2 py-0.5 text-[10px] sm:text-[11px] font-mono font-medium text-teal-800 dark:text-teal-300 shrink-0">
                 <span className="h-1.5 w-1.5 rounded-full bg-teal-600 dark:bg-teal-400" />
                 Live
               </span>
             </div>
 
-            <div className="mt-5 space-y-4 animate-in fade-in duration-200">
-              <div className="flex items-start justify-between gap-3">
+            <div className="mt-4 sm:mt-5 space-y-4 animate-in fade-in duration-200 min-w-0">
+              <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 min-w-0">
                 <div className="flex items-center gap-3 min-w-0">
-                  <div className="flex h-12 w-12 items-center justify-center rounded-2xl bg-slate-100/90 dark:bg-white/6 border border-slate-200/70 dark:border-white/8 shrink-0 shadow-xs">
+                  <div className="flex h-11 w-11 sm:h-12 sm:w-12 items-center justify-center rounded-xl sm:rounded-2xl bg-slate-100/90 dark:bg-white/6 border border-slate-200/70 dark:border-white/8 shrink-0 shadow-xs">
                     <SelectedIcon
-                      size={24}
+                      size={22}
                       className={selectedTech.iconColor}
                     />
                   </div>
                   <div className="min-w-0">
-                    <h3 className="text-lg sm:text-xl font-bold tracking-tight text-slate-900 dark:text-slate-100 truncate">
+                    <h3 className="text-base sm:text-xl font-bold tracking-tight text-slate-900 dark:text-slate-100 truncate">
                       {selectedTech.name}
                     </h3>
                     <div className="text-[11px] font-mono text-teal-800 dark:text-teal-300 font-medium truncate">
@@ -526,46 +489,51 @@ export function TechStackSection() {
                   </div>
                 </div>
 
-                <span className="rounded-md border border-slate-200/80 bg-white/80 dark:border-white/8 dark:bg-white/4 px-2.5 py-1 font-mono text-[11px] font-medium text-slate-700 dark:text-slate-300 shrink-0">
+                <span className="self-start sm:self-auto rounded-full border border-slate-200/85 bg-white/65 dark:border-white/12 dark:bg-white/8 backdrop-blur-md px-3 py-1 font-mono text-[11px] font-medium text-slate-800 dark:text-slate-200 shadow-[inset_0_1px_1px_rgba(255,255,255,0.8)] dark:shadow-[inset_0_1px_1px_rgba(255,255,255,0.12)] shrink-0">
                   {selectedTech.badge}
                 </span>
               </div>
 
-              <p className="text-sm text-slate-600 dark:text-slate-300 leading-relaxed text-pretty">
+              <p className="text-xs sm:text-sm text-slate-600 dark:text-slate-300 leading-relaxed text-pretty">
                 {selectedTech.role}
               </p>
 
-              <div className="rounded-2xl border border-slate-800/80 bg-[#0c1017] dark:bg-[#030712] p-4 text-slate-100 overflow-hidden font-mono text-xs leading-relaxed shadow-inner">
-                <div className="flex items-center justify-between pb-2.5 border-b border-white/8 text-slate-400 text-[11px]">
-                  <div className="flex items-center gap-2">
-                    <span className="h-2 w-2 rounded-full bg-teal-400" />
-                    <span className="font-semibold text-slate-300 font-mono">
+              <div className="rounded-2xl border border-slate-800/80 bg-[#0c1017] dark:bg-[#030712] p-3.5 sm:p-4 text-slate-100 font-mono text-xs leading-relaxed shadow-inner w-full min-w-0 max-w-full overflow-hidden">
+                <div className="flex items-center justify-between pb-2.5 border-b border-white/8 text-slate-400 text-[11px] min-w-0">
+                  <div className="flex items-center gap-2 min-w-0 truncate">
+                    <span className="h-2 w-2 rounded-full bg-teal-400 shrink-0" />
+                    <span className="font-semibold text-slate-300 font-mono truncate">
                       {selectedTech.file}
                     </span>
                   </div>
-                  <span className="text-teal-400 font-medium font-mono text-[10px] uppercase tracking-wider">
+                  <span className="text-teal-400 font-medium font-mono text-[10px] uppercase tracking-wider shrink-0 ml-2">
                     Config
                   </span>
                 </div>
 
-                <pre className="mt-3 text-xs font-mono overflow-x-auto whitespace-pre scrollbar-none leading-relaxed">
-                  {selectedTech.snippet.split("\n").map((line, idx) => (
-                    <div key={idx} className="table-row">
-                      <span className="table-cell pr-3 text-slate-600 select-none text-[11px] text-right font-mono">
-                        {idx + 1}
-                      </span>
-                      <span
-                        className="table-cell font-mono"
-                        dangerouslySetInnerHTML={{
-                          __html: highlightCodeLine(line) || "&nbsp;",
-                        }}
-                      />
-                    </div>
-                  ))}
-                </pre>
+                <div className="mt-3 overflow-x-auto w-full max-w-full pb-1 scrollbar-thin">
+                  <div className="min-w-fit font-mono text-[11px] sm:text-xs leading-relaxed">
+                    {selectedTech.snippet.split("\n").map((line, idx) => (
+                      <div
+                        key={idx}
+                        className="flex items-start gap-3 whitespace-pre"
+                      >
+                        <span className="w-5 shrink-0 select-none text-slate-600 text-right font-mono text-[11px]">
+                          {idx + 1}
+                        </span>
+                        <span
+                          className="font-mono flex-1 whitespace-pre"
+                          dangerouslySetInnerHTML={{
+                            __html: highlightCodeLine(line) || "&nbsp;",
+                          }}
+                        />
+                      </div>
+                    ))}
+                  </div>
+                </div>
               </div>
 
-              <div className="pt-1">
+              <div className="pt-1 min-w-0">
                 <div className="text-[11px] font-mono text-slate-600 dark:text-slate-400 mb-2 font-medium">
                   Architecture Capabilities:
                 </div>
@@ -573,7 +541,7 @@ export function TechStackSection() {
                   {selectedTech.tags.map((tag) => (
                     <span
                       key={tag}
-                      className="rounded-md border border-slate-200/80 bg-slate-100/70 px-2 py-0.5 text-[11px] font-mono text-slate-700 dark:border-white/8 dark:bg-white/4 dark:text-slate-300"
+                      className="rounded-full border border-slate-200/85 bg-white/65 dark:border-white/12 dark:bg-white/8 backdrop-blur-md px-3 py-0.5 text-[11px] font-mono text-slate-700 dark:text-slate-200 shadow-[inset_0_1px_1px_rgba(255,255,255,0.8)] dark:shadow-[inset_0_1px_1px_rgba(255,255,255,0.12)]"
                     >
                       {tag}
                     </span>
