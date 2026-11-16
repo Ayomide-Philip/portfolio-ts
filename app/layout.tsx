@@ -3,6 +3,7 @@ import type { Metadata } from "next";
 import "./globals.css";
 import { ThemeProvider } from "@/components/theme-provider";
 import { FloatingNavbar } from "@/components/floating-navbar";
+import { Footer } from "@/components/footer";
 
 export const metadata: Metadata = {
   title: "Senior Full-Stack Developer | Portfolio",
@@ -44,6 +45,7 @@ export default function RootLayout({
         >
           <FloatingNavbar />
           <div className="flex-1 pt-20 sm:pt-24">{children}</div>
+          <Footer />
         </ThemeProvider>
       </body>
     </html>
