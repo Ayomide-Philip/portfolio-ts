@@ -13,6 +13,7 @@ import {
   Search01Icon,
   Settings01Icon,
 } from "@hugeicons/core-free-icons";
+import { SiTypescript, SiMongodb, SiNextdotjs } from "react-icons/si";
 
 type FileTab = "developer.ts" | "Project.schema.ts" | "route.ts";
 
@@ -327,8 +328,6 @@ export function HeroSection() {
                   ["developer.ts", "Project.schema.ts", "route.ts"] as FileTab[]
                 ).map((tab) => {
                   const isActive = activeTab === tab;
-                  const isTs = tab.endsWith(".ts");
-                  const isSchema = tab.includes("schema");
 
                   return (
                     <button
@@ -344,16 +343,23 @@ export function HeroSection() {
                         <span className="absolute top-0 inset-x-0 h-0.5 bg-teal-600 dark:bg-[#007ACC]" />
                       )}
 
-                      <span
-                        className={`inline-flex items-center justify-center px-1 h-4 min-w-4 rounded text-[11px] font-bold ${
-                          isSchema
-                            ? "bg-emerald-600 text-white"
-                            : isTs
-                              ? "bg-blue-600 text-white"
-                              : "bg-purple-600 text-white"
-                        }`}
-                      >
-                        {isSchema ? "DB" : isTs ? "TS" : "API"}
+                      <span className="shrink-0 flex items-center justify-center">
+                        {tab === "developer.ts" ? (
+                          <SiTypescript
+                            size={13}
+                            className="text-[#3178c6] shrink-0"
+                          />
+                        ) : tab === "Project.schema.ts" ? (
+                          <SiMongodb
+                            size={13}
+                            className="text-[#47A248] shrink-0"
+                          />
+                        ) : (
+                          <SiNextdotjs
+                            size={13}
+                            className="text-slate-900 dark:text-slate-100 shrink-0"
+                          />
+                        )}
                       </span>
 
                       <span>{tab}</span>
