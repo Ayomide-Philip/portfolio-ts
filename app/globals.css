@@ -48,3 +48,20 @@ body {
   min-height: 100vh;
   transition: background-color 0.25s ease, color 0.25s ease;
 }
+
+/* Mac Terminal & Code syntax tokens (Vibrant & High Contrast) */
+.token-keyword { color: #8B5CF6; font-weight: 600; }
+.token-id { color: #0284C7; font-weight: 500; }
+.token-prop { color: #E11D48; }
+.token-str { color: #0D9488; }
+.token-bool { color: #D97706; font-weight: 600; }
+.token-comment { color: #64748B; font-style: italic; }
+.token-punct { color: #64748B; }
+
+.dark .token-keyword { color: #C084FC; font-weight: 600; }
+.dark .token-id { color: #38BDF8; font-weight: 500; }
+.dark .token-prop { color: #FB7185; }
+.dark .token-str { color: #2DD4BF; }
+.dark .token-bool { color: #FBBF24; font-weight: 600; }
+.dark .token-comment { color: #94A3B8; font-style: italic; }
+.dark .token-punct { color: #94A3B8; }

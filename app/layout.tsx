@@ -36,7 +36,7 @@ export default function RootLayout({
           disableTransitionOnChange
         >
           <FloatingNavbar />
-          <div className="flex-1 pt-24 sm:pt-28">{children}</div>
+          <div className="flex-1 pt-20 sm:pt-24">{children}</div>
         </ThemeProvider>
       </body>
     </html>
