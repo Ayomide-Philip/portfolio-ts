@@ -36,7 +36,7 @@ export function FloatingNavbar() {
           aria-label="Home"
           className="group relative flex h-9 w-9 items-center justify-center rounded-full backdrop-blur-xl transition-all duration-200 ease-out focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-teal-500/50 active:scale-95
             bg-slate-900/4 border border-slate-200/80 text-teal-800 shadow-[inset_0_1px_1px_rgba(255,255,255,0.8)] hover:bg-slate-900/8 hover:border-slate-300 hover:text-teal-900 hover:-translate-y-0.5
-            dark:bg-white/6 dark:border-white/12 dark:text-teal-400 dark:shadow-[inset_0_1px_1px_rgba(255,255,255,0.16)] dark:hover:bg-white/12 dark:hover:border-teal-400/40 dark:hover:shadow-[0_0_16px_rgba(45,212,191,0.25)] dark:hover:-translate-y-0.5"
+            dark:bg-white/6 dark:border-white/12 dark:text-teal-400 dark:shadow-[inset_0_1px_1px_rgba(255,255,255,0.16)] dark:hover:bg-white/12 dark:hover:border-white/25 dark:hover:shadow-[0_4px_12px_rgba(0,0,0,0.4)] dark:hover:-translate-y-0.5"
         >
           <HugeiconsIcon
             icon={SourceCodeSquareIcon}
@@ -79,7 +79,7 @@ export function FloatingNavbar() {
             href="/contact"
             className="hidden sm:inline-flex items-center justify-center rounded-full font-semibold text-xs tracking-tight px-4 py-2 cursor-pointer select-none transition-all duration-200 ease-out focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-teal-500/50 active:scale-[0.98]
               bg-teal-700 text-white shadow-[inset_0_1px_0_rgba(255,255,255,0.25),0_4px_14px_rgba(15,118,110,0.25)] hover:bg-teal-800 hover:shadow-[inset_0_1px_0_rgba(255,255,255,0.35),0_6px_20px_rgba(15,118,110,0.35)] hover:-translate-y-0.5
-              dark:bg-teal-400 dark:text-[#080B11] dark:shadow-[inset_0_1px_0_rgba(255,255,255,0.5),0_0_24px_-4px_rgba(45,212,191,0.35)] dark:hover:bg-teal-300 dark:hover:shadow-[inset_0_1px_0_rgba(255,255,255,0.65),0_0_32px_-2px_rgba(45,212,191,0.55)] dark:hover:-translate-y-0.5"
+              dark:bg-teal-400 dark:text-[#080B11] dark:shadow-[inset_0_1px_0_rgba(255,255,255,0.5),0_4px_14px_rgba(0,0,0,0.35)] dark:hover:bg-teal-300 dark:hover:shadow-[inset_0_1px_0_rgba(255,255,255,0.65),0_6px_20px_rgba(0,0,0,0.45)] dark:hover:-translate-y-0.5"
           >
             Get in touch
           </Link>
@@ -137,7 +137,7 @@ export function FloatingNavbar() {
                 onClick={() => setMobileMenuOpen(false)}
                 className="flex h-11 w-full items-center justify-center rounded-xl font-semibold text-sm transition-all duration-200 active:scale-[0.98]
                   bg-teal-700 text-white shadow-[inset_0_1px_0_rgba(255,255,255,0.25)] hover:bg-teal-800
-                  dark:bg-teal-400 dark:text-[#080B11] dark:shadow-[inset_0_1px_0_rgba(255,255,255,0.5),0_0_24px_-4px_rgba(45,212,191,0.35)] dark:hover:bg-teal-300"
+                  dark:bg-teal-400 dark:text-[#080B11] dark:shadow-[inset_0_1px_0_rgba(255,255,255,0.4),0_4px_12px_rgba(0,0,0,0.3)] dark:hover:bg-teal-300"
               >
                 Get in touch
               </Link>

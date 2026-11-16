@@ -197,7 +197,7 @@ export function HeroSection() {
             href="/projects"
             className="group inline-flex items-center justify-center gap-2 rounded-full px-5 sm:px-6 py-2.5 sm:py-3 text-xs sm:text-sm font-semibold tracking-tight transition-all duration-200 ease-out active:scale-[0.98]
               bg-teal-700 text-white shadow-[inset_0_1px_0_rgba(255,255,255,0.25),0_4px_14px_rgba(15,118,110,0.25)] hover:bg-teal-800 hover:shadow-[0_6px_20px_rgba(15,118,110,0.35)] hover:-translate-y-0.5 active:translate-y-0
-              dark:bg-teal-400 dark:text-[#080B11] dark:shadow-[inset_0_1px_0_rgba(255,255,255,0.5),0_0_24px_-4px_rgba(45,212,191,0.35)] dark:hover:bg-teal-300 dark:hover:shadow-[0_0_32px_-2px_rgba(45,212,191,0.55)] dark:hover:-translate-y-0.5 dark:active:translate-y-0"
+              dark:bg-teal-400 dark:text-[#080B11] dark:shadow-[inset_0_1px_0_rgba(255,255,255,0.5),0_4px_16px_rgba(0,0,0,0.4)] dark:hover:bg-teal-300 dark:hover:shadow-[0_6px_24px_rgba(0,0,0,0.5)] dark:hover:-translate-y-0.5 dark:active:translate-y-0"
           >
             <span>View my work</span>
             <HugeiconsIcon
@@ -345,7 +345,7 @@ export function HeroSection() {
                       )}
 
                       <span
-                        className={`inline-flex items-center justify-center h-3.5 w-3.5 sm:h-4 sm:w-4 rounded text-[8px] sm:text-[9px] font-bold ${
+                        className={`inline-flex items-center justify-center px-1 h-4 min-w-4 rounded text-[11px] font-bold ${
                           isSchema
                             ? "bg-emerald-600 text-white"
                             : isTs
