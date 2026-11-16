@@ -1,3 +1,4 @@
+/* eslint-disable @next/next/no-page-custom-font */
 import type { Metadata } from "next";
 import "./globals.css";
 import { ThemeProvider } from "@/components/theme-provider";
@@ -28,7 +29,13 @@ export default function RootLayout({
           rel="stylesheet"
         />
       </head>
-      <body className="min-h-full flex flex-col bg-background text-foreground font-sans antialiased selection:bg-teal-500/20 selection:text-teal-900 dark:selection:text-teal-200 transition-colors duration-300">
+      <body className="relative min-h-full flex flex-col bg-background text-foreground font-sans antialiased selection:bg-teal-500/20 selection:text-teal-900 dark:selection:text-teal-200 transition-colors duration-300">
+        {/* Pure Tactile Dot Matrix Pattern (Zero Gradients) */}
+        <div
+          aria-hidden="true"
+          className="fixed inset-0 pointer-events-none -z-10 bg-dot-matrix mask-[radial-gradient(ellipse_at_center,black_80%,transparent_98%)] transition-opacity duration-300"
+        />
+
         <ThemeProvider
           attribute="class"
           defaultTheme="dark"

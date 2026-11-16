@@ -119,15 +119,15 @@ export function WhatIDoSection() {
               <h3 className="mt-5 text-xl font-semibold tracking-tight text-slate-900 dark:text-slate-100">
                 Frontend engineering
               </h3>
-              <p className="mt-2.5 text-xs sm:text-sm text-slate-600 dark:text-slate-300 leading-relaxed text-pretty sm:min-h-16">
+              <p className="mt-2.5 text-sm text-slate-600 dark:text-slate-300 leading-relaxed text-pretty sm:min-h-16">
                 Building responsive, accessible interfaces with React, Next.js,
                 and Tailwind CSS. Fast load times, smooth interactions, and
                 layouts that look sharp on any screen.
               </p>
             </div>
 
-            <div className="mt-5 h-55 flex flex-col rounded-2xl border border-slate-200/70 bg-slate-100/70 p-3 sm:p-3.5 dark:border-white/8 dark:bg-[#0c1017] overflow-hidden">
-              <div className="flex items-center justify-between gap-1.5 border-b border-slate-200/70 dark:border-white/6 pb-2.5 min-w-0 shrink-0">
+            <div className="mt-5 h-55 flex flex-col rounded-2xl border border-slate-200/80 bg-slate-100/90 p-3 sm:p-3.5 dark:border-white/[0.12] dark:bg-[#030712] dark:shadow-[inset_0_1px_1px_0_rgba(255,255,255,0.06)] overflow-hidden">
+              <div className="flex items-center justify-between gap-1.5 border-b border-slate-200/80 dark:border-white/[0.1] pb-2.5 min-w-0 shrink-0">
                 <div className="flex items-center gap-1.5 min-w-0 truncate">
                   <span className="h-2.5 w-2.5 rounded-full bg-[#ff5f56] shrink-0" />
                   <span className="h-2.5 w-2.5 rounded-full bg-[#ffbd2e] shrink-0" />
@@ -276,15 +276,15 @@ export function WhatIDoSection() {
               <h3 className="mt-5 text-xl font-semibold tracking-tight text-slate-900 dark:text-slate-100">
                 Backend and APIs
               </h3>
-              <p className="mt-2.5 text-xs sm:text-sm text-slate-600 dark:text-slate-300 leading-relaxed text-pretty sm:min-h-16">
+              <p className="mt-2.5 text-sm text-slate-600 dark:text-slate-300 leading-relaxed text-pretty sm:min-h-16">
                 Creating reliable backend services and REST APIs with Node.js,
                 Next.js route handlers, and MongoDB. Structured data modeling,
                 secure auth, and clear error handling.
               </p>
             </div>
 
-            <div className="mt-5 h-55 flex flex-col rounded-2xl border border-slate-200/70 bg-slate-100/70 p-3 sm:p-3.5 dark:border-white/8 dark:bg-[#0c1017] overflow-hidden">
-              <div className="flex items-center justify-between gap-1.5 border-b border-slate-200/70 dark:border-white/6 pb-2.5 min-w-0 shrink-0">
+            <div className="mt-5 h-55 flex flex-col rounded-2xl border border-slate-200/80 bg-slate-100/90 p-3 sm:p-3.5 dark:border-white/[0.12] dark:bg-[#030712] dark:shadow-[inset_0_1px_1px_0_rgba(255,255,255,0.06)] overflow-hidden">
+              <div className="flex items-center justify-between gap-1.5 border-b border-slate-200/80 dark:border-white/[0.1] pb-2.5 min-w-0 shrink-0">
                 <div className="flex items-center gap-1.5 min-w-0 truncate">
                   <span className="h-2.5 w-2.5 rounded-full bg-[#ff5f56] shrink-0" />
                   <span className="h-2.5 w-2.5 rounded-full bg-[#ffbd2e] shrink-0" />
@@ -470,15 +470,15 @@ export function WhatIDoSection() {
               <h3 className="mt-5 text-xl font-semibold tracking-tight text-slate-900 dark:text-slate-100">
                 Clean workflows
               </h3>
-              <p className="mt-2.5 text-xs sm:text-sm text-slate-600 dark:text-slate-300 leading-relaxed text-pretty sm:min-h-16">
+              <p className="mt-2.5 text-sm text-slate-600 dark:text-slate-300 leading-relaxed text-pretty sm:min-h-16">
                 Version control with Git, modular component design, and
                 end-to-end type safety with TypeScript to keep codebases
                 readable, resilient, and easy to scale.
               </p>
             </div>
 
-            <div className="mt-5 h-55 flex flex-col rounded-2xl border border-slate-200/70 bg-slate-100/70 p-3 sm:p-3.5 dark:border-white/8 dark:bg-[#0c1017] overflow-hidden">
-              <div className="flex items-center justify-between gap-1.5 border-b border-slate-200/70 dark:border-white/6 pb-2.5 min-w-0 shrink-0">
+            <div className="mt-5 h-55 flex flex-col rounded-2xl border border-slate-200/80 bg-slate-100/90 p-3 sm:p-3.5 dark:border-white/[0.12] dark:bg-[#030712] dark:shadow-[inset_0_1px_1px_0_rgba(255,255,255,0.06)] overflow-hidden">
+              <div className="flex items-center justify-between gap-1.5 border-b border-slate-200/80 dark:border-white/[0.1] pb-2.5 min-w-0 shrink-0">
                 <div className="flex items-center gap-1.5 min-w-0 truncate">
                   <span className="h-2.5 w-2.5 rounded-full bg-[#ff5f56] shrink-0" />
                   <span className="h-2.5 w-2.5 rounded-full bg-[#ffbd2e] shrink-0" />
