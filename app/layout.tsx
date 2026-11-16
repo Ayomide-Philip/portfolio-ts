@@ -5,7 +5,8 @@ import { FloatingNavbar } from "@/components/floating-navbar";
 
 export const metadata: Metadata = {
   title: "Senior Full-Stack Developer | Portfolio",
-  description: "Architecting high-throughput distributed systems, real-time engines, and resilient web platforms.",
+  description:
+    "Architecting high-throughput distributed systems, real-time engines, and resilient web platforms.",
 };
 
 export default function RootLayout({
@@ -35,9 +36,7 @@ export default function RootLayout({
           disableTransitionOnChange
         >
           <FloatingNavbar />
-          <div className="flex-1 pt-24 sm:pt-28">
-            {children}
-          </div>
+          <div className="flex-1 pt-24 sm:pt-28">{children}</div>
         </ThemeProvider>
       </body>
     </html>

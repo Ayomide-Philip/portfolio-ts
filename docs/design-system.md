@@ -89,38 +89,59 @@ All padding, margin, gap, and sizing follow a base-4/base-8 rhythm:
 
 ## 5. Component Specifications & Tokens
 
-### 5.1 Buttons
+### 5.1 Buttons & Interactive Controls (Glassmorphic Suite)
+
+The button suite enforces the Impeccable craft floor: liquid glassmorphism, dual-mode specular rim highlights, tactile micro-elevations, and strict APCA contrast.
 
 ```
 [ Primary Button ]
-- Background: var(--primary)
-- Foreground: #FFFFFF / var(--background)
-- Border: none
-- Radius: rounded-lg (8px)
-- Padding: px-4 py-2.5 (text-sm font-medium)
-- Hover: var(--primary-hover), shadow-sm, active:scale-[0.98]
-- Focus: ring-2 ring-primary ring-offset-2
+- Light Mode:
+  - Background: #0F766E (Teal 700 - AAA 7:1+ contrast)
+  - Text: #FFFFFF
+  - Bevel: inset 0 1px 0 rgba(255, 255, 255, 0.25)
+  - Shadow: 0 4px 14px rgba(15, 118, 110, 0.25)
+  - Hover: bg-teal-800, -translate-y-0.5, shadow 0 6px 20px rgba(15, 118, 110, 0.35)
+- Dark Mode:
+  - Background: #2DD4BF (Luminous Teal)
+  - Text: #080B11 (Deep Obsidian)
+  - Bevel: inset 0 1px 0 rgba(255, 255, 255, 0.5)
+  - Aura Glow: 0 0 24px -4px rgba(45, 212, 191, 0.35)
+  - Hover: bg-teal-300, -translate-y-0.5, glow 0 0 32px -2px rgba(45, 212, 191, 0.55)
+- Shared Affordances:
+  - Radius: rounded-full (pill geometry)
+  - Tactile Press: active:scale-[0.98] active:translate-y-0
+  - Focus Ring: ring-2 ring-teal-500/50 ring-offset-2
 
-[ Secondary / Outline Button ]
-- Background: transparent
-- Foreground: var(--foreground)
-- Border: 1px solid var(--border)
-- Radius: rounded-lg (8px)
-- Padding: px-4 py-2.5 (text-sm font-medium)
-- Hover: bg-surface, border-border-hover, active:scale-[0.98]
+[ Glassmorphic Button ]
+- Light Mode:
+  - Background: rgba(255, 255, 255, 0.65) with backdrop-blur-xl
+  - Text: #0F172A (Slate 900)
+  - Border: 1px solid rgba(226, 232, 240, 0.8)
+  - Specular Rim: inset 0 1px 1px rgba(255, 255, 255, 0.9)
+  - Shadow: 0 2px 8px rgba(15, 23, 42, 0.04)
+  - Hover: bg-white/90, -translate-y-0.5
+- Dark Mode:
+  - Background: rgba(255, 255, 255, 0.06) with backdrop-blur-xl
+  - Text: #E2E8F0 (Slate 200)
+  - Border: 1px solid rgba(255, 255, 255, 0.12)
+  - Specular Rim: inset 0 1px 1px rgba(255, 255, 255, 0.16)
+  - Hover: bg-white/[0.12], border-white/[0.22], text-white, -translate-y-0.5
+
+[ Secondary / Outline Pill ]
+- Light Mode: bg-slate-100/90, text-slate-800, border-slate-200
+- Dark Mode: bg-[#131926], text-slate-200, border-[#1E283D]
+- Hover: surface elevation, active:scale-[0.98]
 
 [ Ghost Button ]
 - Background: transparent
-- Foreground: var(--foreground-muted)
-- Radius: rounded-lg (8px)
-- Padding: px-3 py-2 (text-sm font-medium)
-- Hover: bg-surface, text-foreground
+- Text: var(--muted) -> hover:text-foreground
+- Hover: subtle capsule fill (bg-slate-100/70 / dark:bg-white/[0.06])
 
-[ Destructive / Danger Button (Admin) ]
-- Background: var(--danger)
-- Foreground: #FFFFFF
-- Radius: rounded-lg (8px)
-- Hover: opacity-90
+[ Modular Size Scale ]
+- sm: h-8 px-3.5 text-xs (32px height)
+- md: h-10 px-5 text-xs font-semibold (40px height)
+- lg: h-12 px-6 text-sm font-semibold (48px height)
+- icon: h-9 w-9 rounded-full (theme switcher, hamburger)
 ```
 
 ### 5.2 Cards & Surface Containers

@@ -19,23 +19,32 @@ export function FloatingNavbar() {
 
   return (
     <header className="fixed top-4 sm:top-6 inset-x-0 mx-auto z-50 w-full max-w-4xl px-4 sm:px-6">
-      {/* Floating Island Container */}
-      <div className="relative flex h-14 items-center justify-between rounded-full border border-slate-200/90 bg-white/80 px-4 sm:px-5 backdrop-blur-md shadow-[0_8px_30px_rgb(0,0,0,0.04)] transition-colors duration-200 dark:border-[#1E283D] dark:bg-[#111622]/85 dark:backdrop-blur-md dark:shadow-none">
-        {/* Brand / Monogram */}
+      {/* Premium Glassmorphic Floating Island */}
+      <div
+        className="relative flex h-14 items-center justify-between rounded-full px-4 sm:px-5 transition-all duration-300 ease-out
+        backdrop-blur-2xl backdrop-saturate-150
+        bg-white/60 border border-white/80 shadow-[0_12px_36px_-6px_rgba(15,23,42,0.08),inset_0_1px_1px_0_rgba(255,255,255,0.95)]
+        dark:bg-[#080B11]/60 dark:border-white/[0.09] dark:shadow-[0_16px_40px_-10px_rgba(0,0,0,0.65),inset_0_1px_1px_0_rgba(255,255,255,0.12)]"
+      >
+        {/* Brand Monogram */}
         <Link
           href="/"
-          className="group flex items-center gap-1.5 font-mono text-sm font-semibold tracking-tight text-slate-900 transition-colors dark:text-slate-100"
+          className="group flex items-center gap-1.5 font-mono text-xs sm:text-sm font-semibold tracking-tight text-slate-900 transition-colors dark:text-slate-100"
         >
+          <span className="relative flex h-2 w-2">
+            <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-teal-400 opacity-75" />
+            <span className="relative inline-flex h-2 w-2 rounded-full bg-teal-500 dark:bg-teal-400" />
+          </span>
           <span>portfolio</span>
-          <span className="text-teal-600 transition-transform duration-200 group-hover:scale-125 dark:text-teal-400">
+          <span className="text-teal-700 transition-transform duration-200 group-hover:scale-125 dark:text-teal-400">
             .ts
           </span>
         </Link>
 
-        {/* Center Desktop Links */}
+        {/* Center Desktop Links with Glass Capsule Pills */}
         <nav
           aria-label="Main Navigation"
-          className="hidden md:flex items-center gap-1"
+          className="hidden md:flex items-center gap-1 rounded-full p-1 border border-black/[0.03] bg-black/[0.02] dark:border-white/[0.04] dark:bg-white/[0.02]"
         >
           {NAV_LINKS.map((link) => {
             const isActive =
@@ -47,10 +56,10 @@ export function FloatingNavbar() {
               <Link
                 key={link.href}
                 href={link.href}
-                className={`relative rounded-full px-3.5 py-1.5 text-xs font-medium transition-all duration-150 ${
+                className={`relative rounded-full px-3.5 py-1.5 text-xs font-medium transition-all duration-200 ease-out ${
                   isActive
-                    ? "bg-slate-100 font-semibold text-slate-900 dark:bg-[#1E283D] dark:text-slate-100"
-                    : "text-slate-600 hover:bg-slate-100/70 hover:text-slate-900 dark:text-slate-400 dark:hover:bg-[#1E283D]/60 dark:hover:text-slate-200"
+                    ? "bg-white/90 text-slate-950 font-semibold shadow-[0_2px_8px_rgba(0,0,0,0.06),inset_0_1px_0_rgba(255,255,255,1)] border border-slate-200/70 dark:bg-white/[0.12] dark:text-white dark:border-white/[0.14] dark:shadow-[inset_0_1px_0_rgba(255,255,255,0.2)]"
+                    : "text-slate-600 hover:text-slate-950 hover:bg-white/50 dark:text-slate-400 dark:hover:text-slate-100 dark:hover:bg-white/[0.06]"
                 }`}
               >
                 {link.label}
@@ -59,31 +68,25 @@ export function FloatingNavbar() {
           })}
         </nav>
 
-        {/* Right Actions Cluster */}
-        <div className="flex items-center gap-2 sm:gap-3">
-          {/* Status Badge (Desktop only) */}
-          <div className="hidden lg:inline-flex items-center gap-1.5 rounded-full border border-teal-500/20 bg-teal-500/10 px-2.5 py-1 font-mono text-[11px] text-teal-800 dark:border-teal-400/20 dark:bg-teal-400/10 dark:text-teal-300">
-            <span className="h-1.5 w-1.5 rounded-full bg-teal-600 dark:bg-teal-400 animate-pulse" />
-            <span>Open to work</span>
-          </div>
-
-          {/* Theme Switcher Toggle */}
+        <div className="flex items-center gap-2 sm:gap-2.5">
           <ThemeToggle />
 
-          {/* CTA Action Button (Desktop only) */}
           <Link
             href="/contact"
-            className="hidden sm:inline-flex items-center justify-center rounded-full bg-teal-600 px-4 py-1.5 text-xs font-semibold text-white transition-all duration-150 hover:bg-teal-700 active:scale-95 shadow-sm dark:bg-teal-400 dark:text-[#080B11] dark:hover:bg-teal-300 dark:shadow-none"
+            className="hidden sm:inline-flex items-center justify-center rounded-full font-semibold text-xs tracking-tight px-4 py-2 cursor-pointer select-none transition-all duration-200 ease-out focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-teal-500/50 active:scale-[0.98]
+              bg-teal-700 text-white shadow-[inset_0_1px_0_rgba(255,255,255,0.25),0_4px_14px_rgba(15,118,110,0.25)] hover:bg-teal-800 hover:shadow-[inset_0_1px_0_rgba(255,255,255,0.35),0_6px_20px_rgba(15,118,110,0.35)] hover:-translate-y-0.5
+              dark:bg-teal-400 dark:text-[#080B11] dark:shadow-[inset_0_1px_0_rgba(255,255,255,0.5),0_0_24px_-4px_rgba(45,212,191,0.35)] dark:hover:bg-teal-300 dark:hover:shadow-[inset_0_1px_0_rgba(255,255,255,0.65),0_0_32px_-2px_rgba(45,212,191,0.55)] dark:hover:-translate-y-0.5"
           >
             Get in touch
           </Link>
 
-          {/* Mobile Menu Hamburger Button */}
           <button
             onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
             aria-expanded={mobileMenuOpen}
             aria-label="Toggle navigation menu"
-            className="flex h-9 w-9 items-center justify-center rounded-full border border-slate-200/90 bg-white/70 text-slate-700 transition-colors hover:border-slate-300 hover:text-slate-900 md:hidden dark:border-[#1E283D] dark:bg-[#0E131F]/80 dark:text-slate-300 dark:hover:border-[#334466] dark:hover:text-slate-100"
+            className="flex h-9 w-9 items-center justify-center rounded-full backdrop-blur-xl transition-all duration-200 md:hidden active:scale-95
+              bg-white/65 border border-slate-200/80 text-slate-700 shadow-[inset_0_1px_1px_rgba(255,255,255,0.9)] hover:bg-white/90 hover:text-slate-900
+              dark:bg-white/6 dark:border-white/[0.12] dark:text-slate-300 dark:shadow-[inset_0_1px_1px_rgba(255,255,255,0.16)] dark:hover:bg-white/[0.12] dark:hover:text-white"
           >
             <svg
               className="h-4 w-4"
@@ -112,9 +115,14 @@ export function FloatingNavbar() {
         </div>
       </div>
 
-      {/* Mobile Drawer Dropdown */}
+      {/* Mobile Drawer Dropdown with Matching Glassmorphism */}
       {mobileMenuOpen && (
-        <div className="mt-2 overflow-hidden rounded-2xl border border-slate-200/90 bg-white/95 p-3 backdrop-blur-md shadow-xl md:hidden dark:border-[#1E283D] dark:bg-[#111622]/95 dark:backdrop-blur-md dark:shadow-none">
+        <div
+          className="mt-2.5 overflow-hidden rounded-2xl p-3 md:hidden transition-all duration-300 ease-out
+          backdrop-blur-2xl backdrop-saturate-150
+          bg-white/80 border border-white/90 shadow-[0_20px_40px_-10px_rgba(15,23,42,0.12),inset_0_1px_1px_0_rgba(255,255,255,0.95)]
+          dark:bg-[#080B11]/85 dark:border-white/[0.10] dark:shadow-[0_24px_50px_-12px_rgba(0,0,0,0.8),inset_0_1px_1px_0_rgba(255,255,255,0.15)]"
+        >
           <nav className="flex flex-col gap-1">
             {NAV_LINKS.map((link) => {
               const isActive =
@@ -127,10 +135,10 @@ export function FloatingNavbar() {
                   key={link.href}
                   href={link.href}
                   onClick={() => setMobileMenuOpen(false)}
-                  className={`flex h-11 items-center rounded-xl px-4 text-sm font-medium transition-colors ${
+                  className={`flex h-11 items-center rounded-xl px-4 text-sm font-medium transition-all duration-150 ${
                     isActive
-                      ? "bg-slate-100 font-semibold text-slate-900 dark:bg-[#1E283D] dark:text-slate-100"
-                      : "text-slate-600 hover:bg-slate-50 hover:text-slate-900 dark:text-slate-400 dark:hover:bg-[#1E283D]/50 dark:hover:text-slate-200"
+                      ? "bg-slate-900/[0.06] font-semibold text-slate-950 dark:bg-white/[0.12] dark:text-white"
+                      : "text-slate-600 hover:bg-black/[0.03] hover:text-slate-900 dark:text-slate-400 dark:hover:bg-white/[0.05] dark:hover:text-slate-200"
                   }`}
                 >
                   {link.label}
@@ -138,11 +146,13 @@ export function FloatingNavbar() {
               );
             })}
 
-            <div className="mt-2 border-t border-slate-100 pt-3 dark:border-[#1E283D]">
+            <div className="mt-2 border-t border-slate-200/60 pt-3 dark:border-white/[0.08]">
               <Link
                 href="/contact"
                 onClick={() => setMobileMenuOpen(false)}
-                className="flex h-11 w-full items-center justify-center rounded-xl bg-teal-600 text-sm font-semibold text-white transition-all hover:bg-teal-700 active:scale-95 dark:bg-teal-400 dark:text-[#080B11] dark:hover:bg-teal-300"
+                className="flex h-11 w-full items-center justify-center rounded-xl font-semibold text-sm transition-all duration-200 active:scale-[0.98]
+                  bg-teal-700 text-white shadow-[inset_0_1px_0_rgba(255,255,255,0.25)] hover:bg-teal-800
+                  dark:bg-teal-400 dark:text-[#080B11] dark:shadow-[inset_0_1px_0_rgba(255,255,255,0.5),0_0_24px_-4px_rgba(45,212,191,0.35)] dark:hover:bg-teal-300"
               >
                 Get in touch
               </Link>
