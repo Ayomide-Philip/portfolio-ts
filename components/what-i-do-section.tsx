@@ -126,8 +126,8 @@ export function WhatIDoSection() {
               </p>
             </div>
 
-            <div className="mt-5 h-55 flex flex-col rounded-2xl border border-slate-200/80 bg-slate-100/90 p-3 sm:p-3.5 dark:border-white/[0.12] dark:bg-[#030712] dark:shadow-[inset_0_1px_1px_0_rgba(255,255,255,0.06)] overflow-hidden">
-              <div className="flex items-center justify-between gap-1.5 border-b border-slate-200/80 dark:border-white/[0.1] pb-2.5 min-w-0 shrink-0">
+            <div className="mt-5 h-55 flex flex-col rounded-2xl border border-slate-200/80 bg-slate-100/90 p-3 sm:p-3.5 dark:border-white/12 dark:bg-[#030712] dark:shadow-[inset_0_1px_1px_0_rgba(255,255,255,0.06)] overflow-hidden">
+              <div className="flex items-center justify-between gap-1.5 border-b border-slate-200/80 dark:border-white/10 pb-2.5 min-w-0 shrink-0">
                 <div className="flex items-center gap-1.5 min-w-0 truncate">
                   <span className="h-2.5 w-2.5 rounded-full bg-[#ff5f56] shrink-0" />
                   <span className="h-2.5 w-2.5 rounded-full bg-[#ffbd2e] shrink-0" />
@@ -283,8 +283,8 @@ export function WhatIDoSection() {
               </p>
             </div>
 
-            <div className="mt-5 h-55 flex flex-col rounded-2xl border border-slate-200/80 bg-slate-100/90 p-3 sm:p-3.5 dark:border-white/[0.12] dark:bg-[#030712] dark:shadow-[inset_0_1px_1px_0_rgba(255,255,255,0.06)] overflow-hidden">
-              <div className="flex items-center justify-between gap-1.5 border-b border-slate-200/80 dark:border-white/[0.1] pb-2.5 min-w-0 shrink-0">
+            <div className="mt-5 h-55 flex flex-col rounded-2xl border border-slate-200/80 bg-slate-100/90 p-3 sm:p-3.5 dark:border-white/12 dark:bg-[#030712] dark:shadow-[inset_0_1px_1px_0_rgba(255,255,255,0.06)] overflow-hidden">
+              <div className="flex items-center justify-between gap-1.5 border-b border-slate-200/80 dark:border-white/10 pb-2.5 min-w-0 shrink-0">
                 <div className="flex items-center gap-1.5 min-w-0 truncate">
                   <span className="h-2.5 w-2.5 rounded-full bg-[#ff5f56] shrink-0" />
                   <span className="h-2.5 w-2.5 rounded-full bg-[#ffbd2e] shrink-0" />
@@ -477,8 +477,8 @@ export function WhatIDoSection() {
               </p>
             </div>
 
-            <div className="mt-5 h-55 flex flex-col rounded-2xl border border-slate-200/80 bg-slate-100/90 p-3 sm:p-3.5 dark:border-white/[0.12] dark:bg-[#030712] dark:shadow-[inset_0_1px_1px_0_rgba(255,255,255,0.06)] overflow-hidden">
-              <div className="flex items-center justify-between gap-1.5 border-b border-slate-200/80 dark:border-white/[0.1] pb-2.5 min-w-0 shrink-0">
+            <div className="mt-5 h-55 flex flex-col rounded-2xl border border-slate-200/80 bg-slate-100/90 p-3 sm:p-3.5 dark:border-white/12 dark:bg-[#030712] dark:shadow-[inset_0_1px_1px_0_rgba(255,255,255,0.06)] overflow-hidden">
+              <div className="flex items-center justify-between gap-1.5 border-b border-slate-200/80 dark:border-white/10 pb-2.5 min-w-0 shrink-0">
                 <div className="flex items-center gap-1.5 min-w-0 truncate">
                   <span className="h-2.5 w-2.5 rounded-full bg-[#ff5f56] shrink-0" />
                   <span className="h-2.5 w-2.5 rounded-full bg-[#ffbd2e] shrink-0" />
