@@ -12,11 +12,10 @@ import {
 import { ThemeToggle } from "./theme-toggle";
 
 const NAV_LINKS = [
-  { href: "/", label: "Home" },
-  { href: "/about", label: "About" },
-  { href: "/projects", label: "Projects" },
-  { href: "/blog", label: "Blog" },
-  { href: "/contact", label: "Contact" },
+  { href: "/#services", label: "What I do" },
+  { href: "/#stack", label: "Stack" },
+  { href: "/#projects", label: "Projects" },
+  { href: "/#contact", label: "Contact" },
 ];
 
 export function FloatingNavbar() {
@@ -24,7 +23,7 @@ export function FloatingNavbar() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
   return (
-    <header className="fixed top-4 sm:top-6 inset-x-0 mx-auto z-50 w-full max-w-4xl px-4 sm:px-6">
+    <header className="fixed top-4 sm:top-6 inset-x-0 mx-auto z-50 w-full max-w-3xl px-4 sm:px-6">
       <div
         className="relative flex h-14 items-center justify-between rounded-full px-3.5 sm:px-5 transition-all duration-300 ease-out
         backdrop-blur-2xl backdrop-saturate-150
@@ -50,9 +49,7 @@ export function FloatingNavbar() {
         >
           {NAV_LINKS.map((link) => {
             const isActive =
-              link.href === "/"
-                ? pathname === "/"
-                : pathname?.startsWith(link.href);
+              pathname === "/projects" && link.href === "/#projects";
 
             return (
               <Link
@@ -74,7 +71,7 @@ export function FloatingNavbar() {
           <ThemeToggle />
 
           <Link
-            href="/contact"
+            href="/#contact"
             className="hidden sm:inline-flex items-center justify-center rounded-full font-semibold text-xs tracking-tight px-4 py-2 cursor-pointer select-none transition-all duration-200 ease-out focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-teal-500/50 active:scale-[0.98]
               bg-teal-700 text-white shadow-[inset_0_1px_0_rgba(255,255,255,0.25),0_4px_14px_rgba(15,118,110,0.25)] hover:bg-teal-800 hover:shadow-[inset_0_1px_0_rgba(255,255,255,0.35),0_6px_20px_rgba(15,118,110,0.35)] hover:-translate-y-0.5
               dark:bg-teal-400 dark:text-[#080B11] dark:shadow-[inset_0_1px_0_rgba(255,255,255,0.5),0_4px_14px_rgba(0,0,0,0.35)] dark:hover:bg-teal-300 dark:hover:shadow-[inset_0_1px_0_rgba(255,255,255,0.65),0_6px_20px_rgba(0,0,0,0.45)] dark:hover:-translate-y-0.5"
@@ -107,9 +104,7 @@ export function FloatingNavbar() {
           <nav className="flex flex-col gap-1">
             {NAV_LINKS.map((link) => {
               const isActive =
-                link.href === "/"
-                  ? pathname === "/"
-                  : pathname?.startsWith(link.href);
+                pathname === "/projects" && link.href === "/#projects";
 
               return (
                 <Link
@@ -129,7 +124,7 @@ export function FloatingNavbar() {
 
             <div className="mt-2 border-t border-slate-200/60 pt-3 dark:border-white/8">
               <Link
-                href="/contact"
+                href="/#contact"
                 onClick={() => setMobileMenuOpen(false)}
                 className="flex h-11 w-full items-center justify-center rounded-xl font-semibold text-sm transition-all duration-200 active:scale-[0.98]
                   bg-teal-700 text-white shadow-[inset_0_1px_0_rgba(255,255,255,0.25)] hover:bg-teal-800

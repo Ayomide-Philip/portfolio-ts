@@ -210,7 +210,7 @@ export function HeroSection() {
           </Link>
 
           <Link
-            href="/contact"
+            href="#contact"
             className="inline-flex items-center justify-center gap-2 rounded-full px-5 sm:px-6 py-2.5 sm:py-3 text-xs sm:text-sm font-semibold tracking-tight transition-all duration-200 ease-out active:scale-[0.98]
               backdrop-blur-xl bg-white/70 text-slate-800 border border-slate-200/90 shadow-[inset_0_1px_1px_rgba(255,255,255,0.9),0_2px_8px_rgba(15,23,42,0.04)] hover:bg-white hover:border-slate-300 hover:text-slate-950 hover:-translate-y-0.5 active:translate-y-0
               dark:bg-white/6 dark:text-slate-200 dark:border-white/12 dark:shadow-[inset_0_1px_1px_rgba(255,255,255,0.16)] dark:hover:bg-white/12 dark:hover:border-white/22 dark:hover:text-white dark:hover:-translate-y-0.5 dark:active:translate-y-0"

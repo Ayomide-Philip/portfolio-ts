@@ -22,7 +22,10 @@ export function ContactCtaSection() {
   };
 
   return (
-    <section className="relative mx-auto w-full max-w-4xl px-4 sm:px-6 py-20 sm:py-28 border-t border-slate-200/70 dark:border-white/8">
+    <section
+      id="contact"
+      className="relative mx-auto w-full max-w-4xl px-4 sm:px-6 py-20 sm:py-28 border-t border-slate-200/70 dark:border-white/8 scroll-mt-24"
+    >
       <div className="flex flex-col items-center text-center space-y-6">
         <h2 className="text-3xl sm:text-5xl lg:text-6xl font-bold tracking-tight text-slate-900 dark:text-slate-100 text-pretty">
           Let&apos;s work together.
