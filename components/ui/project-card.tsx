@@ -5,10 +5,13 @@ import {
   SiMongodb,
   SiTailwindcss,
   SiGithub,
+  SiNodedotjs,
+  SiReact,
 } from "react-icons/si";
 import { ProjectCardImage } from "../project-card-image";
 import { HugeiconsIcon } from "@hugeicons/react";
 import { ArrowUpRight01Icon } from "@hugeicons/core-free-icons";
+import { FaMarkdown } from "react-icons/fa";
 
 export interface Project {
   title: string;
@@ -33,6 +36,16 @@ function getTechIcon(tech: string) {
     return <SiMongodb size={11} className="text-[#47A248]" />;
   if (t.includes("tailwind"))
     return <SiTailwindcss size={11} className="text-[#06B6D4]" />;
+  if (t.includes("github"))
+    return <SiGithub size={11} className="text-slate-900 dark:text-white" />;
+  if (t.includes("node"))
+    return <SiNodedotjs size={11} className="text-[#339933]" />;
+  if (t.includes("react"))
+    return <SiReact size={11} className="text-[#61DAFB]" />;
+  if (t.includes("markdown"))
+    return (
+      <FaMarkdown size={11} className="text-[#000000] dark:text-[#ffffff]" />
+    );
   return null;
 }
 

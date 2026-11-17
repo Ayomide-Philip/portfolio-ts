@@ -2,6 +2,39 @@ import { Project } from "@/components/ui/project-card";
 
 export const Projects: Project[] = [
   {
+    title: "AI Agent Skills",
+    category: "AI & Systems",
+    description:
+      "A collection of skills and capabilities for developing intelligent agents.PRD is already relased and is an open-source project for the AI community.",
+    stack: ["Markdown", "Node.js", "JavaScript"],
+    liveUrl: "https://www.npmjs.com/package/@ayomide-philip/skills",
+    sourceUrl: "https://github.com/Ayomide-Philip/skills",
+    featured: true,
+    year: "2026",
+  },
+  {
+    title: "Digital Attendance & Verification",
+    category: "Full-Stack",
+    description:
+      "Automated attendance system that uses geo-location to verify the presence of students in a classroom, with real-time attendance tracking and reporting.",
+    stack: ["Next.js", "JavaScript", "MongoDB", "Tailwind CSS"],
+    liveUrl: "",
+    sourceUrl: "https://github.com/Ayomide-Philip/digital-attendance",
+    featured: false,
+    year: "2026",
+  },
+  {
+    title: "E2E Encrypted Chat Protocol",
+    category: "Systems & AI",
+    description:
+      "Zero-knowledge encrypted messaging engine utilizing Web Crypto APIs, ECDH key agreements, and authenticated WebSocket streams with ratchet forward secrecy.",
+    stack: ["TypeScript", "Node.js", "Tailwind CSS", "Next.js"],
+    liveUrl: "https://e2e-tbki.onrender.com/",
+    sourceUrl: "https://github.com/Ayomide-Philip/E2E",
+    featured: false,
+    year: "2026",
+  },
+  {
     title: "Fashion E-Commerce",
     category: "Full-Stack",
     description:
@@ -32,28 +65,6 @@ export const Projects: Project[] = [
     liveUrl: "https://balogun-initiative-beta.vercel.app/",
     sourceUrl: "",
     featured: true,
-    year: "2023",
-  },
-  {
-    title: "E2E Encrypted Chat Protocol",
-    category: "Systems & AI",
-    description:
-      "Zero-knowledge encrypted messaging engine utilizing Web Crypto APIs, ECDH key agreements, and authenticated WebSocket streams with ratchet forward secrecy.",
-    stack: ["TypeScript", "Node.js", "Tailwind CSS"],
-    liveUrl: "",
-    sourceUrl: "https://github.com/Ayomide-Philip",
-    featured: false,
-    year: "2024",
-  },
-  {
-    title: "Digital Attendance & Verification",
-    category: "Full-Stack",
-    description:
-      "Automated attendance audit platform with cryptographic geofence verification, biometric QR tokens, and role-based administrative reporting dashboards.",
-    stack: ["Next.js", "TypeScript", "PostgreSQL", "Tailwind CSS"],
-    liveUrl: "",
-    sourceUrl: "https://github.com/Ayomide-Philip",
-    featured: false,
     year: "2023",
   },
 ];

@@ -33,7 +33,7 @@ function getGitHubOgUrl(sourceUrl?: string): string {
 export function ProjectCardImage({
   title,
   category,
-  year = "2024",
+  year = "2026",
   sourceUrl,
 }: ProjectCardImageProps) {
   const targetOgUrl = getGitHubOgUrl(sourceUrl);
