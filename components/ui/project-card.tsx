@@ -76,7 +76,9 @@ export default function ProjectCard({ project }: { project: Project }) {
                 href={project.liveUrl}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="group/btn flex-1 h-9 px-4 rounded-full inline-flex items-center justify-center gap-1.5 font-semibold text-xs tracking-tight transition-all duration-200 hover:-translate-y-0.5 active:scale-95 cursor-pointer bg-slate-900 text-white hover:bg-slate-800 shadow-[inset_0_1px_0_rgba(255,255,255,0.2)] dark:bg-teal-400 dark:text-[#080B11] dark:shadow-[inset_0_1px_0_rgba(255,255,255,0.4)] dark:hover:bg-teal-300"
+                className="group/btn flex-1 h-9 px-4 rounded-full inline-flex items-center justify-center gap-1.5 font-semibold text-xs tracking-tight transition-all duration-200 hover:-translate-y-0.5 active:scale-95 cursor-pointer
+                bg-teal-700 text-white hover:bg-teal-800 shadow-[inset_0_1px_0_rgba(255,255,255,0.25),0_4px_14px_rgba(15,118,110,0.25)]
+                dark:bg-teal-400 dark:text-[#080B11] dark:shadow-[inset_0_1px_0_rgba(255,255,255,0.4)] dark:hover:bg-teal-300"
               >
                 <span>Live Demo</span>
                 <HugeiconsIcon
