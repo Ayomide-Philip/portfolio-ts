@@ -44,21 +44,12 @@ export const metadata: Metadata = {
     title: "Ayomide Philip | Fullstack & Systems Developer",
     description:
       "Fullstack developer crafting high-performance web applications, distributed systems, and modern digital platforms with Next.js and TypeScript.",
-    images: [
-      {
-        url: "/opengraph-image",
-        width: 1200,
-        height: 630,
-        alt: "Ayomide Philip — Fullstack & Systems Developer",
-      },
-    ],
   },
   twitter: {
     card: "summary_large_image",
     title: "Ayomide Philip | Fullstack & Systems Developer",
     description:
       "Fullstack developer crafting high-performance web applications and distributed systems with Next.js and TypeScript.",
-    images: ["/opengraph-image"],
     creator: "@AyomidePhilip",
   },
   robots: {
