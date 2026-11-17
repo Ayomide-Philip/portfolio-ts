@@ -6,9 +6,74 @@ import { FloatingNavbar } from "@/components/floating-navbar";
 import { Footer } from "@/components/footer";
 
 export const metadata: Metadata = {
-  title: "Ayomide Philip | Portfolio",
+  metadataBase: new URL(
+    process.env.NEXT_PUBLIC_SITE_URL || "https://ayomide-philip.vercel.app",
+  ),
+  title: {
+    default: "Ayomide Philip | Fullstack & Systems Developer",
+    template: "%s | Ayomide Philip",
+  },
   description:
-    "Architecting high-throughput distributed systems, real-time engines, and resilient web platforms.",
+    "Fullstack developer crafting high-performance web applications, distributed systems, and modern digital platforms with Next.js, TypeScript, and cloud technologies.",
+  applicationName: "Ayomide Philip Portfolio",
+  authors: [
+    { name: "Ayomide Philip", url: "https://github.com/Ayomide-Philip" },
+  ],
+  creator: "Ayomide Philip",
+  publisher: "Ayomide Philip",
+  keywords: [
+    "Ayomide Philip",
+    "Fullstack Developer",
+    "Next.js Developer",
+    "TypeScript",
+    "React",
+    "Tailwind CSS",
+    "Node.js",
+    "MongoDB",
+    "Software Engineer Portfolio",
+    "Web Development",
+    "Systems Architecture",
+  ],
+  category: "technology",
+  openGraph: {
+    type: "website",
+    locale: "en_US",
+    url: "/",
+    siteName: "Ayomide Philip — Portfolio",
+    title: "Ayomide Philip | Fullstack & Systems Developer",
+    description:
+      "Fullstack developer crafting high-performance web applications, distributed systems, and modern digital platforms with Next.js and TypeScript.",
+    images: [
+      {
+        url: "/opengraph-image",
+        width: 1200,
+        height: 630,
+        alt: "Ayomide Philip — Fullstack & Systems Developer",
+      },
+    ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Ayomide Philip | Fullstack & Systems Developer",
+    description:
+      "Fullstack developer crafting high-performance web applications and distributed systems with Next.js and TypeScript.",
+    images: ["/opengraph-image"],
+    creator: "@AyomidePhilip",
+  },
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      "max-video-preview": -1,
+      "max-image-preview": "large",
+      "max-snippet": -1,
+    },
+  },
+  alternates: {
+    canonical: "/",
+  },
 };
 
 export default function RootLayout({
