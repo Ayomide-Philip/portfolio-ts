@@ -43,7 +43,7 @@ export const Projects: Project[] = [
     liveUrl: "https://ecommerce-fashion-7fz3.onrender.com/",
     sourceUrl: "",
     featured: true,
-    year: "2024",
+    year: "2026",
   },
   {
     title: "Classora",
@@ -54,17 +54,17 @@ export const Projects: Project[] = [
     liveUrl: "https://classora-eight.vercel.app/",
     sourceUrl: "https://github.com/Ayomide-Philip/Classora",
     featured: true,
-    year: "2024",
+    year: "2025",
   },
-  {
-    title: "Mentorship Platform",
-    category: "Full-Stack",
-    description:
-      "High-impact mentorship portal designed to pair rising engineers with senior industry leaders, featuring schedule synchronization, feedback pipelines, and goal roadmaps.",
-    stack: ["Next.js", "TypeScript", "MongoDB", "Tailwind CSS"],
-    liveUrl: "https://balogun-initiative-beta.vercel.app/",
-    sourceUrl: "",
-    featured: true,
-    year: "2023",
-  },
+  //   {
+  //     title: "Mentorship Platform",
+  //     category: "Full-Stack",
+  //     description:
+  //       "High-impact mentorship portal designed to pair rising engineers with senior industry leaders, featuring schedule synchronization, feedback pipelines, and goal roadmaps.",
+  //     stack: ["Next.js", "TypeScript", "MongoDB", "Tailwind CSS"],
+  //     liveUrl: "https://balogun-initiative-beta.vercel.app/",
+  //     sourceUrl: "",
+  //     featured: true,
+  //     year: "2026",
+  //   },
 ];

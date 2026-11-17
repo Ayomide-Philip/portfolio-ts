@@ -11,7 +11,7 @@ import {
 import ProjectCard from "@/components/ui/project-card";
 import { Projects as ALL_PROJECTS } from "@/data/projects";
 
-const CATEGORIES = ["All", "Full-Stack", "Frontend", "Systems & AI"] as const;
+const CATEGORIES = ["All", "Full-Stack", "Systems & AI"] as const;
 
 export default function ProjectsPage() {
   const [selectedCategory, setSelectedCategory] = useState<string>("All");
