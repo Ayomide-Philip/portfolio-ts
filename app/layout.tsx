@@ -6,7 +6,7 @@ import { FloatingNavbar } from "@/components/floating-navbar";
 import { Footer } from "@/components/footer";
 
 export const metadata: Metadata = {
-  title: "Senior Full-Stack Developer | Portfolio",
+  title: "Ayomide Philip | Portfolio",
   description:
     "Architecting high-throughput distributed systems, real-time engines, and resilient web platforms.",
 };
@@ -31,7 +31,6 @@ export default function RootLayout({
         />
       </head>
       <body className="relative min-h-full flex flex-col bg-background text-foreground font-sans antialiased selection:bg-teal-500/20 selection:text-teal-900 dark:selection:text-teal-200 transition-colors duration-300">
-        {/* Pure Tactile Dot Matrix Pattern (Zero Gradients) */}
         <div
           aria-hidden="true"
           className="fixed inset-0 pointer-events-none -z-10 bg-dot-matrix mask-[radial-gradient(ellipse_at_center,black_80%,transparent_98%)] transition-opacity duration-300"
