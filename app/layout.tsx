@@ -7,7 +7,8 @@ import { Footer } from "@/components/footer";
 
 export const metadata: Metadata = {
   metadataBase: new URL(
-    process.env.NEXT_PUBLIC_SITE_URL || "https://ayomide-philip.vercel.app",
+    process.env.NEXT_PUBLIC_SITE_URL ||
+      "https://ayomide-philip-beta.vercel.app",
   ),
   title: {
     default: "Ayomide Philip | Fullstack & Systems Developer",
