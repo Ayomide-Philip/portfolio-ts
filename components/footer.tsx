@@ -1,20 +1,12 @@
-"use client";
-
 import Link from "next/link";
 import { SiGithub } from "react-icons/si";
 
-export function Footer() {
-  const scrollToTop = () => {
-    if (typeof window !== "undefined") {
-      window.scrollTo({ top: 0, behavior: "smooth" });
-    }
-  };
-
+export async function Footer() {
+  "use cache";
   return (
     <footer className="w-full border-t border-slate-200/80 dark:border-white/8 bg-slate-100/70 dark:bg-[#030712]/95 backdrop-blur-xl transition-colors duration-300">
       <div className="mx-auto max-w-6xl px-4 sm:px-6 py-8 sm:py-10">
         <div className="flex flex-col sm:flex-row items-center justify-between gap-4 text-xs font-mono text-slate-500 dark:text-slate-400">
-          {/* Identity & Copyright */}
           <div className="flex items-center gap-2">
             <span className="font-semibold text-slate-900 dark:text-slate-100 font-sans text-sm">
               Ayomide Philip
@@ -23,7 +15,6 @@ export function Footer() {
             <span>&copy; {new Date().getFullYear()}</span>
           </div>
 
-          {/* Quick Links & Actions */}
           <div className="flex flex-wrap items-center justify-center gap-5 sm:gap-6">
             <a
               href="https://github.com/Ayomide-Philip"
@@ -60,28 +51,6 @@ export function Footer() {
             >
               Email
             </a>
-
-            <button
-              onClick={scrollToTop}
-              className="group inline-flex items-center gap-1 hover:text-slate-900 dark:hover:text-white transition-colors cursor-pointer"
-            >
-              <span>Back to top</span>
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                width="13"
-                height="13"
-                viewBox="0 0 24 24"
-                fill="none"
-                stroke="currentColor"
-                strokeWidth="2"
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                className="transition-transform duration-200 group-hover:-translate-y-0.5"
-                aria-hidden="true"
-              >
-                <path d="M12 19V5M5 12l7-7 7 7" />
-              </svg>
-            </button>
 
             <Link
               href="/admin/login"

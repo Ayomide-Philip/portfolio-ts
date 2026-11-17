@@ -31,6 +31,7 @@ interface TechItem {
   experience: string;
   spec: string;
   role: string;
+  projects?: string[];
   file: string;
   snippet: string;
   tags: string[];
@@ -56,6 +57,7 @@ const TECH_ITEMS: TechItem[] = [
     experience: "Daily driver",
     spec: "Strict End-to-End Typing",
     role: "Enforces strict type safety across React components, Next.js route handlers, and database schemas with zero any.",
+    projects: ["Fashion E-Commerce", "Classora", "E2E Chat"],
     file: "tsconfig.json",
     snippet: `{\n  "compilerOptions": {\n    "target": "ESNext",\n    "strict": true,\n    "noImplicitAny": true,\n    "isolatedModules": true\n  }\n}`,
     tags: ["Strict Mode", "Generics", "Zero Any", "Type Inference"],
@@ -70,6 +72,7 @@ const TECH_ITEMS: TechItem[] = [
     experience: "Core stack",
     spec: "App Router & SSR",
     role: "Fullstack architecture leveraging React Server Components, streaming SSR, parallel routes, and low-latency route handlers.",
+    projects: ["Fashion E-Commerce", "Classora"],
     file: "app/api/projects/route.ts",
     snippet: `export async function GET(req: Request) {\n  const data = await getCachedProjects();\n  return Response.json(data);\n}`,
     tags: ["App Router", "RSC", "Streaming SSR", "Server Actions"],
@@ -84,6 +87,7 @@ const TECH_ITEMS: TechItem[] = [
     experience: "Core stack",
     spec: "React 19 Architecture",
     role: "Modern component hierarchies, custom hooks, optimistic UI patterns, and concurrent state management.",
+    projects: ["Classora", "Interactive Portfolio"],
     file: "components/Card.tsx",
     snippet: `export function Card({ title, badge }: Props) {\n  const [saved, setSaved] = useState(false);\n  return <button onClick={() => setSaved(!saved)} />;\n}`,
     tags: ["React 19", "Custom Hooks", "Optimistic UI", "Compound Pattern"],
@@ -98,6 +102,7 @@ const TECH_ITEMS: TechItem[] = [
     experience: "Production",
     spec: "V8 Event Loop",
     role: "Asynchronous backend services, microservices, REST endpoints, and automated background script orchestration.",
+    projects: ["Classora API", "Backend Microservices"],
     file: "server/runtime.ts",
     snippet: `import { createServer } from "node:http";\n\n// V8 non-blocking event-driven runtime\nexport const runtime = "nodejs";`,
     tags: ["V8 Engine", "Async I/O", "Microservices", "Event Loop"],
@@ -112,6 +117,7 @@ const TECH_ITEMS: TechItem[] = [
     experience: "Foundation",
     spec: "ESNext Standards",
     role: "Modern ECMAScript logic, async/await concurrency primitives, web worker integration, and cross-browser execution.",
+    projects: ["Classora", "Custom Web Utilities"],
     file: "lib/concurrency.js",
     snippet: `export const raceWithTimeout = (promise, ms) =>\n  Promise.race([promise, timeoutReject(ms)]);`,
     tags: ["ES2024", "Async/Await", "Promises", "DOM APIs"],
@@ -128,6 +134,7 @@ const TECH_ITEMS: TechItem[] = [
     experience: "Primary styling",
     spec: "Tailwind v4 Engine",
     role: "Utility-first design tokens, container queries, fluid typography ramps, and custom dark mode variant stepping.",
+    projects: ["Fashion E-Commerce", "Classora", "Design System"],
     file: "app/globals.css",
     snippet: `@theme {\n  --font-sans: var(--font-instrument);\n  --color-brand: oklch(0.65 0.18 178);\n}`,
     tags: ["Tailwind v4", "Fluid Typography", "Dark Mode", "Zero Runtime"],
@@ -142,6 +149,7 @@ const TECH_ITEMS: TechItem[] = [
     experience: "Standard",
     spec: "Semantic Web",
     role: "Accessible landmarks, semantic document hierarchy, WCAG AA compliance, and clean DOM trees.",
+    projects: ["Accessible Web Interfaces"],
     file: "app/layout.tsx",
     snippet: `<main id="main-content" role="main" aria-label="Portfolio">\n  <section aria-labelledby="section-title">\n  </section>\n</main>`,
     tags: ["Semantic Tags", "WCAG AA", "ARIA Landmarks", "Clean DOM"],
@@ -156,6 +164,7 @@ const TECH_ITEMS: TechItem[] = [
     experience: "Modern CSS",
     spec: "CSS Variables",
     role: "Dynamic runtime design tokens, fluid clamp calculations, smooth transitions, and multi-layered glass surfaces.",
+    projects: ["Glassmorphism Theming System"],
     file: "styles/tokens.css",
     snippet: `:root {\n  --surface-glass: rgba(255, 255, 255, 0.65);\n  --elevation-shadow: 0 8px 32px rgba(15, 23, 42, 0.05);\n}`,
     tags: ["CSS Variables", "Liquid Glass", "Fluid Scales", "Theming"],
@@ -172,6 +181,7 @@ const TECH_ITEMS: TechItem[] = [
     experience: "Primary DB",
     spec: "NoSQL Document Store",
     role: "Document collections, compound indexing strategies, aggregation pipelines, and high availability clusters.",
+    projects: ["Fashion E-Commerce", "Classora"],
     file: "lib/mongodb.ts",
     snippet: `const client = await MongoClient.connect(MONGODB_URI, {\n  maxPoolSize: 10,\n  serverSelectionTimeoutMS: 5000,\n});`,
     tags: ["NoSQL", "Aggregation", "Indexes", "Atlas Cluster"],
@@ -186,6 +196,7 @@ const TECH_ITEMS: TechItem[] = [
     experience: "Data modeling",
     spec: "Schema Modeling",
     role: "Strict schema constraints, lifecycle middleware hooks, typed models, and automated data sanitization.",
+    projects: ["Fashion E-Commerce", "Classora"],
     file: "models/Project.ts",
     snippet: `const schema = new Schema({\n  title: { type: String, required: true, trim: true },\n  slug: { type: String, unique: true, index: true },\n});`,
     tags: ["ODM Layer", "Typed Schemas", "Validators", "Middleware"],
@@ -200,6 +211,7 @@ const TECH_ITEMS: TechItem[] = [
     experience: "API design",
     spec: "JSON Contracts",
     role: "Predictable resource routing, HTTP status code hygiene, payload validation, and robust error payloads.",
+    projects: ["Classora REST Endpoints", "API Contracts"],
     file: "contracts/api.ts",
     snippet: `interface ApiResponse<T> {\n  status: 200 | 201 | 400 | 404 | 500;\n  data: T;\n  meta: { latency: string };\n}`,
     tags: ["RESTful", "JSON Contracts", "HTTP Hygiene", "Status Codes"],
@@ -214,6 +226,7 @@ const TECH_ITEMS: TechItem[] = [
     experience: "Type-safe DB",
     spec: "Type-safe Client",
     role: "Declarative schema modeling, automatic database migrations, and generated type-safe query clients.",
+    projects: ["Relational Database Clients"],
     file: "prisma/schema.prisma",
     snippet: `model Project {\n  id        String   @id @default(cuid())\n  slug      String   @unique\n  published Boolean  @default(false)\n}`,
     tags: ["Type-safe ORM", "Migrations", "Client Gen", "Relations"],
@@ -230,6 +243,7 @@ const TECH_ITEMS: TechItem[] = [
     experience: "Daily workflow",
     spec: "Branching & History",
     role: "Atomic commits, interactive rebases, cherry-picks, and clean collaborative Git flow without merge bloat.",
+    projects: ["All Production Repositories"],
     file: ".gitconfig",
     snippet: `git commit -m "feat(api): add typed aggregation pipeline"\ngit status -s # atomic branch hygiene`,
     tags: ["Atomic Commits", "Rebase", "Branch Hygiene", "Clean History"],
@@ -244,6 +258,7 @@ const TECH_ITEMS: TechItem[] = [
     experience: "Code hosting",
     spec: "PRs & Code Review",
     role: "Pull requests with thoughtful descriptions, structured code reviews, issue tracking, and CI/CD automation.",
+    projects: ["Open Source & Production Repos"],
     file: ".github/workflows/ci.yml",
     snippet: `name: CI Check\non: [pull_request]\njobs:\n  verify:\n    runs-on: ubuntu-latest\n    steps: [{ run: npm test }]`,
     tags: ["Pull Requests", "Code Review", "CI Actions", "Repo Health"],
@@ -258,6 +273,7 @@ const TECH_ITEMS: TechItem[] = [
     experience: "Primary IDE",
     spec: "macOS Environment",
     role: "Tailored developer setup with strict TypeScript language tooling, customized keybindings, and automated formatting.",
+    projects: ["Daily Development Environment"],
     file: ".vscode/settings.json",
     snippet: `{\n  "editor.formatOnSave": true,\n  "typescript.tsdk": "node_modules/typescript/lib",\n  "editor.defaultFormatter": "esbenp.prettier-vscode"\n}`,
     tags: ["Language Server", "ESLint Integration", "Prettier", "macOS Setup"],
@@ -272,6 +288,7 @@ const TECH_ITEMS: TechItem[] = [
     experience: "Preferred PM",
     spec: "Fast & Strict",
     role: "Content-addressable storage, disk efficiency, reproducible lockfiles, and strict dependency tree isolation.",
+    projects: ["Modern Next.js Workspaces"],
     file: "pnpm-workspace.yaml",
     snippet: `packages:\n  - "apps/*"\n  - "packages/*"\n# Content-addressable strict isolation`,
     tags: ["Strict Tree", "Disk Efficient", "Fast Installs", "Lockfile"],
@@ -286,6 +303,7 @@ const TECH_ITEMS: TechItem[] = [
     experience: "Standard",
     spec: "Standard Tooling",
     role: "Standard ecosystem package publishing, workspace script orchestration, semantic versioning, and audits.",
+    projects: ["Package Publishing & Scripts"],
     file: "package.json",
     snippet: `{\n  "scripts": {\n    "dev": "next dev",\n    "build": "next build",\n    "typecheck": "tsc --noEmit"\n  }\n}`,
     tags: ["Semantic Version", "Script Runner", "Audits", "Registry"],
@@ -339,16 +357,13 @@ function highlightCodeLine(line: string): string {
 export function TechStackSection() {
   const [activeCategory, setActiveCategory] = useState<CategoryId>("all");
   const [selectedTechId, setSelectedTechId] = useState<string>("typescript");
+  const [inspectorTab, setInspectorTab] = useState<"impact" | "config">(
+    "impact",
+  );
   const inspectorRef = useRef<HTMLDivElement>(null);
 
   const handleSelectTech = (id: string) => {
     setSelectedTechId(id);
-    if (typeof window !== "undefined" && window.innerWidth < 1024) {
-      inspectorRef.current?.scrollIntoView({
-        behavior: "smooth",
-        block: "start",
-      });
-    }
   };
 
   const filteredItems =
@@ -368,8 +383,7 @@ export function TechStackSection() {
         </h2>
         <p className="text-base sm:text-lg text-slate-600 dark:text-slate-300 leading-relaxed font-normal text-pretty">
           The tools, runtime engines, and libraries I reach for to build
-          production applications. Click any technology to inspect its
-          architecture role and config.
+          production applications.
         </p>
       </div>
 
@@ -415,7 +429,8 @@ export function TechStackSection() {
       </div>
 
       <div className="mt-10 grid grid-cols-1 lg:grid-cols-12 gap-6 sm:gap-7 items-start">
-        <div className="lg:col-span-7 grid grid-cols-1 sm:grid-cols-3 gap-2.5 sm:gap-3 w-full min-w-0">
+        {/* Left Column: Tech Grid (Full width on mobile, 7 cols on desktop) */}
+        <div className="w-full lg:col-span-7 grid grid-cols-2 sm:grid-cols-3 gap-2.5 sm:gap-3 min-w-0">
           {filteredItems.map((tech) => {
             const IconComponent = tech.icon;
             const isSelected = selectedTech.id === tech.id;
@@ -426,12 +441,12 @@ export function TechStackSection() {
                 onClick={() => handleSelectTech(tech.id)}
                 className={`group relative flex flex-col items-center justify-center text-center p-3.5 sm:p-4 rounded-2xl transition-all duration-200 cursor-pointer select-none backdrop-blur-xl ${
                   isSelected
-                    ? "bg-white/95 border-2 border-teal-600 shadow-[inset_0_1px_1px_rgba(255,255,255,0.95),0_8px_20px_rgba(13,148,136,0.18)] -translate-y-0.5 dark:bg-white/14 dark:border-teal-400 dark:shadow-[inset_0_1px_1px_rgba(255,255,255,0.25),0_0_24px_-4px_rgba(45,212,191,0.35)]"
-                    : "bg-white/65 text-slate-900 border border-slate-200/85 shadow-[inset_0_1px_1px_rgba(255,255,255,0.9),0_2px_8px_rgba(15,23,42,0.04)] hover:bg-white/90 hover:border-slate-300 hover:-translate-y-0.5 dark:bg-white/6 dark:text-slate-100 dark:border-white/12 dark:shadow-[inset_0_1px_1px_rgba(255,255,255,0.16)] dark:hover:bg-white/12 dark:hover:border-white/22 dark:hover:-translate-y-0.5"
+                    ? "bg-white/95 border-2 border-teal-600 shadow-[inset_0_1px_1px_rgba(255,255,255,0.95),0_8px_20px_rgba(13,148,136,0.18)] lg:-translate-y-0.5 dark:bg-white/14 dark:border-teal-400 dark:shadow-[inset_0_1px_1px_rgba(255,255,255,0.25),0_0_24px_-4px_rgba(45,212,191,0.35)]"
+                    : "bg-white/65 text-slate-900 border border-slate-200/85 shadow-[inset_0_1px_1px_rgba(255,255,255,0.9),0_2px_8px_rgba(15,23,42,0.04)] lg:hover:bg-white/90 lg:hover:border-slate-300 lg:hover:-translate-y-0.5 dark:bg-white/6 dark:text-slate-100 dark:border-white/12 dark:shadow-[inset_0_1px_1px_rgba(255,255,255,0.16)] dark:lg:hover:bg-white/12 dark:lg:hover:border-white/22 dark:lg:hover:-translate-y-0.5"
                 }`}
               >
                 <div
-                  className={`flex h-11 w-11 sm:h-12 sm:w-12 items-center justify-center rounded-xl sm:rounded-2xl transition-transform duration-200 group-hover:scale-105 shrink-0 mb-2 sm:mb-2.5 ${
+                  className={`flex h-11 w-11 sm:h-12 sm:w-12 items-center justify-center rounded-xl sm:rounded-2xl transition-transform duration-200 lg:group-hover:scale-105 shrink-0 mb-2 sm:mb-2.5 ${
                     isSelected
                       ? "bg-teal-500/15 border border-teal-600/30"
                       : "backdrop-blur-md bg-white/80 dark:bg-white/8 border border-slate-200/80 dark:border-white/10 shadow-2xs"
@@ -448,11 +463,13 @@ export function TechStackSection() {
           })}
         </div>
 
+        {/* Right Column: Inspector — ONLY visible on desktop (hidden lg:block) */}
         <div
           ref={inspectorRef}
-          className="lg:col-span-5 lg:sticky lg:top-24 scroll-mt-24 w-full min-w-0 max-w-full"
+          className="hidden lg:block lg:col-span-5 lg:sticky lg:top-24 scroll-mt-24 w-full min-w-0 max-w-full"
         >
-          <div className="rounded-3xl border border-slate-200/80 bg-white/70 p-4 sm:p-6 backdrop-blur-2xl backdrop-saturate-150 shadow-[0_8px_32px_0_rgba(15,23,42,0.06)] dark:border-white/9 dark:bg-slate-900/50 w-full min-w-0 overflow-hidden">
+          <div className="rounded-3xl border border-slate-200/80 bg-white/70 p-5 sm:p-6 backdrop-blur-2xl backdrop-saturate-150 shadow-[0_8px_32px_0_rgba(15,23,42,0.06)] dark:border-white/9 dark:bg-slate-900/50 w-full min-w-0 overflow-hidden">
+            {/* Top macOS Inspector Bar with Tabs */}
             <div className="flex items-center justify-between pb-3.5 border-b border-slate-200/70 dark:border-white/8 min-w-0 gap-2">
               <div className="flex items-center gap-1.5 shrink-0">
                 <span className="h-2.5 w-2.5 rounded-full bg-[#ff5f56]" />
@@ -460,27 +477,47 @@ export function TechStackSection() {
                 <span className="h-2.5 w-2.5 rounded-full bg-[#27c93f]" />
               </div>
 
-              <div className="text-[10px] sm:text-[11px] font-mono text-slate-500 dark:text-slate-400 truncate px-1 flex-1 text-center min-w-0">
-                inspector://{selectedTech.id}
+              <div className="text-[11px] font-mono text-slate-500 dark:text-slate-400 truncate px-1 flex-1 text-center min-w-0">
+                telemetry://{selectedTech.id}
               </div>
 
-              <span className="inline-flex items-center gap-1 rounded-full border border-teal-600/30 bg-teal-500/10 px-2 py-0.5 text-[10px] sm:text-[11px] font-mono font-medium text-teal-800 dark:text-teal-300 shrink-0">
-                <span className="h-1.5 w-1.5 rounded-full bg-teal-600 dark:bg-teal-400" />
-                Live
-              </span>
+              {/* View Switcher: Impact vs Config */}
+              <div className="flex items-center rounded-lg p-0.5 border border-slate-200/70 bg-slate-100/80 dark:border-white/10 dark:bg-black/30 font-mono text-[10px] shrink-0">
+                <button
+                  onClick={() => setInspectorTab("impact")}
+                  className={`px-2 py-0.5 rounded-md transition-colors cursor-pointer ${
+                    inspectorTab === "impact"
+                      ? "bg-white text-slate-950 font-semibold shadow-2xs dark:bg-white/15 dark:text-white"
+                      : "text-slate-500 hover:text-slate-900 dark:text-slate-400 dark:hover:text-white"
+                  }`}
+                >
+                  Impact
+                </button>
+                <button
+                  onClick={() => setInspectorTab("config")}
+                  className={`px-2 py-0.5 rounded-md transition-colors cursor-pointer ${
+                    inspectorTab === "config"
+                      ? "bg-white text-slate-950 font-semibold shadow-2xs dark:bg-white/15 dark:text-white"
+                      : "text-slate-500 hover:text-slate-900 dark:text-slate-400 dark:hover:text-white"
+                  }`}
+                >
+                  Config
+                </button>
+              </div>
             </div>
 
-            <div className="mt-4 sm:mt-5 space-y-4 animate-in fade-in duration-200 min-w-0">
-              <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 min-w-0">
+            <div className="mt-5 space-y-4 animate-in fade-in duration-200 min-w-0">
+              {/* Title & Experience Badge */}
+              <div className="flex items-start justify-between gap-3 min-w-0">
                 <div className="flex items-center gap-3 min-w-0">
-                  <div className="flex h-11 w-11 sm:h-12 sm:w-12 items-center justify-center rounded-xl sm:rounded-2xl bg-slate-100/90 dark:bg-white/6 border border-slate-200/70 dark:border-white/8 shrink-0 shadow-xs">
+                  <div className="flex h-12 w-12 items-center justify-center rounded-2xl bg-slate-100/90 dark:bg-white/6 border border-slate-200/70 dark:border-white/8 shrink-0 shadow-xs">
                     <SelectedIcon
-                      size={22}
+                      size={24}
                       className={selectedTech.iconColor}
                     />
                   </div>
                   <div className="min-w-0">
-                    <h3 className="text-base sm:text-xl font-bold tracking-tight text-slate-900 dark:text-slate-100 truncate">
+                    <h3 className="text-xl font-bold tracking-tight text-slate-900 dark:text-slate-100 truncate">
                       {selectedTech.name}
                     </h3>
                     <div className="text-[11px] font-mono text-teal-800 dark:text-teal-300 font-medium truncate">
@@ -489,65 +526,101 @@ export function TechStackSection() {
                   </div>
                 </div>
 
-                <span className="self-start sm:self-auto rounded-full border border-slate-200/85 bg-white/65 dark:border-white/12 dark:bg-white/8 backdrop-blur-md px-3 py-1 font-mono text-[11px] font-medium text-slate-800 dark:text-slate-200 shadow-[inset_0_1px_1px_rgba(255,255,255,0.8)] dark:shadow-[inset_0_1px_1px_rgba(255,255,255,0.12)] shrink-0">
+                <span className="rounded-full border border-slate-200/85 bg-white/65 dark:border-white/12 dark:bg-white/8 backdrop-blur-md px-3 py-1 font-mono text-[11px] font-medium text-slate-800 dark:text-slate-200 shadow-[inset_0_1px_1px_rgba(255,255,255,0.8)] dark:shadow-[inset_0_1px_1px_rgba(255,255,255,0.12)] shrink-0">
                   {selectedTech.badge}
                 </span>
               </div>
 
-              <p className="text-xs sm:text-sm text-slate-600 dark:text-slate-300 leading-relaxed text-pretty">
-                {selectedTech.role}
-              </p>
-
-              <div className="rounded-2xl border border-slate-800/80 bg-[#0c1017] dark:bg-[#030712] p-3.5 sm:p-4 text-slate-100 font-mono text-xs leading-relaxed shadow-inner w-full min-w-0 max-w-full overflow-hidden">
-                <div className="flex items-center justify-between pb-2.5 border-b border-white/8 text-slate-400 text-[11px] min-w-0">
-                  <div className="flex items-center gap-2 min-w-0 truncate">
-                    <span className="h-2 w-2 rounded-full bg-teal-400 shrink-0" />
-                    <span className="font-semibold text-slate-300 font-mono truncate">
-                      {selectedTech.file}
-                    </span>
+              {/* Tab Content: Impact (Human & Recruiter Friendly) vs Config (Technical Lead) */}
+              {inspectorTab === "impact" ? (
+                <div className="space-y-4">
+                  {/* Why I use this / Business & Production value */}
+                  <div className="p-4 rounded-2xl border border-slate-200/70 bg-white/60 dark:border-white/8 dark:bg-white/4">
+                    <div className="text-[11px] font-mono uppercase tracking-wider text-teal-800 dark:text-teal-400 font-semibold mb-1.5">
+                      Why I reach for this:
+                    </div>
+                    <p className="text-sm text-slate-700 dark:text-slate-200 leading-relaxed font-normal">
+                      {selectedTech.role}
+                    </p>
                   </div>
-                  <span className="text-teal-400 font-medium font-mono text-[10px] uppercase tracking-wider shrink-0 ml-2">
-                    Config
-                  </span>
-                </div>
 
-                <div className="mt-3 overflow-x-auto w-full max-w-full pb-1 scrollbar-thin">
-                  <div className="min-w-fit font-mono text-[11px] sm:text-xs leading-relaxed">
-                    {selectedTech.snippet.split("\n").map((line, idx) => (
-                      <div
-                        key={idx}
-                        className="flex items-start gap-3 whitespace-pre"
-                      >
-                        <span className="w-5 shrink-0 select-none text-slate-600 text-right font-mono text-[11px]">
-                          {idx + 1}
-                        </span>
-                        <span
-                          className="font-mono flex-1 whitespace-pre"
-                          dangerouslySetInnerHTML={{
-                            __html: highlightCodeLine(line) || "&nbsp;",
-                          }}
-                        />
+                  {/* Real-World Applied Projects */}
+                  {selectedTech.projects &&
+                    selectedTech.projects.length > 0 && (
+                      <div>
+                        <div className="text-[11px] font-mono uppercase tracking-wider text-slate-500 dark:text-slate-400 font-semibold mb-2">
+                          Applied in Projects:
+                        </div>
+                        <div className="flex flex-wrap gap-1.5">
+                          {selectedTech.projects.map((proj) => (
+                            <span
+                              key={proj}
+                              className="inline-flex items-center gap-1.5 rounded-full border border-teal-600/25 bg-teal-500/10 dark:border-teal-400/25 dark:bg-teal-500/15 px-3 py-1 text-xs font-mono font-medium text-teal-900 dark:text-teal-200"
+                            >
+                              <span className="h-1.5 w-1.5 rounded-full bg-teal-600 dark:bg-teal-400" />
+                              <span>{proj}</span>
+                            </span>
+                          ))}
+                        </div>
                       </div>
-                    ))}
+                    )}
+                </div>
+              ) : (
+                /* Config Tab for Deep Tech Reviewers */
+                <div className="space-y-4">
+                  <div className="rounded-2xl border border-slate-800/80 bg-[#0c1017] dark:bg-[#030712] p-3.5 sm:p-4 text-slate-100 font-mono text-xs leading-relaxed shadow-inner w-full min-w-0 max-w-full overflow-hidden">
+                    <div className="flex items-center justify-between pb-2.5 border-b border-white/8 text-slate-400 text-[11px] min-w-0">
+                      <div className="flex items-center gap-2 min-w-0 truncate">
+                        <span className="h-2 w-2 rounded-full bg-teal-400 shrink-0" />
+                        <span className="font-semibold text-slate-300 font-mono truncate">
+                          {selectedTech.file}
+                        </span>
+                      </div>
+                      <span className="text-teal-400 font-medium font-mono text-[10px] uppercase tracking-wider shrink-0 ml-2">
+                        Config
+                      </span>
+                    </div>
+
+                    <div className="mt-3 overflow-x-auto w-full max-w-full pb-1 scrollbar-thin">
+                      <div className="min-w-fit font-mono text-[11px] sm:text-xs leading-relaxed">
+                        {selectedTech.snippet.split("\n").map((line, idx) => (
+                          <div
+                            key={idx}
+                            className="flex items-start gap-3 whitespace-pre"
+                          >
+                            <span className="w-5 shrink-0 select-none text-slate-600 text-right font-mono text-[11px]">
+                              {idx + 1}
+                            </span>
+                            <span
+                              className="font-mono flex-1 whitespace-pre"
+                              dangerouslySetInnerHTML={{
+                                __html: highlightCodeLine(line) || "&nbsp;",
+                              }}
+                            />
+                          </div>
+                        ))}
+                      </div>
+                    </div>
+                  </div>
+
+                  {/* Core Superpowers & Capabilities in the Config Tab */}
+                  <div>
+                    <div className="text-[11px] font-mono uppercase tracking-wider text-slate-500 dark:text-slate-400 font-semibold mb-2">
+                      Core Superpowers:
+                    </div>
+                    <div className="flex flex-wrap gap-1.5">
+                      {selectedTech.tags.map((tag) => (
+                        <span
+                          key={tag}
+                          className="rounded-full border border-slate-200/85 bg-white/65 dark:border-white/12 dark:bg-white/8 backdrop-blur-md px-3 py-0.5 text-[11px] font-mono text-slate-700 dark:text-slate-200 shadow-[inset_0_1px_1px_rgba(255,255,255,0.8)] dark:shadow-[inset_0_1px_1px_rgba(255,255,255,0.12)]"
+                        >
+                          {tag}
+                        </span>
+                      ))}
+                    </div>
                   </div>
                 </div>
-              </div>
-
-              <div className="pt-1 min-w-0">
-                <div className="text-[11px] font-mono text-slate-600 dark:text-slate-400 mb-2 font-medium">
-                  Architecture Capabilities:
-                </div>
-                <div className="flex flex-wrap gap-1.5">
-                  {selectedTech.tags.map((tag) => (
-                    <span
-                      key={tag}
-                      className="rounded-full border border-slate-200/85 bg-white/65 dark:border-white/12 dark:bg-white/8 backdrop-blur-md px-3 py-0.5 text-[11px] font-mono text-slate-700 dark:text-slate-200 shadow-[inset_0_1px_1px_rgba(255,255,255,0.8)] dark:shadow-[inset_0_1px_1px_rgba(255,255,255,0.12)]"
-                    >
-                      {tag}
-                    </span>
-                  ))}
-                </div>
-              </div>
+              )}
             </div>
           </div>
         </div>
