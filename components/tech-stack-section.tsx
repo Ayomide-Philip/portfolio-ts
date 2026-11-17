@@ -432,8 +432,8 @@ export function TechStackSection() {
       </div>
 
       <div className="mt-10 grid grid-cols-1 lg:grid-cols-12 gap-6 sm:gap-7 items-start">
-        {/* Left Column: Tech Grid (Full width on mobile, 7 cols on desktop) */}
-        <div className="w-full lg:col-span-7 grid grid-cols-2 sm:grid-cols-3 gap-2.5 sm:gap-3 min-w-0">
+        {/* Left Column: Tech Grid (1 per row on mobile, 2 on tablet, 3 on desktop) */}
+        <div className="w-full lg:col-span-7 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-2.5 sm:gap-3 min-w-0">
           {filteredItems.map((tech) => {
             const IconComponent = tech.icon;
             const isSelected = selectedTech.id === tech.id;
@@ -442,22 +442,24 @@ export function TechStackSection() {
               <button
                 key={tech.id}
                 onClick={() => handleSelectTech(tech.id)}
-                className={`group relative flex flex-col items-center justify-center text-center p-3.5 sm:p-4 rounded-2xl transition-all duration-200 cursor-pointer select-none backdrop-blur-xl ${
+                className={`group relative flex flex-col items-center justify-center text-center p-4 rounded-2xl transition-all duration-200 cursor-pointer select-none backdrop-blur-xl ${
                   isSelected
-                    ? "bg-white/95 border-2 border-teal-600 shadow-[inset_0_1px_1px_rgba(255,255,255,0.95),0_8px_20px_rgba(13,148,136,0.18)] lg:-translate-y-0.5 dark:bg-white/14 dark:border-teal-400 dark:shadow-[inset_0_1px_1px_rgba(255,255,255,0.25),0_0_24px_-4px_rgba(45,212,191,0.35)]"
+                    ? "bg-white/95 border border-slate-200/90 shadow-[inset_0_1px_1px_rgba(255,255,255,0.95),0_2px_8px_rgba(15,23,42,0.04)] lg:border-2 lg:border-teal-600 lg:shadow-[inset_0_1px_1px_rgba(255,255,255,0.95),0_8px_20px_rgba(13,148,136,0.18)] lg:-translate-y-0.5 dark:bg-white/10 dark:border-white/12 dark:shadow-[inset_0_1px_1px_rgba(255,255,255,0.16)] dark:lg:border-teal-400 dark:lg:shadow-[inset_0_1px_1px_rgba(255,255,255,0.25),0_0_24px_-4px_rgba(45,212,191,0.35)]"
                     : "bg-white/65 text-slate-900 border border-slate-200/85 shadow-[inset_0_1px_1px_rgba(255,255,255,0.9),0_2px_8px_rgba(15,23,42,0.04)] lg:hover:bg-white/90 lg:hover:border-slate-300 lg:hover:-translate-y-0.5 dark:bg-white/6 dark:text-slate-100 dark:border-white/12 dark:shadow-[inset_0_1px_1px_rgba(255,255,255,0.16)] dark:lg:hover:bg-white/12 dark:lg:hover:border-white/22 dark:lg:hover:-translate-y-0.5"
                 }`}
               >
+                {/* Logo on top */}
                 <div
-                  className={`flex h-11 w-11 sm:h-12 sm:w-12 items-center justify-center rounded-xl sm:rounded-2xl transition-transform duration-200 lg:group-hover:scale-105 shrink-0 mb-2 sm:mb-2.5 ${
+                  className={`flex h-12 w-12 items-center justify-center rounded-2xl transition-transform duration-200 lg:group-hover:scale-105 shrink-0 mb-2.5 ${
                     isSelected
-                      ? "bg-teal-500/15 border border-teal-600/30"
+                      ? "bg-slate-100/80 dark:bg-white/10 border border-slate-200/80 dark:border-white/10 lg:bg-teal-500/15 lg:border-teal-600/30"
                       : "backdrop-blur-md bg-white/80 dark:bg-white/8 border border-slate-200/80 dark:border-white/10 shadow-2xs"
                   }`}
                 >
                   <IconComponent size={24} className={tech.iconColor} />
                 </div>
 
+                {/* Followed by name */}
                 <div className="font-semibold text-xs sm:text-sm tracking-tight text-slate-900 dark:text-slate-100 truncate w-full text-center">
                   {tech.name}
                 </div>
@@ -466,7 +468,7 @@ export function TechStackSection() {
           })}
         </div>
 
-        {/* Right Column: Inspector — ONLY visible on desktop (hidden lg:block) */}
+        {/* Right Column: Inspector — ONLY visible on desktop */}
         <div
           ref={inspectorRef}
           className="hidden lg:block lg:col-span-5 lg:sticky lg:top-24 scroll-mt-24 w-full min-w-0 max-w-full"
