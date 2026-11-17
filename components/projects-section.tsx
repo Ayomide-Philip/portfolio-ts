@@ -3,44 +3,8 @@
 import Link from "next/link";
 import { HugeiconsIcon } from "@hugeicons/react";
 import { ArrowRight01Icon } from "@hugeicons/core-free-icons";
-
-import ProjectCard, { type Project } from "./ui/project-card";
-
-export const Projects: Project[] = [
-  {
-    title: "Fashion E-Commerce",
-    category: "Full-Stack",
-    description:
-      "AI-Based Personalized Recommendation System for Fashion E-Commerce with Content-based AI recommendations and AI image classification.",
-    stack: ["Next.js", "TypeScript", "MongoDB", "Tailwind CSS"],
-    liveUrl: "https://ecommerce-fashion-7fz3.onrender.com/",
-    sourceUrl: "",
-    featured: true,
-    year: "2024",
-  },
-  {
-    title: "Classora",
-    category: "Full-Stack",
-    description:
-      "Core pillars are class management, community engagement, real‑time chat, searchable venue mapping and advanced reminders.",
-    stack: ["Next.js", "JavaScript", "MongoDB", "Tailwind CSS"],
-    liveUrl: "https://classora-eight.vercel.app/",
-    sourceUrl: "https://github.com/Ayomide-Philip/Classora",
-    featured: false,
-    year: "2024",
-  },
-  {
-    title: "Mentorship Website",
-    category: "Full-Stack",
-    description:
-      "A mentorship platform that connects mentors and mentees, facilitating knowledge sharing and professional growth.",
-    stack: ["Next.js", "TypeScript", "MongoDB", "Tailwind CSS"],
-    liveUrl: "https://balogun-initiative-beta.vercel.app/",
-    sourceUrl: "",
-    featured: true,
-    year: "2023",
-  },
-];
+import ProjectCard from "./ui/project-card";
+import { Projects } from "@/data/projects";
 
 export function ProjectsSection() {
   const displayedProjects = Projects.slice(0, 3);
