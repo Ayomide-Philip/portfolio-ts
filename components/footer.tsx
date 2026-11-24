@@ -1,4 +1,3 @@
-import Link from "next/link";
 import { SiGithub } from "react-icons/si";
 
 export async function Footer() {
@@ -46,22 +45,16 @@ export async function Footer() {
             </a>
 
             <a
-              href="mailto:ayomidephilip.dev@gmail.com"
+              href={`mailto:${DEVELOPER_EMAIL}`}
               className="hover:text-slate-900 dark:hover:text-white transition-colors"
             >
               Email
             </a>
-
-            <Link
-              href="/admin/login"
-              className="text-slate-400/40 dark:text-slate-600/40 hover:text-slate-600 dark:hover:text-slate-400 transition-colors text-[10px]"
-              title="Admin Portal"
-            >
-              Portal
-            </Link>
           </div>
         </div>
       </div>
     </footer>
   );
 }
+
+export const DEVELOPER_EMAIL = "areoayomide1234@gmail.com";

@@ -1,12 +1,15 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Design system — portfolio-ts</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Instrument+Sans:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+  <link
+    href="https://fonts.googleapis.com/css2?family=Instrument+Sans:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap"
+    rel="stylesheet">
 
   <style>
     /* ==========================================================================
@@ -34,25 +37,39 @@
       --font-heading: 'Instrument Sans', system-ui, -apple-system, sans-serif;
       --font-mono: 'JetBrains Mono', monospace;
 
-      --text-xs: 0.75rem;     /* 12px */
-      --text-sm: 0.875rem;    /* 14px */
-      --text-base: 1rem;       /* 16px */
-      --text-lg: 1.25rem;     /* 20px */
-      --text-xl: 1.75rem;     /* 28px */
-      --text-2xl: 2.5rem;      /* 40px */
+      --text-xs: 0.75rem;
+      /* 12px */
+      --text-sm: 0.875rem;
+      /* 14px */
+      --text-base: 1rem;
+      /* 16px */
+      --text-lg: 1.25rem;
+      /* 20px */
+      --text-xl: 1.75rem;
+      /* 28px */
+      --text-2xl: 2.5rem;
+      /* 40px */
 
       --leading-tight: 1.2;
       --leading-normal: 1.6;
 
       /* Spacing */
-      --space-1: 0.25rem;  /* 4px */
-      --space-2: 0.5rem;   /* 8px */
-      --space-3: 0.75rem;  /* 12px */
-      --space-4: 1rem;     /* 16px */
-      --space-5: 1.5rem;   /* 24px */
-      --space-6: 2rem;     /* 32px */
-      --space-7: 3rem;     /* 48px */
-      --space-8: 4.5rem;   /* 72px */
+      --space-1: 0.25rem;
+      /* 4px */
+      --space-2: 0.5rem;
+      /* 8px */
+      --space-3: 0.75rem;
+      /* 12px */
+      --space-4: 1rem;
+      /* 16px */
+      --space-5: 1.5rem;
+      /* 24px */
+      --space-6: 2rem;
+      /* 32px */
+      --space-7: 3rem;
+      /* 48px */
+      --space-8: 4.5rem;
+      /* 72px */
 
       /* Radii */
       --radius-sm: 6px;
@@ -166,13 +183,16 @@
       width: 8px;
       height: 8px;
     }
+
     ::-webkit-scrollbar-track {
       background: var(--color-bg);
     }
+
     ::-webkit-scrollbar-thumb {
       background: var(--color-border);
       border-radius: var(--radius-sm);
     }
+
     ::-webkit-scrollbar-thumb:hover {
       background: var(--color-border-hover);
     }
@@ -270,11 +290,13 @@
         gap: var(--space-6);
         padding: var(--space-5) var(--space-4);
       }
+
       .sidebar {
         position: static !important;
         overflow-x: auto;
         padding-bottom: var(--space-2);
       }
+
       .sidebar-list {
         display: flex;
         flex-direction: row !important;
@@ -474,11 +496,37 @@
       color: var(--color-text-subtle);
     }
 
-    .specimen-2xl { font-size: var(--text-2xl); font-weight: 700; letter-spacing: -0.03em; line-height: var(--leading-tight); }
-    .specimen-xl  { font-size: var(--text-xl); font-weight: 700; letter-spacing: -0.02em; line-height: var(--leading-tight); }
-    .specimen-lg  { font-size: var(--text-lg); font-weight: 600; letter-spacing: -0.01em; line-height: var(--leading-tight); }
-    .specimen-base{ font-size: var(--text-base); font-weight: 400; max-width: 68ch; }
-    .specimen-sm  { font-size: var(--text-sm); color: var(--color-text-muted); }
+    .specimen-2xl {
+      font-size: var(--text-2xl);
+      font-weight: 700;
+      letter-spacing: -0.03em;
+      line-height: var(--leading-tight);
+    }
+
+    .specimen-xl {
+      font-size: var(--text-xl);
+      font-weight: 700;
+      letter-spacing: -0.02em;
+      line-height: var(--leading-tight);
+    }
+
+    .specimen-lg {
+      font-size: var(--text-lg);
+      font-weight: 600;
+      letter-spacing: -0.01em;
+      line-height: var(--leading-tight);
+    }
+
+    .specimen-base {
+      font-size: var(--text-base);
+      font-weight: 400;
+      max-width: 68ch;
+    }
+
+    .specimen-sm {
+      font-size: var(--text-sm);
+      color: var(--color-text-muted);
+    }
 
     .code-specimen {
       font-family: var(--font-mono);
@@ -890,6 +938,7 @@
     }
   </style>
 </head>
+
 <body>
 
   <!-- Top Header -->
@@ -942,7 +991,8 @@
         <div>
           <h2 class="section-headline">Colour</h2>
           <p class="section-prose">
-            Slate surfaces and crisp ink carry the interface. Teal is kept for brand and focus. Amber highlights appear only where key status or callouts are shown.
+            Slate surfaces and crisp ink carry the interface. Teal is kept for brand and focus. Amber highlights appear
+            only where key status or callouts are shown.
           </p>
         </div>
 
@@ -1068,7 +1118,8 @@
         <div>
           <h2 class="section-headline">Type</h2>
           <p class="section-prose">
-            Instrument Sans brings distinct neo-grotesque geometry to editorial prose, paired with JetBrains Mono for technical precision.
+            Instrument Sans brings distinct neo-grotesque geometry to editorial prose, paired with JetBrains Mono for
+            technical precision.
           </p>
         </div>
 
@@ -1091,7 +1142,8 @@
           <div class="type-row">
             <span class="type-metric">base • 16px / 1.6 leading</span>
             <p class="specimen-base">
-              Crafting resilient, maintainable software platforms with modern Next.js patterns, rigorous type-safety, and elegant user interfaces.
+              Crafting resilient, maintainable software platforms with modern Next.js patterns, rigorous type-safety,
+              and elegant user interfaces.
             </p>
           </div>
 
@@ -1104,7 +1156,8 @@
 
           <div class="type-row">
             <span class="type-metric">mono code specimen</span>
-            <pre class="code-specimen"><code>const portfolio = { engine: 'Next.js 16', font: 'Instrument Sans', auth: 'Auth.js' };</code></pre>
+            <pre
+              class="code-specimen"><code>const portfolio = { engine: 'Next.js 16', font: 'Instrument Sans', auth: 'Auth.js' };</code></pre>
           </div>
         </div>
       </section>
@@ -1176,7 +1229,8 @@
         <div>
           <h2 class="section-headline">Buttons & Interactive Controls</h2>
           <p class="section-prose">
-            Impeccable craft floor: liquid glassmorphism, dual-mode specular rim highlights, tactile micro-elevations, and strict APCA contrast compliance.
+            Impeccable craft floor: liquid glassmorphism, dual-mode specular rim highlights, tactile micro-elevations,
+            and strict APCA contrast compliance.
           </p>
         </div>
 
@@ -1188,7 +1242,10 @@
               <button class="btn btn-primary" type="button">Primary Accent</button>
               <button class="btn btn-glass" type="button">Glassmorphic Action</button>
               <button class="btn btn-primary" type="button">
-                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"
+                  stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                  <path d="M5 12h14M12 5l7 7-7 7" />
+                </svg>
                 <span>With Icon</span>
               </button>
             </div>
@@ -1279,10 +1336,12 @@
           <article class="card-item">
             <div class="card-header-line">
               <span class="tag-chip tag-accent">Full Stack</span>
-              <span style="font-family: var(--font-mono); font-size: var(--text-xs); color: var(--color-text-subtle);">2026</span>
+              <span
+                style="font-family: var(--font-mono); font-size: var(--text-xs); color: var(--color-text-subtle);">2026</span>
             </div>
             <h3 class="card-heading">Real-Time Event Stream Pipeline</h3>
-            <p class="card-body-text">Distributed event processing engine handling millions of async events per hour with sub-millisecond dispatch.</p>
+            <p class="card-body-text">Distributed event processing engine handling millions of async events per hour
+              with sub-millisecond dispatch.</p>
             <div class="card-tech-meta">Next.js • Kafka • Redis • Go</div>
             <a href="#" class="card-action-link">View Case Study →</a>
           </article>
@@ -1290,10 +1349,12 @@
           <article class="card-item">
             <div class="card-header-line">
               <span class="tag-chip tag-highlight">Architecture</span>
-              <span style="font-family: var(--font-mono); font-size: var(--text-xs); color: var(--color-text-subtle);">2026</span>
+              <span
+                style="font-family: var(--font-mono); font-size: var(--text-xs); color: var(--color-text-subtle);">2026</span>
             </div>
             <h3 class="card-heading">Zero-Downtime Migration Engine</h3>
-            <p class="card-body-text">Automated schema syncing and data migration toolkit enabling non-blocking database cutovers in cloud environments.</p>
+            <p class="card-body-text">Automated schema syncing and data migration toolkit enabling non-blocking database
+              cutovers in cloud environments.</p>
             <div class="card-tech-meta">TypeScript • PostgreSQL • Docker</div>
             <a href="#" class="card-action-link">View Case Study →</a>
           </article>
@@ -1312,7 +1373,7 @@
     toggleBtn.addEventListener('click', () => {
       const currentTheme = root.getAttribute('data-theme');
       const isSystemDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
-      
+
       const newTheme = (currentTheme === 'dark' || (!currentTheme && isSystemDark)) ? 'light' : 'dark';
       root.setAttribute('data-theme', newTheme);
     });
@@ -1339,4 +1400,5 @@
     });
   </script>
 </body>
+
 </html>
